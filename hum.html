@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>myOrder — System Docs</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#f5f3ee;--bg2:#ffffff;--bg3:#eceae4;
+  --border:#e0ddd6;--border2:#ccc9c0;
+  --text:#1a1916;--text2:#4a4840;--muted:#8a8780;
+  --ae:#2563eb;--ac:#059669;--ab:#d97706;--ad:#7c3aed;
+  --ebg:#eff6ff;--ebd:#bfdbfe;
+  --cbg:#ecfdf5;--cbd:#a7f3d0;
+  --bbg:#fffbeb;--bbd:#fde68a;
+  --dbg:#f5f3ff;--dbd:#ddd6fe;
+  --font:'IBM Plex Sans Thai',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+  --head:'Fraunces',serif;
+  --sh:0 1px 3px rgba(0,0,0,.07),0 4px 12px rgba(0,0,0,.05);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;line-height:1.65}
+nav{position:sticky;top:0;z-index:50;background:rgba(245,243,238,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 28px;height:56px;gap:4px}
+.nav-logo{font-family:var(--head);font-size:17px;font-weight:700;color:var(--text);margin-right:28px;flex-shrink:0;letter-spacing:-.02em}
+.nav-logo span{color:var(--ae)}
+.nav-tabs{display:flex;gap:2px}
+.tab{font-family:var(--font);font-size:14px;font-weight:500;padding:6px 16px;border-radius:8px;border:none;background:none;cursor:pointer;color:var(--muted);transition:all .15s;white-space:nowrap}
+.tab:hover{background:var(--bg3);color:var(--text)}
+.tab.ae{background:var(--ebg);color:var(--ae)}
+.tab.ac{background:var(--cbg);color:var(--ac)}
+.tab.ab{background:var(--bbg);color:var(--ab)}
+.tab.ad{background:var(--dbg);color:var(--ad)}
+.page{display:none}
+.page.on{display:block}
+.wrap{max-width:1060px;margin:0 auto;padding:40px 28px 80px}
+.hero{margin-bottom:36px}
+.badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:6px;margin-bottom:12px;border:1px solid}
+.be{background:var(--ebg);color:var(--ae);border-color:var(--ebd)}
+.bc{background:var(--cbg);color:var(--ac);border-color:var(--cbd)}
+.bb{background:var(--bbg);color:var(--ab);border-color:var(--bbd)}
+.bd{background:var(--dbg);color:var(--ad);border-color:var(--dbd)}
+.hero h1{font-family:var(--head);font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:-.03em;line-height:1.1;margin-bottom:10px}
+.hero p{color:var(--text2);font-size:15px;max-width:520px}
+.stats{display:flex;flex-wrap:wrap;gap:12px;padding:18px 22px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;margin-bottom:32px;box-shadow:var(--sh)}
+.stat{display:flex;flex-direction:column}
+.sn{font-family:var(--head);font-size:26px;font-weight:700;line-height:1}
+.sl{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-top:2px}
+.ss{width:1px;background:var(--border);margin:0 4px}
+.slbl{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:32px 0 14px;display:flex;align-items:center;gap:10px}
+.slbl::after{content:'';flex:1;height:1px;background:var(--border)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.g2{grid-template-columns:repeat(auto-fill,minmax(380px,1fr))}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--sh);transition:box-shadow .15s,transform .15s}
+.card:hover{box-shadow:0 4px 20px rgba(0,0,0,.1);transform:translateY(-1px)}
+.ch{padding:14px 18px 12px;border-bottom:1px solid var(--border)}
+.ctag{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.ctitle{font-family:var(--head);font-size:18px;font-weight:700;letter-spacing:-.02em;line-height:1.2}
+.ce .ch{border-top:3px solid var(--ae)}.ce .ctag{color:var(--ae)}
+.cc .ch{border-top:3px solid var(--ac)}.cc .ctag{color:var(--ac)}
+.cb .ch{border-top:3px solid var(--ab)}.cb .ctag{color:var(--ab)}
+.cb2{padding:14px 18px}
+.cdesc{font-size:13.5px;color:var(--text2);line-height:1.6;margin-bottom:14px}
+.mt{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:8px}
+.mrow{display:flex;gap:0;border:1px solid var(--border);border-radius:7px;margin-bottom:7px;overflow:hidden;font-family:var(--mono);font-size:12px}
+.mn{padding:7px 11px;font-weight:500;border-right:1px solid var(--border);white-space:nowrap}
+.md{padding:7px 11px;color:var(--text2);font-size:12px;font-family:var(--font);line-height:1.4;flex:1}
+.ce .mn{background:var(--ebg);color:var(--ae)}
+.cc .mn{background:var(--cbg);color:var(--ac)}
+.cb .mn{background:var(--bbg);color:var(--ab)}
+.eps{display:flex;flex-direction:column;gap:5px;margin-top:4px}
+.ep{display:flex;align-items:baseline;gap:8px;font-family:var(--mono);font-size:12px}
+.hb{display:inline-block;padding:1px 7px;border-radius:4px;font-size:10px;font-weight:500;letter-spacing:.04em;min-width:44px;text-align:center;flex-shrink:0}
+.GET{background:#dbeafe;color:#1d4ed8}.POST{background:#d1fae5;color:#065f46}
+.PATCH{background:#fef3c7;color:#92400e}.DELETE{background:#fee2e2;color:#991b1b}
+.ep-p{color:var(--text);font-size:12px}
+.ep-a{display:inline-block;font-size:10px;padding:1px 6px;border-radius:4px;margin-left:2px}
+.aa{background:#ede9fe;color:#5b21b6}.au{background:#dbeafe;color:#1e40af}
+.as{background:#d1fae5;color:#065f46}.al{background:var(--bg3);color:var(--muted)}
+.dw{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:24px;overflow-x:auto;box-shadow:var(--sh)}
+.leg{display:flex;flex-wrap:wrap;gap:14px;margin-top:16px}
+.li{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;color:var(--text2)}
+.ld{width:10px;height:10px;border-radius:3px}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px}
+@media(max-width:600px){.grid{grid-template-columns:1fr}nav{padding:0 14px}.tab{padding:6px 10px;font-size:13px}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">my<span>Order</span> docs</div>
+  <div class="nav-tabs">
+    <button class="tab ae" onclick="go('entity',this,'ae')">Entity</button>
+    <button class="tab" onclick="go('ctrl',this,'ac')">Controllers</button>
+    <button class="tab" onclick="go('bound',this,'ab')">Boundary</button>
+    <button class="tab" onclick="go('diag',this,'ad')">Class Diagram</button>
+  </div>
+</nav>
+
+<!-- ═══════════════ ENTITY ═══════════════ -->
+<div class="page on" id="page-entity">
+<div class="wrap">
+  <div class="hero">
+    <div class="badge be">Entity Layer</div>
+    <h1>Entities</h1>
+    <p>คลาสที่เก็บข้อมูลและ business logic ของระบบ แต่ละ entity ตรงกับตาราง database</p>
+  </div>
+  <div class="stats">
+    <div class="stat"><span class="sn" style="color:var(--ae)">9</span><span class="sl">entities ทั้งหมด</span></div><div class="ss"></div>
+    <div class="stat"><span class="sn" style="color:#0ea5e9">3</span><span class="sl">Actor</span></div><div class="ss"></div>
+    <div class="stat"><span class="sn" style="color:#8b5cf6">3</span><span class="sl">Request</span></div><div class="ss"></div>
+    <div class="stat"><span class="sn" style="color:#10b981">3</span><span class="sl">Support</span></div>
+  </div>
+
+  <div class="slbl">Actor entities — ผู้ใช้งานระบบ</div>
+  <div class="grid">
+    <div class="card ce">
+      <div class="ch"><div class="ctag">entity · actor</div><div class="ctitle">Account</div></div>
+      <div class="cb2">
+        <p class="cdesc">เก็บข้อมูลผู้ใช้ที่ล็อกอินผ่าน Google OAuth รวมข้อมูลธนาคารสำหรับรับเงินชดเชยเคลม และ is_company บอกว่าเป็นบุคคลธรรมดาหรือนิติบุคคล</p>
+        <div class="mt">Methods &amp; คำอธิบาย</div>
+        <div class="mrow"><span class="mn">login()</span><span class="md">รับ Google token ตรวจสอบกับ DB แล้วสร้าง JWT ส่งกลับ ถ้าไม่มีในระบบจะสร้าง Account ใหม่ให้อัตโนมัติ</span></div>
+        <div class="mrow"><span class="mn">logout()</span><span class="md">ลบ session / ทำให้ JWT ใช้ไม่ได้อีก</span></div>
+        <div class="mrow"><span class="mn">updateProfile()</span><span class="md">แก้ไขข้อมูลส่วนตัว เช่น เบอร์โทร ชื่อบัญชีธนาคาร เลขบัญชี</span></div>
+        <div class="mrow"><span class="mn">getOwnedShop()</span><span class="md">ดึงข้อมูลร้านค้าที่ผู้ใช้เป็นเจ้าของ (null ถ้ายังไม่มีร้าน)</span></div>
+        <div class="mrow"><span class="mn">getUpgradeRequests()</span><span class="md">ดึงรายการคำขอเลื่อนขั้นทั้งหมดของ Account นี้ พร้อมสถานะและเหตุผลที่ไม่ผ่าน</span></div>
+        <div class="mrow"><span class="mn">getClaimRequests()</span><span class="md">ดึงรายการคำขอเคลมที่เคยยื่น เพื่อแสดงในหน้าประวัติ</span></div>
+        <div class="mrow"><span class="mn">getReportRequests()</span><span class="md">ดึงรายการรายงานร้านค้าที่เคยส่ง</span></div>
+      </div>
+    </div>
+
+    <div class="card ce">
+      <div class="ch"><div class="ctag">entity · actor</div><div class="ctitle">Admin</div></div>
+      <div class="cb2">
+        <p class="cdesc">เก็บข้อมูลแอดมินของระบบ ต่างจาก Account ตรงที่มี is_active เพื่อระงับสิทธิ์ได้ทันที และมี last_login สำหรับ audit trail</p>
+        <div class="mt">Methods &amp; คำอธิบาย</div>
+        <div class="mrow"><span class="mn">login()</span><span class="md">ล็อกอิน admin panel ผ่าน Google OAuth และอัปเดต last_login</span></div>
+        <div class="mrow"><span class="mn">logout()</span><span class="md">ออกจากระบบและ invalidate session</span></div>
+        <div class="mrow"><span class="mn">getActivityLogs()</span><span class="md">ดึง log การทำงานทั้งหมดของแอดมินคนนี้ เพื่อตรวจสอบย้อนหลัง</span></div>
+      </div>
+    </div>
+
+    <div class="card ce">
+      <div class="ch"><div class="ctag">entity · core</div><div class="ctitle">Shop</div></div>
+      <div class="cb2">
+        <p class="cdesc">หัวใจหลักของระบบ เก็บข้อมูลร้านค้า shop_status (ขั้น 1/2/3), is_blacklist และ failed_upgrade_count ที่ใช้จำกัดการขอเลื่อนขั้นรายเดือน</p>
+        <div class="mt">Methods &amp; คำอธิบาย</div>
+        <div class="mrow"><span class="mn">create()</span><span class="md">สร้างร้านค้าใหม่ในระบบ เชื่อม owner_account_id กับ Account ที่เป็นเจ้าของ</span></div>
+        <div class="mrow"><span class="mn">update()</span><span class="md">แก้ไขข้อมูลร้าน เช่น ชื่อ URL ช่องทางติดต่อ ตรวจ format ก่อนบันทึก</span></div>
+        <div class="mrow"><span class="mn">delete()</span><span class="md">Soft delete — ตั้ง is_active = false ให้ร้านหายจากผลค้นหา ข้อมูลยังอยู่ใน DB</span></div>
+        <div class="mrow"><span class="mn">search()</span><span class="md">ค้นหาร้านจาก keyword พร้อม pagination กรอง is_active = true</span></div>
+        <div class="mrow"><span class="mn">getDetail()</span><span class="md">ดึงข้อมูลรายละเอียดเต็มสำหรับแสดงหน้า detail รวม channel และ status</span></div>
+        <div class="mrow"><span class="mn">setBlacklist()</span><span class="md">ตั้ง is_blacklist = true และสร้าง record ใหม่ใน Blacklist table พร้อม adminId</span></div>
+        <div class="mrow"><span class="mn">upgradeToTier()</span><span class="md">อัปเดต shop_status ไปยังขั้นที่กำหนด (1→2 หรือ 2→3) หลังแอดมินอนุมัติ</span></div>
+        <div class="mrow"><span class="mn">getBlacklistHistory()</span><span class="md">ดึงประวัติ blacklist ทั้งหมดของร้านนี้ รวมทั้งที่ยกเลิกไปแล้ว</span></div>
+        <div class="mrow"><span class="mn">getUpgradeRequests()</span><span class="md">ดึงรายการคำขอเลื่อนขั้นทั้งหมดของร้านนี้ พร้อม admin_remark</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slbl">Request entities — คำร้องต่างๆ</div>
+  <div class="grid">
+    <div class="card ce">
+      <div class="ch"><div class="ctag">entity · request</div><div class="ctitle">UpgradeRequest</div></div>
+      <div class="cb2">
+        <p class="cdesc">คำขอเลื่อนขั้นร้านค้าจากขั้น 1→2 มี admin_remark เพื่อบันทึกเหตุผลกรณีไม่อนุมัติ ให้ร้านค้ารู้ว่าต้องแก้อะไร</p>
+        <div class="mt">Methods &amp; คำอธิบาย</div>
+        <div class="mrow"><span class="mn">submit()</span><span class="md">ร้านค้ายื่นคำขอพร้อมเอกสาร ตรวจเงื่อนไข failed_upgrade_count ก่อน บันทึก status = pending</span></div>
+        <div class="mrow"><span class="mn">approve()</span><span class="md">แอดมินอนุมัติ → เปลี่ยน status = approved เรียก Shop.upgradeToTier() และบันทึก UpgradeApprovalLog</span></div>
+        <div class="mrow"><span class="mn">reject()</span><span class="md">แอดมินปฏิเสธ → บันทึกเหตุผลใน admin_remark เพิ่ม Shop.failed_upgrade_count และบันทึก Log</span></div>
+        <div class="mrow"><span class="mn">getAttachments()</span><span class="md">ดึงไฟล์เอกสารทั้งหมดที่แนบมาพร้อมคำขอนี้</span></div>
+        <div class="mrow"><span class="mn">getApprovalLogs()</span><span class="md">ดึง log การอนุมัติ/ปฏิเสธทั้งหมดของคำขอนี้ เพื่อแสดงประวัติ</span></div>
+      </div>
+    </div>
+
+    <div class="card ce">
+      <div class="ch"><div class="ctag">entity · request</div><div class="ctitle">ClaimRequest</div></div>
+      <div class="cb2">
+        <p class="cdesc">คำขอเคลมของผู้ใช้ที่ถูกโกง เก็บ contact_info เพื่อให้แอดมินติดต่อกลับ และ evidence_url อ้างอิงหลักฐาน</p>
+        <div class="mt">Methods &amp; คำอธิบาย</div>
+        <div class="mrow"><span class="mn">submit()</span><span class="md">ผู้ใช้ยื่นคำขอพร้อมรายละเอียดและเอกสาร บันทึก status = open รอแอดมินตรวจสอบ</span></div>
+        <div class="mrow"><span class="mn">close()</span><span class="md">แอดมินปิดคำขอเมื่อติดต่อผู้ใช้และชดเชยเรียบร้อยแล้ว เปลี่ยน status = closed</span></div>
+        <div class="mrow"><span class="mn">getAttachments()</span><span class="md">ดึงไฟล์หลักฐานทั้งหมดที่ผู้ใช้แนบมาในคำขอนี้</span></div>
+      </div>
+    </div>
+
+    <div class="card ce">
+      <div class="ch"><div class="ctag">entity · request</div><div class="ctitle">ReportRequest</div></div>
+      <div class="cb2">
+        <p class="cdesc">รายงานร้านค้าต้องสงสัยโดยผู้ใช้ เก็บ damage_amount ประเมินความเสียหาย และเชื่อมกับ Blacklist ได้ถ้าแอดมินตัดสินใจ blacklist</p>
+        <div class="mt">Methods &amp; คำอธิบาย</div>
+        <div class="mrow"><span class="mn">submit()</span><span class="md">ผู้ใช้ส่งรายงานพร้อมเหตุผลและหลักฐาน บันทึก status = pending รอแอดมินตรวจสอบ</span></div>
+        <div class="mrow"><span class="mn">process()</span><span class="md">แอดมินดำเนินการเสร็จ เปลี่ยน status = done อาจนำไปสู่การสร้าง Blacklist record ต่อ</span></div>
+        <div class="mrow"><span class="mn">getAttachments()</span><span class="md">ดึงเอกสารหลักฐานทั้งหมดที่ผู้ใช้ส่งมาพร้อมรายงาน</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slbl">Support entities — ระบบสนับสนุน</div>
+  <div class="grid">
+    <div class="card ce">
+      <div class="ch"><div class="ctag">entity · support</div><div class="ctitle">Attachment</div></div>
+      <div class="cb2">
+        <p class="cdesc">ไฟล์เอกสารที่แนบกับคำร้องทุกประเภท ใช้ร่วมกันได้ทั้ง UpgradeRequest, ClaimRequest และ ReportRequest ระบบ log ทุกครั้งที่แอดมินดาวน์โหลด</p>
+        <div class="mt">Methods &amp; คำอธิบาย</div>
+        <div class="mrow"><span class="mn">upload()</span><span class="md">รับไฟล์จาก client, บันทึก URL และเชื่อม foreign key กับคำร้องที่ระบุ (upgrade/claim/report)</span></div>
+        <div class="mrow"><span class="mn">download()</span><span class="md">คืน signed URL หรือ stream ไฟล์ให้แอดมิน พร้อมเรียก logDownload() อัตโนมัติ</span></div>
+        <div class="mrow"><span class="mn">logDownload()</span><span class="md">บันทึกว่าแอดมินคนไหน (adminId) ดาวน์โหลดเมื่อไหร่ สำหรับ audit trail</span></div>
+        <div class="mrow"><span class="mn">delete()</span><span class="md">ลบไฟล์ออกจากระบบ ใช้กรณีคำร้องถูกยกเลิกหรือลบข้อมูล</span></div>
+      </div>
+    </div>
+
+    <div class="card ce">
+      <div class="ch"><div class="ctag">entity · support</div><div class="ctitle">Blacklist</div></div>
+      <div class="cb2">
+        <p class="cdesc">บันทึกสถานะ blacklist ของร้านค้า มี is_active รองรับการยกเลิก blacklist ในอนาคต เชื่อมกับ ReportRequest ที่เป็นต้นเหตุ</p>
+        <div class="mt">Methods &amp; คำอธิบาย</div>
+        <div class="mrow"><span class="mn">create()</span><span class="md">สร้าง record blacklist ใหม่ พร้อมอัปเดต Shop.is_blacklist = true ทันที</span></div>
+        <div class="mrow"><span class="mn">deactivate()</span><span class="md">ยกเลิก blacklist ตั้ง is_active = false และอัปเดต Shop.is_blacklist = false กลับ</span></div>
+        <div class="mrow"><span class="mn">getHistory()</span><span class="md">ดึงประวัติ blacklist ทั้งหมดของร้านนั้น รวมทั้งที่ยกเลิกแล้ว เพื่อแสดงพฤติกรรมในอดีต</span></div>
+      </div>
+    </div>
+
+    <div class="card ce">
+      <div class="ch"><div class="ctag">entity · support</div><div class="ctitle">UpgradeApprovalLog</div></div>
+      <div class="cb2">
+        <p class="cdesc">บันทึก audit trail ทุก action ของแอดมินที่เกี่ยวกับการอนุมัติเลื่อนขั้น ช่วยตรวจสอบย้อนหลังว่าใครทำอะไร เมื่อไหร่</p>
+        <div class="mt">Methods &amp; คำอธิบาย</div>
+        <div class="mrow"><span class="mn">create()</span><span class="md">บันทึก log ทันทีที่แอดมินอนุมัติหรือปฏิเสธ เก็บ action, reason และ timestamp</span></div>
+        <div class="mrow"><span class="mn">getByAdmin()</span><span class="md">ดึง log ทั้งหมดที่แอดมินคนนั้นทำ เพื่อตรวจสอบการทำงาน</span></div>
+        <div class="mrow"><span class="mn">getByShop()</span><span class="md">ดึงประวัติการอนุมัติ/ปฏิเสธทั้งหมดของร้านค้านั้น แสดงในหน้า MyShopPage</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════ CONTROLLERS ═══════════════ -->
+<div class="page" id="page-ctrl">
+<div class="wrap">
+  <div class="hero">
+    <div class="badge bc">Controller Layer</div>
+    <h1>Controllers</h1>
+    <p>รับ HTTP request จาก boundary ส่งต่อไปยัง entity layer ตอบกลับเป็น JSON</p>
+  </div>
+  <div class="stats">
+    <div class="stat"><span class="sn" style="color:var(--ac)">9</span><span class="sl">Controllers</span></div><div class="ss"></div>
+    <div class="stat"><span class="sn" style="color:#2563eb">28</span><span class="sl">Endpoints</span></div><div class="ss"></div>
+    <div class="stat"><span class="sn" style="color:#7c3aed">3</span><span class="sl">Actor groups</span></div>
+  </div>
+
+  <div class="slbl">Auth &amp; Account</div>
+  <div class="grid g2">
+    <div class="card cc">
+      <div class="ch"><div class="ctag">controller · auth</div><div class="ctitle">AuthController</div></div>
+      <div class="cb2">
+        <p class="cdesc">จัดการ authentication ผ่าน Google OAuth 2.0 รับ token จาก Google ตรวจสอบหรือสร้าง Account ใหม่ แล้วออก JWT ให้ผู้ใช้</p>
+        <div class="mt">Endpoints</div>
+        <div class="eps">
+          <div class="ep"><span class="hb POST">POST</span><span class="ep-p">/auth/google</span><span class="ep-a al">ทุกคน</span></div>
+          <div class="ep"><span class="hb POST">POST</span><span class="ep-p">/auth/logout</span><span class="ep-a au">user</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card cc">
+      <div class="ch"><div class="ctag">controller · account</div><div class="ctitle">AccountController</div></div>
+      <div class="cb2">
+        <p class="cdesc">จัดการข้อมูลโปรไฟล์ของผู้ใช้ที่ล็อกอินแล้ว รวมถึงการอัปเดตข้อมูลส่วนตัวและบัญชีธนาคาร</p>
+        <div class="mt">Endpoints</div>
+        <div class="eps">
+          <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/account/profile</span><span class="ep-a au">user</span></div>
+          <div class="ep"><span class="hb PATCH">PATCH</span><span class="ep-p">/account/profile</span><span class="ep-a au">user</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slbl">Shop Management</div>
+  <div class="grid g2">
+    <div class="card cc">
+      <div class="ch"><div class="ctag">controller · shop · admin</div><div class="ctitle">ShopController</div></div>
+      <div class="cb2">
+        <p class="cdesc">CRUD ร้านค้าทั้งหมดสำหรับแอดมิน ครอบคลุมการเพิ่ม แก้ไข ลบ และ blacklist ร้านค้า</p>
+        <div class="mt">Endpoints</div>
+        <div class="eps">
+          <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/admin/shops</span><span class="ep-a aa">admin</span></div>
+          <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/admin/shops/:id</span><span class="ep-a aa">admin</span></div>
+          <div class="ep"><span class="hb POST">POST</span><span class="ep-p">/admin/shops</span><span class="ep-a aa">admin</span></div>
+          <div class="ep"><span class="hb PATCH">PATCH</span><span class="ep-p">/admin/shops/:id</span><span class="ep-a aa">admin</span></div>
+          <div class="ep"><span class="hb DELETE">DELETE</span><span class="ep-p">/admin/shops/:id</span><span class="ep-a aa">admin</span></div>
+          <div class="ep"><span class="hb PATCH">PATCH</span><span class="ep-p">/admin/shops/:id/blacklist</span><span class="ep-a aa">admin</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card cc">
+      <div class="ch"><div class="ctag">controller · shop · owner</div><div class="ctitle">ShopOwnerController</div></div>
+      <div class="cb2">
+        <p class="cdesc">ให้เจ้าของร้านและผู้เยี่ยมชมดูข้อมูลร้านค้า แยกจาก ShopController เพราะ scope ข้อมูลที่เห็นต่างกัน</p>
+        <div class="mt">Endpoints</div>
+        <div class="eps">
+          <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/my-shop</span><span class="ep-a as">shop</span></div>
+          <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/shops</span><span class="ep-a al">ทุกคน</span></div>
+          <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/shops/:id</span><span class="ep-a al">ทุกคน</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slbl">Upgrade Flow</div>
+  <div class="grid g2">
+    <div class="card cc">
+      <div class="ch"><div class="ctag">controller · upgrade · request</div><div class="ctitle">UpgradeRequestController</div></div>
+      <div class="cb2">
+        <p class="cdesc">ร้านค้า submit คำขอพร้อมเอกสาร แอดมิน list และดูรายละเอียดก่อนตัดสินใจ</p>
+        <div class="mt">Endpoints</div>
+        <div class="eps">
+          <div class="ep"><span class="hb POST">POST</span><span class="ep-p">/upgrade-requests</span><span class="ep-a as">shop</span></div>
+          <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/admin/upgrade-requests</span><span class="ep-a aa">admin</span></div>
+          <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/admin/upgrade-requests/:id</span><span class="ep-a aa">admin</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card cc">
+      <div class="ch"><div class="ctag">controller · upgrade · approval</div><div class="ctitle">UpgradeApprovalController</div></div>
+      <div class="cb2">
+        <p class="cdesc">แอดมินอนุมัติ/ปฏิเสธคำขอ และจัดการเลื่อนขั้น 3 ซึ่งต้องทำโดยแอดมินเท่านั้น บันทึก log ทุก action</p>
+        <div class="mt">Endpoints</div>
+        <div class="eps">
+          <div class="ep"><span class="hb POST">POST</span><span class="ep-p">/admin/upgrade-requests/:id/approve</span><span class="ep-a aa">admin</span></div>
+          <div class="ep"><span class="hb POST">POST</span><span class="ep-p">/admin/upgrade-requests/:id/reject</span><span class="ep-a aa">admin</span></div>
+          <div class="ep"><span class="hb POST">POST</span><span class="ep-p">/admin/shops/:id/approve-tier3</span><span class="ep-a aa">admin</span></div>
+          <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/admin/upgrade-logs</span><span class="ep-a aa">admin</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slbl">Claim &amp; Report</div>
+  <div class="grid g2">
+    <div class="card cc">
+      <div class="ch"><div class="ctag">controller · claim</div><div class="ctitle">ClaimRequestController</div></div>
+      <div class="cb2">
+        <p class="cdesc">ผู้ใช้ยื่นเรื่องขอเคลม แอดมินดู list และปิดคำร้องเมื่อดำเนินการชดเชยเสร็จ</p>
+        <div class="mt">Endpoints</div>
+        <div class="eps">
+          <div class="ep"><span class="hb POST">POST</span><span class="ep-p">/claims</span><span class="ep-a au">user</span></div>
+          <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/admin/claims</span><span class="ep-a aa">admin</span></div>
+          <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/admin/claims/:id</span><span class="ep-a aa">admin</span></div>
+          <div class="ep"><span class="hb POST">POST</span><span class="ep-p">/admin/claims/:id/close</span><span class="ep-a aa">admin</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card cc">
+      <div class="ch"><div class="ctag">controller · report</div><div class="ctitle">ReportRequestController</div></div>
+      <div class="cb2">
+        <p class="cdesc">ผู้ใช้รายงานร้านต้องสงสัย แอดมินตรวจสอบ ซึ่งอาจนำไปสู่การ blacklist ต่อ</p>
+        <div class="mt">Endpoints</div>
+        <div class="eps">
+          <div class="ep"><span class="hb POST">POST</span><span class="ep-p">/reports</span><span class="ep-a au">user</span></div>
+          <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/admin/reports</span><span class="ep-a aa">admin</span></div>
+          <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/admin/reports/:id</span><span class="ep-a aa">admin</span></div>
+          <div class="ep"><span class="hb POST">POST</span><span class="ep-p">/admin/reports/:id/process</span><span class="ep-a aa">admin</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slbl">Attachment &amp; Blacklist</div>
+  <div class="grid g2">
+    <div class="card cc">
+      <div class="ch"><div class="ctag">controller · attachment</div><div class="ctitle">AttachmentController</div></div>
+      <div class="cb2">
+        <p class="cdesc">จัดการไฟล์เอกสารทุกประเภท การดาวน์โหลดแต่ละครั้ง log อัตโนมัติเพื่อ audit trail</p>
+        <div class="mt">Endpoints</div>
+        <div class="eps">
+          <div class="ep"><span class="hb POST">POST</span><span class="ep-p">/attachments/upload</span><span class="ep-a au">user/shop</span></div>
+          <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/attachments/:id/download</span><span class="ep-a aa">admin</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card cc">
+      <div class="ch"><div class="ctag">controller · blacklist</div><div class="ctitle">BlacklistController</div></div>
+      <div class="cb2">
+        <p class="cdesc">แอดมินเพิ่มร้านเข้า blacklist, ดู list ที่ถูก blacklist อยู่ และยกเลิก blacklist ได้ถ้าพบว่าไม่มีความผิด</p>
+        <div class="mt">Endpoints</div>
+        <div class="eps">
+          <div class="ep"><span class="hb POST">POST</span><span class="ep-p">/admin/blacklists</span><span class="ep-a aa">admin</span></div>
+          <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/admin/blacklists</span><span class="ep-a aa">admin</span></div>
+          <div class="ep"><span class="hb PATCH">PATCH</span><span class="ep-p">/admin/blacklists/:id/deactivate</span><span class="ep-a aa">admin</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════ BOUNDARY ═══════════════ -->
+<div class="page" id="page-bound">
+<div class="wrap">
+  <div class="hero">
+    <div class="badge bb">Boundary Layer</div>
+    <h1>Boundaries</h1>
+    <p>หน้าจอและ UI component ที่ผู้ใช้โต้ตอบด้วย แต่ละ boundary ส่ง request ไปยัง controller ที่เกี่ยวข้อง</p>
+  </div>
+  <div class="stats">
+    <div class="stat"><span class="sn" style="color:var(--ab)">19</span><span class="sl">Boundaries ทั้งหมด</span></div><div class="ss"></div>
+    <div class="stat"><span class="sn" style="color:#2563eb">8</span><span class="sl">User/Shop</span></div><div class="ss"></div>
+    <div class="stat"><span class="sn" style="color:#7c3aed">10</span><span class="sl">Admin</span></div><div class="ss"></div>
+    <div class="stat"><span class="sn" style="color:#059669">2</span><span class="sl">Shared</span></div>
+  </div>
+
+  <div class="slbl">User &amp; Shop — หน้าจอฝั่งผู้ใช้ทั่วไปและเจ้าของร้าน</div>
+  <div class="grid">
+    <div class="card cb"><div class="ch"><div class="ctag">boundary · auth</div><div class="ctitle">LoginPage</div></div><div class="cb2"><p class="cdesc">หน้าเข้าสู่ระบบ มีเพียงปุ่ม "เข้าสู่ระบบด้วย Google" คลิกแล้วเปิด Google OAuth popup</p><div class="mt">เรียกใช้</div><div class="mrow"><span class="mn">AuthController</span><span class="md">POST /auth/google</span></div></div></div>
+    <div class="card cb"><div class="ch"><div class="ctag">boundary · account</div><div class="ctitle">ProfilePage</div></div><div class="cb2"><p class="cdesc">ดูและแก้ไขโปรไฟล์ตัวเอง แสดงข้อมูลส่วนตัว บัญชีธนาคาร และมีปุ่มไปหน้าร้านค้าของตัวเอง</p><div class="mt">เรียกใช้</div><div class="mrow"><span class="mn">AccountController</span><span class="md">GET + PATCH /account/profile</span></div></div></div>
+    <div class="card cb"><div class="ch"><div class="ctag">boundary · shop</div><div class="ctitle">ShopListPage</div></div><div class="cb2"><p class="cdesc">รายการร้านค้าสาธารณะ มีช่องค้นหาและ pagination ใครก็เข้าได้ไม่ต้องล็อกอิน</p><div class="mt">เรียกใช้</div><div class="mrow"><span class="mn">ShopOwnerController</span><span class="md">GET /shops + search</span></div></div></div>
+    <div class="card cb"><div class="ch"><div class="ctag">boundary · shop</div><div class="ctitle">ShopDetailPage</div></div><div class="cb2"><p class="cdesc">รายละเอียดร้านค้า แสดงขั้น verify, ช่องทาง และมีปุ่ม "รายงาน" และ "ขอเคลม" สำหรับผู้ใช้ที่ล็อกอิน</p><div class="mt">เรียกใช้</div><div class="mrow"><span class="mn">ShopOwnerController</span><span class="md">GET /shops/:id</span></div><div class="mrow"><span class="mn">ReportRequestController</span><span class="md">POST /reports</span></div><div class="mrow"><span class="mn">ClaimRequestController</span><span class="md">POST /claims</span></div></div></div>
+    <div class="card cb"><div class="ch"><div class="ctag">boundary · shop owner</div><div class="ctitle">MyShopPage</div></div><div class="cb2"><p class="cdesc">หน้าของเจ้าของร้าน แสดงข้อมูลร้าน ระดับปัจจุบัน ประวัติคำร้องพร้อมเหตุผลที่ไม่ผ่าน</p><div class="mt">เรียกใช้</div><div class="mrow"><span class="mn">ShopOwnerController</span><span class="md">GET /my-shop</span></div><div class="mrow"><span class="mn">UpgradeRequestController</span><span class="md">POST /upgrade-requests</span></div></div></div>
+    <div class="card cb"><div class="ch"><div class="ctag">boundary · upgrade</div><div class="ctitle">UpgradeRequestForm</div></div><div class="cb2"><p class="cdesc">ฟอร์มยื่นขอเลื่อนขั้น แสดงเอกสารที่ต้องอัปโหลดตามประเภท (บุคคลธรรมดา/นิติบุคคล)</p><div class="mt">เรียกใช้</div><div class="mrow"><span class="mn">UpgradeRequestController</span><span class="md">POST /upgrade-requests</span></div><div class="mrow"><span class="mn">AttachmentUploader</span><span class="md">shared component</span></div></div></div>
+    <div class="card cb"><div class="ch"><div class="ctag">boundary · claim</div><div class="ctitle">ClaimRequestForm</div></div><div class="cb2"><p class="cdesc">ฟอร์มยื่นขอเคลม กรอกช่องทางติดต่อ รายละเอียดการโกง อัปโหลดหลักฐาน เพิ่มหัวข้อเองได้</p><div class="mt">เรียกใช้</div><div class="mrow"><span class="mn">ClaimRequestController</span><span class="md">POST /claims</span></div><div class="mrow"><span class="mn">AttachmentUploader</span><span class="md">shared component</span></div></div></div>
+    <div class="card cb"><div class="ch"><div class="ctag">boundary · report</div><div class="ctitle">ReportRequestForm</div></div><div class="cb2"><p class="cdesc">ฟอร์มรายงานร้านค้า กรอกเหตุผล ระบุมูลค่าความเสียหาย แนบหลักฐาน</p><div class="mt">เรียกใช้</div><div class="mrow"><span class="mn">ReportRequestController</span><span class="md">POST /reports</span></div><div class="mrow"><span class="mn">AttachmentUploader</span><span class="md">shared component</span></div></div></div>
+  </div>
+
+  <div class="slbl">Admin — หน้าจอฝั่งผู้ดูแลระบบ</div>
+  <div class="grid">
+    <div class="card cb"><div class="ch"><div class="ctag">boundary · admin · shop</div><div class="ctitle">AdminShopListPage</div></div><div class="cb2"><p class="cdesc">รายการร้านค้าทั้งหมด มีช่องค้นหา pagination และปุ่ม "จัดการ" ด้านขวาแต่ละแถว</p><div class="mt">เรียกใช้</div><div class="mrow"><span class="mn">ShopController</span><span class="md">GET /admin/shops + search</span></div></div></div>
+    <div class="card cb"><div class="ch"><div class="ctag">boundary · admin · shop</div><div class="ctitle">AdminShopManagePage</div></div><div class="cb2"><p class="cdesc">จัดการร้านค้าหนึ่งร้าน มีปุ่มแก้ไข ลบ และ Blacklist แต่ละ action ยืนยันก่อนดำเนินการ</p><div class="mt">เรียกใช้</div><div class="mrow"><span class="mn">ShopController</span><span class="md">PATCH / DELETE /admin/shops/:id</span></div><div class="mrow"><span class="mn">BlacklistController</span><span class="md">POST /admin/blacklists</span></div></div></div>
+    <div class="card cb"><div class="ch"><div class="ctag">boundary · admin · blacklist</div><div class="ctitle">BlacklistListPage</div></div><div class="cb2"><p class="cdesc">รายการร้านค้าที่ถูก blacklist อยู่ แสดงเหตุผลและแอดมินที่ดำเนินการ</p><div class="mt">เรียกใช้</div><div class="mrow"><span class="mn">BlacklistController</span><span class="md">GET /admin/blacklists · PATCH deactivate</span></div></div></div>
+    <div class="card cb"><div class="ch"><div class="ctag">boundary · admin · upgrade</div><div class="ctitle">UpgradeRequestListPage</div></div><div class="cb2"><p class="cdesc">รายการคำขอเลื่อนขั้นที่รอพิจารณา แสดงสถานะ ร้านค้า วันที่ยื่น</p><div class="mt">เรียกใช้</div><div class="mrow"><span class="mn">UpgradeRequestController</span><span class="md">GET /admin/upgrade-requests</span></div></div></div>
+    <div class="card cb"><div class="ch"><div class="ctag">boundary · admin · upgrade</div><div class="ctitle">UpgradeRequestDetailPage</div></div><div class="cb2"><p class="cdesc">รายละเอียดคำขอ มีส่วนดาวน์โหลดเอกสาร ปุ่มอนุมัติ/ไม่อนุมัติ พร้อมช่องกรอกเหตุผล</p><div class="mt">เรียกใช้</div><div class="mrow"><span class="mn">UpgradeApprovalController</span><span class="md">approve · reject</span></div><div class="mrow"><span class="mn">AttachmentViewer</span><span class="md">shared component</span></div></div></div>
+    <div class="card cb"><div class="ch"><div class="ctag">boundary · admin · upgrade</div><div class="ctitle">Tier3UpgradePage</div></div><div class="cb2"><p class="cdesc">รายการร้านค้าขั้น 2 แอดมินกดยืนยันว่าทดลองสั่งของแล้วไม่พบการโกง เพื่อเลื่อนขั้นไป 3</p><div class="mt">เรียกใช้</div><div class="mrow"><span class="mn">UpgradeApprovalController</span><span class="md">POST approve-tier3</span></div></div></div>
+    <div class="card cb"><div class="ch"><div class="ctag">boundary · admin · claim</div><div class="ctitle">ClaimListPage</div></div><div class="cb2"><p class="cdesc">รายการคำร้องขอเคลม แสดง ID ผู้ร้อง ร้านค้าเป้าหมาย สถานะ พร้อม pagination</p><div class="mt">เรียกใช้</div><div class="mrow"><span class="mn">ClaimRequestController</span><span class="md">GET /admin/claims</span></div></div></div>
+    <div class="card cb"><div class="ch"><div class="ctag">boundary · admin · claim</div><div class="ctitle">ClaimDetailPage</div></div><div class="cb2"><p class="cdesc">รายละเอียดคำร้องขอเคลม แสดงช่องทางติดต่อ เอกสาร ปุ่ม "ดำเนินการแล้ว"</p><div class="mt">เรียกใช้</div><div class="mrow"><span class="mn">ClaimRequestController</span><span class="md">GET :id · POST close</span></div><div class="mrow"><span class="mn">AttachmentViewer</span><span class="md">shared component</span></div></div></div>
+    <div class="card cb"><div class="ch"><div class="ctag">boundary · admin · report</div><div class="ctitle">ReportListPage</div></div><div class="cb2"><p class="cdesc">รายการคำร้องรายงานร้านค้า แสดง ID ผู้รายงาน ร้านเป้าหมาย มูลค่าความเสียหาย</p><div class="mt">เรียกใช้</div><div class="mrow"><span class="mn">ReportRequestController</span><span class="md">GET /admin/reports</span></div></div></div>
+    <div class="card cb"><div class="ch"><div class="ctag">boundary · admin · report</div><div class="ctitle">ReportDetailPage</div></div><div class="cb2"><p class="cdesc">รายละเอียดคำร้องรายงาน มีเอกสารให้ดาวน์โหลด ปุ่ม "ดำเนินการแล้ว" อาจนำไปสู่ blacklist</p><div class="mt">เรียกใช้</div><div class="mrow"><span class="mn">ReportRequestController</span><span class="md">GET :id · POST process</span></div><div class="mrow"><span class="mn">AttachmentViewer</span><span class="md">shared component</span></div></div></div>
+  </div>
+
+  <div class="slbl">Shared components</div>
+  <div class="grid g2">
+    <div class="card cb"><div class="ch"><div class="ctag">boundary · shared</div><div class="ctitle">AttachmentUploader</div></div><div class="cb2"><p class="cdesc">Component อัปโหลดไฟล์ที่ใช้ร่วมกันใน UpgradeRequestForm, ClaimRequestForm และ ReportRequestForm รองรับหลายไฟล์ กำหนดหัวข้อเอกสารเองได้ และ validate ประเภทไฟล์</p><div class="mt">เรียกใช้</div><div class="mrow"><span class="mn">AttachmentController</span><span class="md">POST /attachments/upload</span></div></div></div>
+    <div class="card cb"><div class="ch"><div class="ctag">boundary · shared</div><div class="ctitle">AttachmentViewer</div></div><div class="cb2"><p class="cdesc">Component ดาวน์โหลดเอกสารฝั่งแอดมิน แสดงรายการไฟล์แต่ละหัวข้อ กดดาวน์โหลดแล้ว log อัตโนมัติ ใช้ใน Detail pages ทุกหน้าของแอดมิน</p><div class="mt">เรียกใช้</div><div class="mrow"><span class="mn">AttachmentController</span><span class="md">GET download + logDownload อัตโนมัติ</span></div></div></div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════ CLASS DIAGRAM ═══════════════ -->
+<div class="page" id="page-diag">
+<div class="wrap">
+  <div class="hero">
+    <div class="badge bd">Class Diagram</div>
+    <h1>Class Diagram</h1>
+    <p>โครงสร้างคลาสทั้งหมดของระบบ myOrder พร้อม attributes, methods และ relationships</p>
+  </div>
+  <div class="dw">
+    <svg width="100%" viewBox="0 0 1360 1060" xmlns="http://www.w3.org/2000/svg" style="min-width:860px">
+      <defs>
+        <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M1 1.5L8.5 5L1 8.5" fill="none" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </marker>
+      </defs>
+
+      <!-- Account -->
+      <rect x="500" y="16" width="268" height="254" rx="8" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+      <rect x="500" y="16" width="268" height="34" rx="8" fill="#dbeafe"/>
+      <rect x="500" y="42" width="268" height="8" fill="#dbeafe"/>
+      <text x="634" y="38" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="13" fill="#1e40af">Account</text>
+      <line x1="500" y1="50" x2="768" y2="50" stroke="#e2e8f0"/>
+      <text x="512" y="65" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+VARCHAR id, email, google_id</text>
+      <text x="512" y="79" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+VARCHAR display_name, phone_number</text>
+      <text x="512" y="93" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+TEXT avatar_url</text>
+      <text x="512" y="107" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+VARCHAR bank_name, bank_account_number</text>
+      <text x="512" y="121" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+TINYINT is_company</text>
+      <line x1="500" y1="129" x2="768" y2="129" stroke="#f1f5f9"/>
+      <text x="512" y="144" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#2563eb">+login() : Session</text>
+      <text x="512" y="158" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#2563eb">+logout() : void</text>
+      <text x="512" y="172" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#2563eb">+updateProfile(data) : Account</text>
+      <text x="512" y="186" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#2563eb">+getOwnedShop() : Shop</text>
+      <text x="512" y="200" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#2563eb">+getUpgradeRequests() : List</text>
+      <text x="512" y="214" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#2563eb">+getClaimRequests() : List</text>
+      <text x="512" y="228" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#2563eb">+getReportRequests() : List</text>
+      <text x="512" y="256" font-family="IBM Plex Mono,monospace" font-size="10" fill="#94a3b8">created_at · updated_at</text>
+
+      <!-- Admin -->
+      <rect x="980" y="16" width="258" height="215" rx="8" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+      <rect x="980" y="16" width="258" height="34" rx="8" fill="#ede9fe"/>
+      <rect x="980" y="42" width="258" height="8" fill="#ede9fe"/>
+      <text x="1109" y="38" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="13" fill="#5b21b6">Admin</text>
+      <line x1="980" y1="50" x2="1238" y2="50" stroke="#e2e8f0"/>
+      <text x="992" y="65" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+INT id</text>
+      <text x="992" y="79" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+VARCHAR email, google_id, display_name</text>
+      <text x="992" y="93" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+TINYINT is_active</text>
+      <text x="992" y="107" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+DATETIME last_login, created_at</text>
+      <line x1="980" y1="115" x2="1238" y2="115" stroke="#f1f5f9"/>
+      <text x="992" y="130" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#7c3aed">+login() : Session</text>
+      <text x="992" y="144" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#7c3aed">+logout() : void</text>
+      <text x="992" y="158" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#7c3aed">+getActivityLogs() : List</text>
+      <text x="992" y="172" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#7c3aed">+getApprovalLogs() : List</text>
+      <text x="992" y="186" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#7c3aed">+manageBlacklist() : void</text>
+
+      <!-- Shop -->
+      <rect x="468" y="350" width="292" height="295" rx="8" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+      <rect x="468" y="350" width="292" height="34" rx="8" fill="#d1fae5"/>
+      <rect x="468" y="376" width="292" height="8" fill="#d1fae5"/>
+      <text x="614" y="372" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="13" fill="#065f46">Shop</text>
+      <line x1="468" y1="384" x2="760" y2="384" stroke="#e2e8f0"/>
+      <text x="480" y="399" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+VARCHAR ref_id, name, channel</text>
+      <text x="480" y="413" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+VARCHAR owner_account_id, url</text>
+      <text x="480" y="427" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+VARCHAR shop_status</text>
+      <text x="480" y="441" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+TINYINT is_active, is_blacklist</text>
+      <text x="480" y="455" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+INT failed_upgrade_count</text>
+      <line x1="468" y1="463" x2="760" y2="463" stroke="#f1f5f9"/>
+      <text x="480" y="478" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#059669">+create(data) : Shop</text>
+      <text x="480" y="492" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#059669">+update(data) : Shop</text>
+      <text x="480" y="506" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#059669">+delete() : void</text>
+      <text x="480" y="520" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#059669">+search(keyword) : List</text>
+      <text x="480" y="534" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#059669">+setBlacklist(adminId) : void</text>
+      <text x="480" y="548" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#059669">+upgradeToTier(level) : void</text>
+      <text x="480" y="562" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#059669">+getDetail() : Shop</text>
+      <text x="480" y="576" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#059669">+getBlacklistHistory() : List</text>
+      <text x="480" y="590" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#059669">+getUpgradeRequests() : List</text>
+      <text x="480" y="632" font-family="IBM Plex Mono,monospace" font-size="10" fill="#94a3b8">created_at · updated_at</text>
+
+      <!-- UpgradeRequest -->
+      <rect x="856" y="350" width="278" height="220" rx="8" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+      <rect x="856" y="350" width="278" height="34" rx="8" fill="#fef3c7"/>
+      <rect x="856" y="376" width="278" height="8" fill="#fef3c7"/>
+      <text x="995" y="372" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="13" fill="#92400e">UpgradeRequest</text>
+      <line x1="856" y1="384" x2="1134" y2="384" stroke="#e2e8f0"/>
+      <text x="868" y="399" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+INT id</text>
+      <text x="868" y="413" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+VARCHAR account_id, shop_ref_id</text>
+      <text x="868" y="427" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+TEXT document_url</text>
+      <text x="868" y="441" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+VARCHAR status</text>
+      <text x="868" y="455" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+TEXT admin_remark</text>
+      <line x1="856" y1="463" x2="1134" y2="463" stroke="#f1f5f9"/>
+      <text x="868" y="478" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#d97706">+submit(shopId,docs) : this</text>
+      <text x="868" y="492" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#d97706">+approve(adminId) : void</text>
+      <text x="868" y="506" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#d97706">+reject(adminId,reason) : void</text>
+      <text x="868" y="520" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#d97706">+getAttachments() : List</text>
+      <text x="868" y="534" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#d97706">+getApprovalLogs() : List</text>
+      <text x="868" y="560" font-family="IBM Plex Mono,monospace" font-size="10" fill="#94a3b8">created_at · updated_at</text>
+
+      <!-- ClaimRequest -->
+      <rect x="454" y="720" width="272" height="200" rx="8" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+      <rect x="454" y="720" width="272" height="34" rx="8" fill="#fef9c3"/>
+      <rect x="454" y="746" width="272" height="8" fill="#fef9c3"/>
+      <text x="590" y="742" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="13" fill="#713f12">ClaimRequest</text>
+      <line x1="454" y1="754" x2="726" y2="754" stroke="#e2e8f0"/>
+      <text x="466" y="769" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+INT id</text>
+      <text x="466" y="783" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+VARCHAR claimer_account_id</text>
+      <text x="466" y="797" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+VARCHAR shop_ref_id</text>
+      <text x="466" y="811" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+TEXT evidence_url</text>
+      <text x="466" y="825" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+VARCHAR contact_info, status</text>
+      <line x1="454" y1="833" x2="726" y2="833" stroke="#f1f5f9"/>
+      <text x="466" y="848" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#a16207">+submit(shopId,data) : this</text>
+      <text x="466" y="862" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#a16207">+close(adminId) : void</text>
+      <text x="466" y="876" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#a16207">+getAttachments() : List</text>
+      <text x="466" y="910" font-family="IBM Plex Mono,monospace" font-size="10" fill="#94a3b8">created_at · updated_at</text>
+
+      <!-- ReportRequest -->
+      <rect x="58" y="720" width="280" height="215" rx="8" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+      <rect x="58" y="720" width="280" height="34" rx="8" fill="#fee2e2"/>
+      <rect x="58" y="746" width="280" height="8" fill="#fee2e2"/>
+      <text x="198" y="742" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="13" fill="#991b1b">ReportRequest</text>
+      <line x1="58" y1="754" x2="338" y2="754" stroke="#e2e8f0"/>
+      <text x="70" y="769" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+INT id</text>
+      <text x="70" y="783" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+VARCHAR reporter_account_id</text>
+      <text x="70" y="797" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+VARCHAR reported_shop_ref_id</text>
+      <text x="70" y="811" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+TEXT reason</text>
+      <text x="70" y="825" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+DECIMAL damage_amount</text>
+      <text x="70" y="839" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+VARCHAR status</text>
+      <line x1="58" y1="847" x2="338" y2="847" stroke="#f1f5f9"/>
+      <text x="70" y="862" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#dc2626">+submit(shopId,data) : this</text>
+      <text x="70" y="876" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#dc2626">+process(adminId) : void</text>
+      <text x="70" y="890" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#dc2626">+getAttachments() : List</text>
+      <text x="70" y="920" font-family="IBM Plex Mono,monospace" font-size="10" fill="#94a3b8">created_at · updated_at</text>
+
+      <!-- Attachment -->
+      <rect x="754" y="720" width="268" height="188" rx="8" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+      <rect x="754" y="720" width="268" height="34" rx="8" fill="#e0f2fe"/>
+      <rect x="754" y="746" width="268" height="8" fill="#e0f2fe"/>
+      <text x="888" y="742" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="13" fill="#0c4a6e">Attachment</text>
+      <line x1="754" y1="754" x2="1022" y2="754" stroke="#e2e8f0"/>
+      <text x="766" y="769" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+INT id</text>
+      <text x="766" y="783" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+INT upgrade_request_id</text>
+      <text x="766" y="797" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+INT report_request_id</text>
+      <text x="766" y="811" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+INT claim_request_id</text>
+      <text x="766" y="825" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+TEXT file_url</text>
+      <line x1="754" y1="833" x2="1022" y2="833" stroke="#f1f5f9"/>
+      <text x="766" y="848" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#0284c7">+upload(file,reqId,type) : this</text>
+      <text x="766" y="862" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#0284c7">+download(adminId) : File</text>
+      <text x="766" y="876" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#0284c7">+logDownload(adminId) : void</text>
+      <text x="766" y="890" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#0284c7">+delete() : void</text>
+
+      <!-- Blacklist -->
+      <rect x="58" y="370" width="282" height="215" rx="8" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+      <rect x="58" y="370" width="282" height="34" rx="8" fill="#fee2e2"/>
+      <rect x="58" y="396" width="282" height="8" fill="#fee2e2"/>
+      <text x="199" y="392" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="13" fill="#991b1b">Blacklist</text>
+      <line x1="58" y1="404" x2="340" y2="404" stroke="#e2e8f0"/>
+      <text x="70" y="419" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+INT id</text>
+      <text x="70" y="433" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+VARCHAR shop_ref_id</text>
+      <text x="70" y="447" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+INT admin_id</text>
+      <text x="70" y="461" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+INT report_request_id</text>
+      <text x="70" y="475" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+TEXT reason</text>
+      <text x="70" y="489" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+TINYINT is_active</text>
+      <line x1="58" y1="497" x2="340" y2="497" stroke="#f1f5f9"/>
+      <text x="70" y="512" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#dc2626">+create(shopId,adminId,reason)</text>
+      <text x="70" y="526" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#dc2626">+deactivate() : void</text>
+      <text x="70" y="540" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#dc2626">+getHistory(shopId) : List</text>
+      <text x="70" y="572" font-family="IBM Plex Mono,monospace" font-size="10" fill="#94a3b8">created_at · updated_at</text>
+
+      <!-- UpgradeApprovalLog -->
+      <rect x="1054" y="720" width="278" height="205" rx="8" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+      <rect x="1054" y="720" width="278" height="34" rx="8" fill="#ede9fe"/>
+      <rect x="1054" y="746" width="278" height="8" fill="#ede9fe"/>
+      <text x="1193" y="742" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="13" fill="#5b21b6">UpgradeApprovalLog</text>
+      <line x1="1054" y1="754" x2="1332" y2="754" stroke="#e2e8f0"/>
+      <text x="1066" y="769" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+INT id</text>
+      <text x="1066" y="783" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+INT upgrade_request_id</text>
+      <text x="1066" y="797" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+VARCHAR shop_ref_id</text>
+      <text x="1066" y="811" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+INT admin_id</text>
+      <text x="1066" y="825" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+VARCHAR action</text>
+      <text x="1066" y="839" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#64748b">+DATETIME processed_at</text>
+      <line x1="1054" y1="847" x2="1332" y2="847" stroke="#f1f5f9"/>
+      <text x="1066" y="862" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#7c3aed">+create(reqId,adminId,action)</text>
+      <text x="1066" y="876" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#7c3aed">+getByAdmin(adminId) : List</text>
+      <text x="1066" y="890" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#7c3aed">+getByShop(shopId) : List</text>
+      <text x="1066" y="904" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#7c3aed">+getByRequest(reqId) : List</text>
+
+      <!-- RELATIONSHIPS -->
+      <line x1="634" y1="270" x2="614" y2="350" stroke="#94a3b8" stroke-width="1" marker-end="url(#ar)"/>
+      <text x="644" y="314" font-family="IBM Plex Mono,monospace" font-size="9" fill="#94a3b8">owns 1→*</text>
+      <path d="M768 142 Q862 142 856 400" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#ar)"/>
+      <text x="810" y="264" font-family="IBM Plex Mono,monospace" font-size="9" fill="#94a3b8">requests</text>
+      <path d="M634 270 Q634 510 590 720" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#ar)"/>
+      <path d="M500 152 Q300 152 198 720" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#ar)"/>
+      <line x1="468" y1="460" x2="340" y2="468" stroke="#64748b" stroke-width="1" marker-end="url(#ar)"/>
+      <text x="360" y="451" font-family="IBM Plex Mono,monospace" font-size="9" fill="#94a3b8">listed in</text>
+      <line x1="614" y1="645" x2="590" y2="720" stroke="#64748b" stroke-width="1" marker-end="url(#ar)"/>
+      <text x="622" y="686" font-family="IBM Plex Mono,monospace" font-size="9" fill="#94a3b8">receives</text>
+      <path d="M468 490 Q300 570 338 720" fill="none" stroke="#64748b" stroke-width="1" marker-end="url(#ar)"/>
+      <text x="336" y="618" font-family="IBM Plex Mono,monospace" font-size="9" fill="#94a3b8">subject of</text>
+      <line x1="760" y1="480" x2="856" y2="480" stroke="#64748b" stroke-width="1" marker-end="url(#ar)"/>
+      <text x="782" y="472" font-family="IBM Plex Mono,monospace" font-size="9" fill="#94a3b8">has *</text>
+      <path d="M980 120 Q600 120 340 448" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#ar)"/>
+      <path d="M1109 231" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#ar)"/>
+      <path d="M1109 231 Q1109 500 1193 720" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#ar)"/>
+      <path d="M995 570 Q1100 640 1193 720" fill="none" stroke="#d97706" stroke-width="1" marker-end="url(#ar)"/>
+      <text x="1052" y="653" font-family="IBM Plex Mono,monospace" font-size="9" fill="#94a3b8">logged in</text>
+      <path d="M995 570 Q968 650 888 720" fill="none" stroke="#d97706" stroke-width="1" marker-end="url(#ar)"/>
+      <line x1="726" y1="830" x2="754" y2="830" stroke="#64748b" stroke-width="1" marker-end="url(#ar)"/>
+      <line x1="338" y1="858" x2="754" y2="848" stroke="#64748b" stroke-width="1" marker-end="url(#ar)"/>
+      <line x1="198" y1="720" x2="198" y2="585" stroke="#dc2626" stroke-width="1" marker-end="url(#ar)"/>
+      <text x="206" y="656" font-family="IBM Plex Mono,monospace" font-size="9" fill="#94a3b8">triggers 0..1</text>
+    </svg>
+  </div>
+  <div class="leg">
+    <div class="li"><div class="ld" style="background:#dbeafe;border:1px solid #bfdbfe"></div>Account</div>
+    <div class="li"><div class="ld" style="background:#ede9fe;border:1px solid #ddd6fe"></div>Admin</div>
+    <div class="li"><div class="ld" style="background:#d1fae5;border:1px solid #a7f3d0"></div>Shop</div>
+    <div class="li"><div class="ld" style="background:#fef3c7;border:1px solid #fde68a"></div>UpgradeRequest</div>
+    <div class="li"><div class="ld" style="background:#fef9c3;border:1px solid #fef08a"></div>ClaimRequest</div>
+    <div class="li"><div class="ld" style="background:#fee2e2;border:1px solid #fecaca"></div>Report / Blacklist</div>
+    <div class="li"><div class="ld" style="background:#e0f2fe;border:1px solid #bae6fd"></div>Attachment</div>
+    <div class="li"><svg width="24" height="10"><line x1="0" y1="5" x2="20" y2="5" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 2"/></svg>dependency</div>
+    <div class="li"><svg width="24" height="10"><line x1="0" y1="5" x2="20" y2="5" stroke="#94a3b8" stroke-width="1"/></svg>association</div>
+  </div>
+</div>
+</div>
+
+<script>
+function go(id,btn,cls){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(t=>t.className='tab');
+  document.getElementById('page-'+id).classList.add('on');
+  btn.classList.add(cls);
+}
+</script>
+</body>
+</html>
