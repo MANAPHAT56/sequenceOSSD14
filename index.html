@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>myOrder — System Docs</title>
+<title>myOrder — System Docs v2</title>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -19,7 +19,7 @@
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;line-height:1.65}
 
-nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 24px;height:54px;gap:2px}
+nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 24px;height:54px;gap:2px;flex-wrap:wrap}
 .brand{font-family:var(--head);font-size:16px;font-weight:700;letter-spacing:-.02em;margin-right:24px;flex-shrink:0}
 .brand em{color:#2563eb;font-style:normal}
 .nav-tabs{display:flex;gap:2px;flex-wrap:wrap}
@@ -40,12 +40,11 @@ nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,.95);backdrop-
 .hb-b{background:#fff7ed;color:#c2410c;border-color:#fed7aa}
 .hb-d{background:#f5f3ff;color:#6d28d9;border-color:#ddd6fe}
 .hero h1{font-family:var(--head);font-size:clamp(26px,4vw,42px);font-weight:700;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px}
-.hero p{color:var(--text2);font-size:14.5px;max-width:600px}
+.hero p{color:var(--text2);font-size:14.5px;max-width:680px}
 
-/* change badge */
-.chg{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:10px;padding:2px 8px;border-radius:4px;margin-left:6px;vertical-align:middle;background:#fef3c7;color:#92400e;border:1px solid #fde68a}
-.new{background:#d1fae5;color:#065f46;border-color:#a7f3d0}
-.rem{background:#fee2e2;color:#991b1b;border-color:#fecaca}
+.note{display:flex;gap:8px;align-items:flex-start;background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:10px 14px;margin-bottom:24px;font-size:13px;color:#92400e}
+.note-icon{flex-shrink:0;font-size:14px}
+.note-b{background:#eff6ff;border-color:#bfdbfe;color:#1e40af}
 
 .statbar{display:flex;flex-wrap:wrap;gap:10px;padding:14px 20px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;margin-bottom:28px;box-shadow:var(--sh)}
 .st{display:flex;flex-direction:column}
@@ -66,7 +65,6 @@ nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,.95);backdrop-
 .ctitle{font-family:var(--head);font-size:17px;font-weight:700;letter-spacing:-.02em;line-height:1.2}
 .ctable{font-family:var(--mono);font-size:9.5px;color:var(--muted);margin-top:2px}
 
-/* entity colors */
 .e-account .ch{border-top:3px solid #2563eb}.e-account .ctag{color:#2563eb}
 .e-role    .ch{border-top:3px solid #6d28d9}.e-role    .ctag{color:#6d28d9}
 .e-bookbank.ch{border-top:3px solid #0891b2}.e-bookbank.ctag{color:#0891b2}
@@ -79,15 +77,14 @@ nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,.95);backdrop-
 .e-black   .ch{border-top:3px solid #9f1239}.e-black   .ctag{color:#9f1239}
 .e-log     .ch{border-top:3px solid #7c3aed}.e-log     .ctag{color:#7c3aed}
 
-/* controller colors */
 .c-auth    .ch{border-top:3px solid #2563eb}.c-auth    .ctag{color:#2563eb}
 .c-shop    .ch{border-top:3px solid #059669}.c-shop    .ctag{color:#059669}
 .c-upgrade .ch{border-top:3px solid #d97706}.c-upgrade .ctag{color:#d97706}
 .c-claim   .ch{border-top:3px solid #dc2626}.c-claim   .ctag{color:#dc2626}
 .c-attach  .ch{border-top:3px solid #0284c7}.c-attach  .ctag{color:#0284c7}
 .c-fraud   .ch{border-top:3px solid #db2777}.c-fraud   .ctag{color:#db2777}
+.c-black   .ch{border-top:3px solid #9f1239}.c-black   .ctag{color:#9f1239}
 
-/* boundary colors */
 .b-user  .ch{border-top:3px solid #2563eb}.b-user  .ctag{color:#2563eb}
 .b-shop  .ch{border-top:3px solid #059669}.b-shop  .ctag{color:#059669}
 .b-admin .ch{border-top:3px solid #7c3aed}.b-admin .ctag{color:#7c3aed}
@@ -105,7 +102,6 @@ nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,.95);backdrop-
 .field.pk{background:#fef3c7;color:#92400e;border-color:#fde68a}
 .field.fk{background:#ede9fe;color:#5b21b6;border-color:#ddd6fe}
 .field.nn{background:#dcfce7;color:#166534;border-color:#bbf7d0}
-.field.chg-f{background:#fff7ed;color:#c2410c;border-color:#fed7aa}
 
 .mlist{display:flex;flex-direction:column;gap:5px}
 .mrow{border:1px solid var(--border);border-radius:6px;overflow:hidden}
@@ -136,14 +132,19 @@ nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,.95);backdrop-
 .rname{font-size:12px;font-weight:500;color:var(--text)}
 .rdesc{font-size:11.5px;color:var(--text2);padding:5px 9px;line-height:1.4}
 
+/* layer call chain indicator */
+.chain{display:flex;align-items:center;gap:5px;font-family:var(--mono);font-size:10px;color:var(--muted);margin-bottom:10px;flex-wrap:wrap}
+.chain-node{padding:2px 8px;border-radius:4px;font-size:10px;font-weight:500}
+.cn-actor{background:#f0f9ff;color:#0369a1;border:1px solid #bae6fd}
+.cn-bound{background:#fff7ed;color:#c2410c;border:1px solid #fed7aa}
+.cn-ctrl{background:#f0fdf4;color:#166534;border:1px solid #bbf7d0}
+.cn-ent{background:#faf5ff;color:#6d28d9;border:1px solid #e9d5ff}
+.chain-arr{color:var(--muted);font-size:12px}
+
 .dw{background:var(--bg2);border:1px solid var(--border);border-radius:11px;padding:20px;overflow-x:auto;box-shadow:var(--sh)}
 .leg{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
 .li{display:flex;align-items:center;gap:5px;font-family:var(--mono);font-size:11px;color:var(--text2)}
 .ld{width:9px;height:9px;border-radius:2px}
-
-/* info note */
-.note{display:flex;gap:8px;align-items:flex-start;background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:10px 14px;margin-bottom:24px;font-size:13px;color:#92400e}
-.note-icon{flex-shrink:0;font-size:14px}
 
 ::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
 @media(max-width:600px){.grid{grid-template-columns:1fr}nav{padding:0 12px}.ntab{padding:5px 9px;font-size:12px}}
@@ -161,84 +162,65 @@ nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,.95);backdrop-
   </div>
 </nav>
 
-<!-- ══════════════════════════════════════
-     ENTITY
-══════════════════════════════════════ -->
+<!-- ══════════════════════════════════════  ENTITY  ══════════════════════════════════════ -->
 <div class="page on" id="page-entity">
 <div class="wrap">
   <div class="hero">
     <div class="hbadge hb-e">Entity Layer</div>
     <h1>Entities</h1>
-    <p>12 คลาส (เพิ่ม <code>Role</code> และ <code>Bookbank</code>) ลบ <code>Admin</code> entity ออก แอดมินตอนนี้คือ <code>Account</code> ที่มี <code>role_id = 2</code></p>
+    <p>ฟังก์ชันของแต่ละ Entity คือสิ่งที่ Entity นั้นทำกับข้อมูลตัวเองใน DB ตรงกับ Use Cases ที่กำหนด</p>
   </div>
 
   <div class="note">
     <span class="note-icon">⚑</span>
-    <span><strong>Schema เปลี่ยนแปลงหลัก:</strong> ไม่มี admins table แล้ว → แอดมินคือ Account ที่ role_id=2 / ข้อมูลธนาคารแยกออกเป็น bookbanks table / blacklists และ upgrade_approval_logs ใช้ admin_account_id (VARCHAR FK → accounts) แทน admin_id (INT FK → admins)</span>
+    <span><strong>หลักการ Call Chain:</strong> Actor → Boundary (fn ของ Boundary) → Controller (fn ของ Controller) → Entity (fn ของ Entity) &nbsp;|&nbsp; ฟังก์ชันในแต่ละชั้นต้องมีเฉพาะที่ใช้ใน Use Cases</span>
+  </div>
+
+  <div class="note note-b">
+    <span class="note-icon">ℹ</span>
+    <span><strong>Schema หลัก:</strong> ไม่มี admins table → แอดมินคือ Account ที่ role_id=2 &nbsp;/&nbsp; bookbanks แยกเป็น table ต่างหาก &nbsp;/&nbsp; Blacklist + UpgradeApprovalLog ใช้ admin_account_id (FK → accounts)</span>
   </div>
 
   <div class="statbar">
-    <div class="st"><span class="sn" style="color:#2563eb">12</span><span class="sl">Entities</span></div><div class="sdiv"></div>
+    <div class="st"><span class="sn" style="color:#2563eb">11</span><span class="sl">Entities</span></div><div class="sdiv"></div>
     <div class="st"><span class="sn" style="color:#0ea5e9">3</span><span class="sl">Actor/Lookup</span></div><div class="sdiv"></div>
     <div class="st"><span class="sn" style="color:#8b5cf6">4</span><span class="sl">Request</span></div><div class="sdiv"></div>
-    <div class="st"><span class="sn" style="color:#10b981">3</span><span class="sl">Support</span></div><div class="sdiv"></div>
-    <div class="st"><span class="sn" style="color:#db2777">2</span><span class="sl">ใหม่ (Role, Bookbank)</span></div>
+    <div class="st"><span class="sn" style="color:#10b981">3</span><span class="sl">Support</span></div>
   </div>
 
-  <!-- ACTOR & LOOKUP -->
-  <div class="grp">Actor &amp; Lookup entities</div>
+  <div class="grp">Actor &amp; Lookup Entities</div>
   <div class="grid grid-wide">
 
     <!-- Account -->
     <div class="card e-account">
       <div class="ch">
-        <div class="ctag">entity · actor <span class="chg chg">เปลี่ยน</span></div>
+        <div class="ctag">entity · actor</div>
         <div class="ctitle">Account</div>
         <div class="ctable">table: accounts</div>
       </div>
       <div class="cb">
-        <p class="cdesc">รวม User และ Admin เข้าด้วยกัน ใช้ <code>role_id</code> แยกสิทธิ์ (1=USER, 2=ADMIN) ข้อมูลธนาคารย้ายไป <code>Bookbank</code> แล้ว เพิ่ม <code>is_active</code> และ <code>last_login</code></p>
+        <p class="cdesc">รวม User + Admin ด้วย role_id ใช้ใน UC: เข้าสู่ระบบ, ดูโปรไฟล์, ดูร้านในครอบครอง, ติดต่อ myOrder</p>
+        <div class="chain"><span class="chain-node cn-bound">Boundary</span><span class="chain-arr">→</span><span class="chain-node cn-ctrl">Controller</span><span class="chain-arr">→</span><span class="chain-node cn-ent">Entity fn ด้านล่าง</span></div>
         <div class="flist">
           <span class="field pk">id VARCHAR(24) PK</span>
-          <span class="field fk nn chg-f">role_id FK → roles NN</span>
-          <span class="field fk chg-f">bookbank_id FK → bookbanks (SET NULL)</span>
+          <span class="field fk">role_id FK → roles NN</span>
+          <span class="field fk">bookbank_id FK → bookbanks (SET NULL)</span>
           <span class="field nn">email UNIQUE NN</span>
           <span class="field">google_id UNIQUE</span>
-          <span class="field">is_email_verified</span>
           <span class="field">display_name</span>
           <span class="field">avatar_url TEXT</span>
           <span class="field">phone_number</span>
-          <span class="field">is_company TINYINT(1)</span>
-          <span class="field chg-f">is_active TINYINT(1)</span>
-          <span class="field chg-f">last_login DATETIME</span>
+          <span class="field">is_company TINYINT</span>
+          <span class="field">is_active TINYINT</span>
+          <span class="field">last_login DATETIME</span>
         </div>
-        <div class="two-col">
-          <div>
-            <div class="col-t">Functions</div>
-            <div class="mlist">
-              <div class="mrow"><div class="mn">login()</div><div class="md">Google token → ตรวจ DB → สร้างใหม่ role_id=1 → ออก JWT</div></div>
-              <div class="mrow"><div class="mn">logout()</div><div class="md">Invalidate JWT / session ปัจจุบัน</div></div>
-              <div class="mrow"><div class="mn">isAdmin()</div><div class="md">ตรวจ role_id === 2 แทน admins table</div></div>
-              <div class="mrow"><div class="mn">updateProfile(data)</div><div class="md">แก้ไขข้อมูลส่วนตัว phone, display_name</div></div>
-              <div class="mrow"><div class="mn">linkBookbank(bookbankId)</div><div class="md">อัปเดต bookbank_id FK ของ account นี้</div></div>
-              <div class="mrow"><div class="mn">getOwnedShop()</div><div class="md">ดึง Shop ที่ owner_account_id = id นี้</div></div>
-              <div class="mrow"><div class="mn">getUpgradeRequests()</div><div class="md">รายการ upgrade_requests ของ account นี้</div></div>
-              <div class="mrow"><div class="mn">getClaimRequests()</div><div class="md">รายการ claim_requests ที่ claimer_account_id = id</div></div>
-              <div class="mrow"><div class="mn">getReportRequests()</div><div class="md">รายการ report_requests ที่ reporter_account_id = id</div></div>
-              <div class="mrow"><div class="mn">getActivityLogs()</div><div class="md">ดึง upgrade_approval_logs ที่ admin_account_id = id (admin เท่านั้น)</div></div>
-            </div>
-          </div>
-          <div>
-            <div class="col-t">Boundary ที่โต้ตอบ</div>
-            <div class="rlist">
-              <div class="rrow"><div class="rtop"><span class="rtag">user</span><span class="rname">LoginPage</span></div><div class="rdesc">login() ผ่าน Google OAuth</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">user</span><span class="rname">ProfilePage</span></div><div class="rdesc">updateProfile(), linkBookbank()</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">shop</span><span class="rname">MyShopPage</span></div><div class="rdesc">getOwnedShop(), is_company → เอกสาร</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">user</span><span class="rname">ClaimRequestForm</span></div><div class="rdesc">claimer_account_id</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">user</span><span class="rname">ReportRequestForm</span></div><div class="rdesc">reporter_account_id</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">admin</span><span class="rname">ทุกหน้า admin</span></div><div class="rdesc">isAdmin() → guard route สิทธิ์</div></div>
-            </div>
-          </div>
+        <div class="col-t">Entity Functions (เรียกโดย Controller)</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">save(googleToken)</div><div class="md">UC: เข้าสู่ระบบ — บันทึก/สร้าง account ใหม่จาก Google token, ตั้ง role_id=1 default</div></div>
+          <div class="mrow"><div class="mn">findByGoogleToken(token)</div><div class="md">UC: เข้าสู่ระบบ — ค้นหา account ที่มีอยู่แล้วในระบบ</div></div>
+          <div class="mrow"><div class="mn">getProfile()</div><div class="md">UC: ดูโปรไฟล์ — คืนข้อมูลโปรไฟล์ตัวเอง</div></div>
+          <div class="mrow"><div class="mn">hasOwnedShop()</div><div class="md">UC: ดูร้านในครอบครอง, ติดต่อ myOrder — ตรวจสอบว่ามีร้านในครอบครองหรือไม่</div></div>
+          <div class="mrow"><div class="mn">isAdmin()</div><div class="md">ทุก UC ฝั่ง admin — ตรวจ role_id === 2</div></div>
         </div>
       </div>
     </div>
@@ -246,32 +228,20 @@ nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,.95);backdrop-
     <!-- Role -->
     <div class="card e-role">
       <div class="ch">
-        <div class="ctag">entity · lookup <span class="chg new">ใหม่</span></div>
+        <div class="ctag">entity · lookup</div>
         <div class="ctitle">Role</div>
         <div class="ctable">table: roles</div>
       </div>
       <div class="cb">
-        <p class="cdesc">ตาราง lookup สิทธิ์การใช้งาน ใช้แทน admins table เดิม ปัจจุบันมี 4 role ตาม AUTO_INCREMENT=5</p>
+        <p class="cdesc">ตาราง lookup สิทธิ์ ใช้ตอน เข้าสู่ระบบ ระบบ JOIN เพื่อตรวจสิทธิ์</p>
         <div class="flist">
-          <span class="field pk">id INT PK AUTO_INC=5</span>
+          <span class="field pk">id INT PK AUTO_INC</span>
           <span class="field nn">name VARCHAR(50) NN</span>
           <span class="field">description TEXT</span>
         </div>
-        <div class="two-col">
-          <div>
-            <div class="col-t">Functions</div>
-            <div class="mlist">
-              <div class="mrow"><div class="mn">getAll()</div><div class="md">ดึง role ทั้งหมดสำหรับ admin จัดการสิทธิ์</div></div>
-              <div class="mrow"><div class="mn">getById(id)</div><div class="md">ดึง role ตาม id เพื่อ verify permission</div></div>
-            </div>
-          </div>
-          <div>
-            <div class="col-t">Boundary ที่โต้ตอบ</div>
-            <div class="rlist">
-              <div class="rrow"><div class="rtop"><span class="rtag">system</span><span class="rname">Auth middleware</span></div><div class="rdesc">JOIN role_id เพื่อตรวจสิทธิ์ทุก request</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">admin</span><span class="rname">AdminShopListPage</span></div><div class="rdesc">guard: role_id = 2</div></div>
-            </div>
-          </div>
+        <div class="col-t">Entity Functions (เรียกโดย Controller)</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">findById(id)</div><div class="md">UC: เข้าสู่ระบบ — ดึง role เพื่อ verify permission ออก JWT</div></div>
         </div>
       </div>
     </div>
@@ -279,12 +249,12 @@ nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,.95);backdrop-
     <!-- Bookbank -->
     <div class="card e-bookbank">
       <div class="ch">
-        <div class="ctag">entity · lookup <span class="chg new">ใหม่</span></div>
+        <div class="ctag">entity · support</div>
         <div class="ctitle">Bookbank</div>
         <div class="ctable">table: bookbanks</div>
       </div>
       <div class="cb">
-        <p class="cdesc">ข้อมูลบัญชีธนาคารแยกออกจาก Account สำหรับรับเงินชดเชยเคลม Account.bookbank_id FK (SET NULL ถ้าลบ)</p>
+        <p class="cdesc">บัญชีธนาคารแยกจาก Account ใช้ใน UC: จัดการขอเคลม (แอดมินดูบัญชีสำหรับโอนเงิน)</p>
         <div class="flist">
           <span class="field pk">id INT PK AUTO_INC</span>
           <span class="field nn">bank_name VARCHAR(50) NN</span>
@@ -294,23 +264,9 @@ nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,.95);backdrop-
           <span class="field">bank_image_url TEXT</span>
           <span class="field">created_at / updated_at</span>
         </div>
-        <div class="two-col">
-          <div>
-            <div class="col-t">Functions</div>
-            <div class="mlist">
-              <div class="mrow"><div class="mn">create(data)</div><div class="md">สร้างข้อมูลบัญชีธนาคารใหม่</div></div>
-              <div class="mrow"><div class="mn">update(id, data)</div><div class="md">แก้ไขข้อมูลบัญชีธนาคาร</div></div>
-              <div class="mrow"><div class="mn">delete(id)</div><div class="md">ลบ record (Account.bookbank_id จะ SET NULL)</div></div>
-              <div class="mrow"><div class="mn">getByAccount(accountId)</div><div class="md">ดึงข้อมูลบัญชีของ account นั้น</div></div>
-            </div>
-          </div>
-          <div>
-            <div class="col-t">Boundary ที่โต้ตอบ</div>
-            <div class="rlist">
-              <div class="rrow"><div class="rtop"><span class="rtag">user</span><span class="rname">ProfilePage</span></div><div class="rdesc">create/update bookbank + linkBookbank()</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">admin</span><span class="rname">ClaimDetailPage</span></div><div class="rdesc">getByAccount() เพื่อดูบัญชีสำหรับโอนชดเชย</div></div>
-            </div>
-          </div>
+        <div class="col-t">Entity Functions (เรียกโดย Controller)</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">findByAccountId(accountId)</div><div class="md">UC: จัดการขอเคลม — แอดมินดึงบัญชีของผู้เคลมเพื่อโอนเงิน</div></div>
         </div>
       </div>
     </div>
@@ -323,7 +279,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,.95);backdrop-
         <div class="ctable">table: shops</div>
       </div>
       <div class="cb">
-        <p class="cdesc">หัวใจหลักของระบบ ไม่มีการเปลี่ยนแปลง schema ยังคง FK → accounts.id ผ่าน owner_account_id</p>
+        <p class="cdesc">ใช้ใน UC: เพิ่มร้านค้า, แก้ไขร้านค้า, ลบร้านค้า, ค้นหาร้านค้า, ดูรายละเอียดร้านค้า, เพิ่ม blacklist, ดูร้านในครอบครอง, จัดการเลื่อนขั้น3</p>
         <div class="flist">
           <span class="field pk">ref_id VARCHAR(50) PK</span>
           <span class="field nn">name NN</span>
@@ -331,263 +287,188 @@ nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,.95);backdrop-
           <span class="field fk">owner_account_id FK → accounts</span>
           <span class="field">url TEXT</span>
           <span class="field nn">shop_status 'NORMAL'</span>
-          <span class="field nn">is_active default 1</span>
-          <span class="field nn">failed_upgrade_count default 0</span>
-          <span class="field">is_blacklist</span>
+          <span class="field nn">is_active TINYINT default 1</span>
+          <span class="field nn">failed_upgrade_count INT default 0</span>
+          <span class="field">is_blacklist TINYINT</span>
           <span class="field">created_at / updated_at</span>
         </div>
-        <div class="two-col">
-          <div>
-            <div class="col-t">Functions</div>
-            <div class="mlist">
-              <div class="mrow"><div class="mn">create(data)</div><div class="md">สร้างร้านค้า เชื่อม owner_account_id</div></div>
-              <div class="mrow"><div class="mn">update(data)</div><div class="md">แก้ไข name, channel, url</div></div>
-              <div class="mrow"><div class="mn">delete()</div><div class="md">Soft delete → is_active = 0</div></div>
-              <div class="mrow"><div class="mn">search(keyword)</div><div class="md">ค้นหา กรอง is_active=1 พร้อม pagination</div></div>
-              <div class="mrow"><div class="mn">getDetail()</div><div class="md">ดึงรายละเอียดเต็ม</div></div>
-              <div class="mrow"><div class="mn">setBlacklist(adminAccountId)</div><div class="md">is_blacklist=1 + สร้าง Blacklist record</div></div>
-              <div class="mrow"><div class="mn">upgradeToTier(level)</div><div class="md">อัปเดต shop_status หลังแอดมินอนุมัติ</div></div>
-              <div class="mrow"><div class="mn">getBlacklistHistory()</div><div class="md">ดึงประวัติ blacklists</div></div>
-              <div class="mrow"><div class="mn">getUpgradeRequests()</div><div class="md">ดึง upgrade_requests + admin_remark</div></div>
-            </div>
-          </div>
-          <div>
-            <div class="col-t">Boundary ที่โต้ตอบ</div>
-            <div class="rlist">
-              <div class="rrow"><div class="rtop"><span class="rtag">public</span><span class="rname">ShopListPage</span></div><div class="rdesc">search()</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">public</span><span class="rname">ShopDetailPage</span></div><div class="rdesc">getDetail()</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">shop</span><span class="rname">MyShopPage</span></div><div class="rdesc">getDetail, getUpgradeRequests</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">admin</span><span class="rname">AdminShopManagePage</span></div><div class="rdesc">update, delete, setBlacklist</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">admin</span><span class="rname">Tier3UpgradePage</span></div><div class="rdesc">upgradeToTier()</div></div>
-            </div>
-          </div>
+        <div class="col-t">Entity Functions (เรียกโดย Controller)</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">save(data)</div><div class="md">UC: เพิ่มร้านค้า — บันทึกข้อมูลร้านค้าใหม่ลง DB</div></div>
+          <div class="mrow"><div class="mn">update(data)</div><div class="md">UC: แก้ไขร้านค้า — อัปเดตฟิลด์ name, channel, url</div></div>
+          <div class="mrow"><div class="mn">softDelete()</div><div class="md">UC: ลบร้านค้า — ตั้ง is_active = 0</div></div>
+          <div class="mrow"><div class="mn">findByKeyword(keyword, page)</div><div class="md">UC: ค้นหาร้านค้า — ค้นหาตาม keyword พร้อม pagination กรอง is_active=1</div></div>
+          <div class="mrow"><div class="mn">findByRefId(refId)</div><div class="md">UC: ดูรายละเอียดร้านค้า, จัดการร้านค้า — ดึงข้อมูลร้านค้าตาม ref_id</div></div>
+          <div class="mrow"><div class="mn">findByOwner(accountId)</div><div class="md">UC: ดูร้านในครอบครอง — ดึงร้านของ owner นั้น</div></div>
+          <div class="mrow"><div class="mn">setBlacklist()</div><div class="md">UC: เพิ่ม blacklist — ตั้ง is_blacklist = 1</div></div>
+          <div class="mrow"><div class="mn">upgradeTier(level)</div><div class="md">UC: จัดการเลื่อนขั้น3, จัดการคำร้องขอเลื่อนขั้นไปขั้น2 — อัปเดต shop_status</div></div>
+          <div class="mrow"><div class="mn">findAllTier2(page)</div><div class="md">UC: จัดการเลื่อนขั้น3 — ดึงร้านระดับ 2 ทั้งหมดพร้อม pagination</div></div>
+          <div class="mrow"><div class="mn">incrementFailedUpgrade()</div><div class="md">UC: จัดการคำร้องขอเลื่อนขั้นไปขั้น2 (ไม่อนุมัติ) — เพิ่ม failed_upgrade_count</div></div>
+          <div class="mrow"><div class="mn">findBlacklistStatus(refId)</div><div class="md">UC: ค้นหาร้านค้า, ดูรายละเอียดร้านค้า — ตรวจสอบสถานะ blacklist</div></div>
         </div>
       </div>
     </div>
 
   </div>
 
-  <!-- REQUEST -->
-  <div class="grp">Request entities</div>
+  <div class="grp">Request Entities</div>
   <div class="grid grid-wide">
 
+    <!-- UpgradeRequest -->
     <div class="card e-upgrade">
       <div class="ch"><div class="ctag">entity · request</div><div class="ctitle">UpgradeRequest</div><div class="ctable">table: upgrade_requests</div></div>
       <div class="cb">
-        <p class="cdesc">คำขอเลื่อนขั้น ไม่มีการเปลี่ยน schema (FK ยังคง → accounts.id ผ่าน account_id)</p>
+        <p class="cdesc">ใช้ใน UC: ขอเลื่อนขั้นไปขั้น2, จัดการคำร้องขอเลื่อนขั้นไปขั้น2</p>
         <div class="flist">
-          <span class="field pk">id INT PK AUTO_INC</span><span class="field fk">account_id FK → accounts</span><span class="field fk">shop_ref_id FK → shops</span><span class="field nn">status 'pending'</span><span class="field">admin_remark TEXT</span><span class="field">created_at / updated_at</span>
+          <span class="field pk">id INT PK AUTO_INC</span>
+          <span class="field fk">account_id FK → accounts</span>
+          <span class="field fk">shop_ref_id FK → shops</span>
+          <span class="field nn">status VARCHAR(20) 'pending'</span>
+          <span class="field">admin_remark TEXT</span>
+          <span class="field">created_at / updated_at</span>
         </div>
-        <div class="two-col">
-          <div>
-            <div class="col-t">Functions</div>
-            <div class="mlist">
-              <div class="mrow"><div class="mn">submit(shopId,docs)</div><div class="md">ตรวจ failed_upgrade_count → status=pending</div></div>
-              <div class="mrow"><div class="mn">approve(adminAccountId)</div><div class="md">status=approved → Shop.upgradeToTier() + ApprovalLog</div></div>
-              <div class="mrow"><div class="mn">reject(adminAccountId,reason)</div><div class="md">admin_remark + failed_upgrade_count + Log</div></div>
-              <div class="mrow"><div class="mn">getAttachments()</div><div class="md">ดึง attachments ที่ upgrade_request_id = id</div></div>
-              <div class="mrow"><div class="mn">getApprovalLogs()</div><div class="md">ดึง upgrade_approval_logs ของคำขอนี้</div></div>
-            </div>
-          </div>
-          <div>
-            <div class="col-t">Boundary ที่โต้ตอบ</div>
-            <div class="rlist">
-              <div class="rrow"><div class="rtop"><span class="rtag">shop</span><span class="rname">UpgradeRequestForm</span></div><div class="rdesc">submit()</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">shop</span><span class="rname">MyShopPage</span></div><div class="rdesc">ประวัติ + admin_remark</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">admin</span><span class="rname">UpgradeRequestDetailPage</span></div><div class="rdesc">approve / reject</div></div>
-            </div>
-          </div>
+        <div class="col-t">Entity Functions (เรียกโดย Controller)</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">save(accountId, shopRefId)</div><div class="md">UC: ขอเลื่อนขั้นไปขั้น2 — บันทึกคำขอเลื่อนขั้นใหม่ status=pending</div></div>
+          <div class="mrow"><div class="mn">findAllPending(page)</div><div class="md">UC: จัดการคำร้องขอเลื่อนขั้นไปขั้น2 — ดึงรายการคำร้องทั้งหมด</div></div>
+          <div class="mrow"><div class="mn">findById(id)</div><div class="md">UC: จัดการคำร้องขอเลื่อนขั้นไปขั้น2 — ดึงรายละเอียดคำร้อง + เอกสาร</div></div>
+          <div class="mrow"><div class="mn">approve()</div><div class="md">UC: จัดการคำร้องขอเลื่อนขั้นไปขั้น2 — เปลี่ยน status=approved</div></div>
+          <div class="mrow"><div class="mn">reject(reason)</div><div class="md">UC: จัดการคำร้องขอเลื่อนขั้นไปขั้น2 — เปลี่ยน status=rejected, บันทึก admin_remark</div></div>
+          <div class="mrow"><div class="mn">countFailedThisMonth(shopRefId)</div><div class="md">UC: ขอเลื่อนขั้นไปขั้น2 — นับจำนวนคำขอไม่ผ่านในรอบ 1 เดือน</div></div>
+          <div class="mrow"><div class="mn">findByShop(shopRefId)</div><div class="md">UC: ดูร้านในครอบครอง — ดึงประวัติคำขอเลื่อนขั้นของร้าน + admin_remark</div></div>
         </div>
       </div>
     </div>
 
+    <!-- ClaimRequest -->
     <div class="card e-claim">
       <div class="ch"><div class="ctag">entity · request</div><div class="ctitle">ClaimRequest</div><div class="ctable">table: claim_requests</div></div>
       <div class="cb">
-        <p class="cdesc">คำขอเคลม ไม่มีการเปลี่ยน schema</p>
+        <p class="cdesc">ใช้ใน UC: ยื่นเรื่องขอเคลม, จัดการคำร้องขอเคลม</p>
         <div class="flist">
-          <span class="field pk">id INT PK AUTO_INC</span><span class="field fk">claimer_account_id FK</span><span class="field fk">shop_ref_id FK</span><span class="field">contact_info</span><span class="field nn">status 'pending'</span><span class="field">created_at / updated_at</span>
+          <span class="field pk">id INT PK AUTO_INC</span>
+          <span class="field fk">claimer_account_id FK → accounts</span>
+          <span class="field fk">shop_ref_id FK → shops</span>
+          <span class="field">contact_info TEXT</span>
+          <span class="field nn">status VARCHAR(20) 'pending'</span>
+          <span class="field">created_at / updated_at</span>
         </div>
-        <div class="two-col">
-          <div>
-            <div class="col-t">Functions</div>
-            <div class="mlist">
-              <div class="mrow"><div class="mn">submit(shopId,data)</div><div class="md">ยื่น contact_info → status=pending</div></div>
-              <div class="mrow"><div class="mn">close(adminAccountId)</div><div class="md">ปิดเมื่อชดเชยเสร็จ → status=closed</div></div>
-              <div class="mrow"><div class="mn">getAttachments()</div><div class="md">ดึง attachments ที่ claim_request_id = id</div></div>
-            </div>
-          </div>
-          <div>
-            <div class="col-t">Boundary ที่โต้ตอบ</div>
-            <div class="rlist">
-              <div class="rrow"><div class="rtop"><span class="rtag">user</span><span class="rname">ClaimRequestForm</span></div><div class="rdesc">submit()</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">admin</span><span class="rname">ClaimDetailPage</span></div><div class="rdesc">close() + ดู Bookbank ของ claimer</div></div>
-            </div>
-          </div>
+        <div class="col-t">Entity Functions (เรียกโดย Controller)</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">save(claimerAccountId, shopRefId, data)</div><div class="md">UC: ยื่นเรื่องขอเคลม — บันทึกคำขอเคลมใหม่ status=pending</div></div>
+          <div class="mrow"><div class="mn">findAll(page)</div><div class="md">UC: จัดการคำร้องขอเคลม — ดึงรายการคำร้องทั้งหมดพร้อม pagination</div></div>
+          <div class="mrow"><div class="mn">findById(id)</div><div class="md">UC: จัดการคำร้องขอเคลม — ดึงรายละเอียดคำร้อง + เอกสาร + contact_info</div></div>
+          <div class="mrow"><div class="mn">close()</div><div class="md">UC: จัดการคำร้องขอเคลม — เปลี่ยน status=closed เมื่อแอดมินกดดำเนินการแล้ว</div></div>
         </div>
       </div>
     </div>
 
+    <!-- ReportRequest -->
     <div class="card e-report">
       <div class="ch"><div class="ctag">entity · request</div><div class="ctitle">ReportRequest</div><div class="ctable">table: report_requests</div></div>
       <div class="cb">
-        <p class="cdesc">รายงานร้านค้า fraud_type_id FK NOT NULL ไม่มีการเปลี่ยน schema</p>
+        <p class="cdesc">ใช้ใน UC: รายงานร้านค้า, จัดการคำร้องรายงาน</p>
         <div class="flist">
-          <span class="field pk">id INT PK AUTO_INC</span><span class="field fk">reporter_account_id FK</span><span class="field fk">reported_shop_ref_id FK</span><span class="field fk nn">fraud_type_id FK NN</span><span class="field nn">reason TEXT NN</span><span class="field nn">status 'pending'</span><span class="field">created_at / updated_at</span>
+          <span class="field pk">id INT PK AUTO_INC</span>
+          <span class="field fk">reporter_account_id FK → accounts</span>
+          <span class="field fk">reported_shop_ref_id FK → shops</span>
+          <span class="field fk nn">fraud_type_id FK NN</span>
+          <span class="field nn">reason TEXT NN</span>
+          <span class="field nn">status VARCHAR(20) 'pending'</span>
+          <span class="field">created_at / updated_at</span>
         </div>
-        <div class="two-col">
-          <div>
-            <div class="col-t">Functions</div>
-            <div class="mlist">
-              <div class="mrow"><div class="mn">submit(shopId,data)</div><div class="md">fraud_type_id + reason → pending</div></div>
-              <div class="mrow"><div class="mn">process(adminAccountId)</div><div class="md">status=done (อาจต่อด้วย Blacklist)</div></div>
-              <div class="mrow"><div class="mn">getAttachments()</div><div class="md">ดึง attachments ที่ report_request_id = id</div></div>
-              <div class="mrow"><div class="mn">getFraudType()</div><div class="md">JOIN ดึง FraudType.name มาแสดง</div></div>
-            </div>
-          </div>
-          <div>
-            <div class="col-t">Boundary ที่โต้ตอบ</div>
-            <div class="rlist">
-              <div class="rrow"><div class="rtop"><span class="rtag">user</span><span class="rname">ReportRequestForm</span></div><div class="rdesc">submit() + dropdown FraudType</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">admin</span><span class="rname">ReportDetailPage</span></div><div class="rdesc">process() อาจ blacklist ต่อ</div></div>
-            </div>
-          </div>
+        <div class="col-t">Entity Functions (เรียกโดย Controller)</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">save(reporterAccountId, shopRefId, data)</div><div class="md">UC: รายงานร้านค้า — บันทึกคำร้องรายงาน status=pending</div></div>
+          <div class="mrow"><div class="mn">findAll(page)</div><div class="md">UC: จัดการคำร้องรายงาน — ดึงรายการคำร้องทั้งหมดพร้อม pagination</div></div>
+          <div class="mrow"><div class="mn">findById(id)</div><div class="md">UC: จัดการคำร้องรายงาน — ดึงรายละเอียด + เอกสาร</div></div>
+          <div class="mrow"><div class="mn">markDone()</div><div class="md">UC: จัดการคำร้องรายงาน — เปลี่ยน status=done หลังแอดมินดำเนินการแล้ว</div></div>
         </div>
       </div>
     </div>
 
+    <!-- FraudType -->
     <div class="card e-fraud">
       <div class="ch"><div class="ctag">entity · lookup</div><div class="ctitle">FraudType</div><div class="ctable">table: fraud_types</div></div>
       <div class="cb">
-        <p class="cdesc">ตาราง lookup ประเภทการโกง ไม่มีการเปลี่ยน schema</p>
+        <p class="cdesc">ประเภทการโกง ใช้ใน UC: รายงานร้านค้า (dropdown เลือกประเภท)</p>
         <div class="flist">
-          <span class="field pk">id INT PK AUTO_INC</span><span class="field nn">name VARCHAR(100) NN</span><span class="field">description TEXT</span><span class="field nn">is_active default 1</span>
+          <span class="field pk">id INT PK AUTO_INC</span>
+          <span class="field nn">name VARCHAR(100) NN</span>
+          <span class="field">description TEXT</span>
+          <span class="field nn">is_active TINYINT default 1</span>
         </div>
-        <div class="two-col">
-          <div>
-            <div class="col-t">Functions</div>
-            <div class="mlist">
-              <div class="mrow"><div class="mn">getAll()</div><div class="md">ดึง is_active=1 สำหรับ dropdown รายงาน</div></div>
-              <div class="mrow"><div class="mn">create(data)</div><div class="md">Admin เพิ่มประเภทการโกงใหม่</div></div>
-              <div class="mrow"><div class="mn">deactivate(id)</div><div class="md">is_active=0 (ไม่ลบ ON DELETE RESTRICT)</div></div>
-            </div>
-          </div>
-          <div>
-            <div class="col-t">Boundary ที่โต้ตอบ</div>
-            <div class="rlist">
-              <div class="rrow"><div class="rtop"><span class="rtag">user</span><span class="rname">ReportRequestForm</span></div><div class="rdesc">getAll() โหลด dropdown</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">admin</span><span class="rname">FraudTypeManagePage</span></div><div class="rdesc">getAll, create, deactivate</div></div>
-            </div>
-          </div>
+        <div class="col-t">Entity Functions (เรียกโดย Controller)</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">findAllActive()</div><div class="md">UC: รายงานร้านค้า — ดึงประเภทโกง is_active=1 สำหรับ dropdown</div></div>
         </div>
       </div>
     </div>
 
   </div>
 
-  <!-- SUPPORT -->
-  <div class="grp">Support entities</div>
+  <div class="grp">Support Entities</div>
   <div class="grid grid-wide">
 
+    <!-- Attachment -->
     <div class="card e-attach">
       <div class="ch"><div class="ctag">entity · support</div><div class="ctitle">Attachment</div><div class="ctable">table: attachments</div></div>
       <div class="cb">
-        <p class="cdesc">ไฟล์เอกสาร FK ทั้ง 3 ตัว nullable (มีค่าแค่ 1 ต่อแถว) ไม่มีการเปลี่ยน schema</p>
+        <p class="cdesc">ใช้ใน UC: ยื่นเอกสาร (include ใน ขอเลื่อนขั้น, ขอเคลม, รายงาน), จัดการคำร้องต่างๆ (แอดมินดูเอกสาร)</p>
         <div class="flist">
-          <span class="field pk">id INT PK AUTO_INC</span><span class="field fk">upgrade_request_id FK nullable</span><span class="field fk">report_request_id FK nullable</span><span class="field fk">claim_request_id FK nullable</span><span class="field nn">file_url TEXT NN</span><span class="field">created_at</span>
+          <span class="field pk">id INT PK AUTO_INC</span>
+          <span class="field fk">upgrade_request_id FK nullable</span>
+          <span class="field fk">report_request_id FK nullable</span>
+          <span class="field fk">claim_request_id FK nullable</span>
+          <span class="field nn">file_url TEXT NN</span>
+          <span class="field">created_at</span>
         </div>
-        <div class="two-col">
-          <div>
-            <div class="col-t">Functions</div>
-            <div class="mlist">
-              <div class="mrow"><div class="mn">upload(file,reqId,type)</div><div class="md">บันทึก file_url + เซ็ต FK ที่ถูกต้อง</div></div>
-              <div class="mrow"><div class="mn">download(adminAccountId)</div><div class="md">คืน URL + logDownload() อัตโนมัติ</div></div>
-              <div class="mrow"><div class="mn">logDownload(adminAccountId)</div><div class="md">Audit trail ใครดาวน์โหลดเมื่อไหร่</div></div>
-              <div class="mrow"><div class="mn">delete()</div><div class="md">ลบ (ON DELETE CASCADE ตามคำร้อง)</div></div>
-            </div>
-          </div>
-          <div>
-            <div class="col-t">Boundary ที่โต้ตอบ</div>
-            <div class="rlist">
-              <div class="rrow"><div class="rtop"><span class="rtag">shared</span><span class="rname">AttachmentUploader</span></div><div class="rdesc">upload() ใน form ทุกประเภท</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">shared</span><span class="rname">AttachmentViewer</span></div><div class="rdesc">download() + logDownload()</div></div>
-            </div>
-          </div>
+        <div class="col-t">Entity Functions (เรียกโดย Controller)</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">save(fileUrl, requestId, requestType)</div><div class="md">UC: ยื่นเอกสาร — บันทึก file_url + เซ็ต FK ที่ถูกต้องตาม requestType</div></div>
+          <div class="mrow"><div class="mn">findByRequestId(requestId, requestType)</div><div class="md">UC: จัดการคำร้องต่างๆ — ดึงเอกสารทั้งหมดของคำร้องนั้น</div></div>
         </div>
       </div>
     </div>
 
+    <!-- Blacklist -->
     <div class="card e-black">
-      <div class="ch">
-        <div class="ctag">entity · support <span class="chg chg">เปลี่ยน</span></div>
-        <div class="ctitle">Blacklist</div>
-        <div class="ctable">table: blacklists</div>
-      </div>
+      <div class="ch"><div class="ctag">entity · support</div><div class="ctitle">Blacklist</div><div class="ctable">table: blacklists</div></div>
       <div class="cb">
-        <p class="cdesc">เปลี่ยน <code>admin_id INT FK → admins</code> เป็น <code>admin_account_id VARCHAR(24) FK → accounts</code> (ON DELETE RESTRICT)</p>
+        <p class="cdesc">ใช้ใน UC: เพิ่ม blacklist, ดูรายการ blacklist</p>
         <div class="flist">
           <span class="field pk">id INT PK AUTO_INC</span>
           <span class="field fk nn">shop_ref_id FK NN</span>
-          <span class="field fk nn chg-f">admin_account_id FK → accounts NN</span>
+          <span class="field fk nn">admin_account_id FK → accounts NN</span>
           <span class="field fk">report_request_id FK (SET NULL)</span>
           <span class="field nn">reason TEXT NN</span>
           <span class="field">created_at</span>
         </div>
-        <div class="two-col">
-          <div>
-            <div class="col-t">Functions</div>
-            <div class="mlist">
-              <div class="mrow"><div class="mn">create(shopId,adminAccountId,reason)</div><div class="md">สร้าง record + อัปเดต Shop.is_blacklist=1</div></div>
-              <div class="mrow"><div class="mn">getHistory(shopId)</div><div class="md">ดึงประวัติ blacklist ทั้งหมดของร้าน</div></div>
-            </div>
-          </div>
-          <div>
-            <div class="col-t">Boundary ที่โต้ตอบ</div>
-            <div class="rlist">
-              <div class="rrow"><div class="rtop"><span class="rtag">admin</span><span class="rname">AdminShopManagePage</span></div><div class="rdesc">create()</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">admin</span><span class="rname">ReportDetailPage</span></div><div class="rdesc">create() ต่อจาก processReport()</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">admin</span><span class="rname">BlacklistListPage</span></div><div class="rdesc">getHistory()</div></div>
-            </div>
-          </div>
+        <div class="col-t">Entity Functions (เรียกโดย Controller)</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">save(shopRefId, adminAccountId, reason)</div><div class="md">UC: เพิ่ม blacklist — บันทึก record blacklist ใหม่</div></div>
+          <div class="mrow"><div class="mn">findAll(page)</div><div class="md">UC: ดูรายการ blacklist — ดึงรายการ blacklist ทั้งหมด JOIN shop + admin account</div></div>
         </div>
       </div>
     </div>
 
+    <!-- UpgradeApprovalLog -->
     <div class="card e-log">
-      <div class="ch">
-        <div class="ctag">entity · support <span class="chg chg">เปลี่ยน</span></div>
-        <div class="ctitle">UpgradeApprovalLog</div>
-        <div class="ctable">table: upgrade_approval_logs</div>
-      </div>
+      <div class="ch"><div class="ctag">entity · support</div><div class="ctitle">UpgradeApprovalLog</div><div class="ctable">table: upgrade_approval_logs</div></div>
       <div class="cb">
-        <p class="cdesc">เปลี่ยน <code>admin_id INT FK → admins</code> เป็น <code>admin_account_id VARCHAR(24) FK → accounts</code> (ON DELETE RESTRICT)</p>
+        <p class="cdesc">ใช้ใน UC: จัดการคำร้องขอเลื่อนขั้นไปขั้น2 (บันทึกการทำงานแอดมิน), จัดการเลื่อนขั้น3</p>
         <div class="flist">
           <span class="field pk">id INT PK AUTO_INC</span>
           <span class="field fk">upgrade_request_id FK nullable</span>
           <span class="field fk nn">shop_ref_id FK NN</span>
-          <span class="field fk nn chg-f">admin_account_id FK → accounts NN</span>
+          <span class="field fk nn">admin_account_id FK → accounts NN</span>
           <span class="field nn">action VARCHAR(20) NN</span>
           <span class="field">reason TEXT</span>
           <span class="field">processed_at DATETIME</span>
         </div>
-        <div class="two-col">
-          <div>
-            <div class="col-t">Functions</div>
-            <div class="mlist">
-              <div class="mrow"><div class="mn">create(reqId,adminAccountId,action)</div><div class="md">บันทึกทันทีที่ approve/reject</div></div>
-              <div class="mrow"><div class="mn">getByAdmin(adminAccountId)</div><div class="md">ดึง log ทั้งหมดของ admin account นั้น</div></div>
-              <div class="mrow"><div class="mn">getByShop(shopId)</div><div class="md">ประวัติการอนุมัติของร้านนั้น</div></div>
-              <div class="mrow"><div class="mn">getByRequest(reqId)</div><div class="md">log ทั้งหมดของ upgrade_request นั้น</div></div>
-            </div>
-          </div>
-          <div>
-            <div class="col-t">Boundary ที่โต้ตอบ</div>
-            <div class="rlist">
-              <div class="rrow"><div class="rtop"><span class="rtag">admin</span><span class="rname">UpgradeRequestDetailPage</span></div><div class="rdesc">create() ทุก approve/reject</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">admin</span><span class="rname">Tier3UpgradePage</span></div><div class="rdesc">create() เมื่อ approveTier3()</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">shop</span><span class="rname">MyShopPage</span></div><div class="rdesc">getByShop() ประวัติ + เหตุผล</div></div>
-            </div>
-          </div>
+        <div class="col-t">Entity Functions (เรียกโดย Controller)</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">save(upgradeRequestId, shopRefId, adminAccountId, action, reason)</div><div class="md">UC: จัดการคำร้องขอเลื่อนขั้นไปขั้น2, จัดการเลื่อนขั้น3 — บันทึกทันทีที่ approve/reject/tier3</div></div>
         </div>
       </div>
     </div>
@@ -596,206 +477,159 @@ nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,.95);backdrop-
 </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     CONTROLLERS
-══════════════════════════════════════ -->
+<!-- ══════════════════════════════════════  CONTROLLERS  ══════════════════════════════════════ -->
 <div class="page" id="page-ctrl">
 <div class="wrap">
   <div class="hero">
     <div class="hbadge hb-c">Controller Layer</div>
     <h1>Controllers</h1>
-    <p>เพิ่ม BookbankController ใหม่ แก้ AuthController ให้ใช้ role_id แทน admins table ลบ AdminController ออก</p>
+    <p>Controller รับ request จาก Boundary จัดการ logic แล้วเรียก Entity function เพื่อเข้าถึง DB</p>
   </div>
+
+  <div class="note">
+    <span class="note-icon">⚑</span>
+    <span><strong>Call Chain:</strong> Boundary เรียก Controller fn → Controller เรียก Entity fn → Entity เข้าถึง DB &nbsp;|&nbsp; Controller ไม่เข้า DB โดยตรง</span>
+  </div>
+
   <div class="statbar">
-    <div class="st"><span class="sn" style="color:#059669">11</span><span class="sl">Controllers</span></div><div class="sdiv"></div>
-    <div class="st"><span class="sn" style="color:#2563eb">34</span><span class="sl">Endpoints</span></div><div class="sdiv"></div>
-    <div class="st"><span class="sn" style="color:#db2777">1</span><span class="sl">ใหม่ (Bookbank)</span></div>
+    <div class="st"><span class="sn" style="color:#059669">9</span><span class="sl">Controllers</span></div><div class="sdiv"></div>
+    <div class="st"><span class="sn" style="color:#2563eb">26</span><span class="sl">Endpoints</span></div>
   </div>
 
   <div class="grp">Auth &amp; Account</div>
   <div class="grid grid-wide">
+
+    <!-- AuthController -->
     <div class="card c-auth">
-      <div class="ch"><div class="ctag">controller · auth <span class="chg chg">เปลี่ยน</span></div><div class="ctitle">AuthController</div></div>
+      <div class="ch"><div class="ctag">controller · auth</div><div class="ctitle">AuthController</div></div>
       <div class="cb">
-        <p class="cdesc">รับ Google token → ตรวจ role_id แทนการ JOIN admins table เดิม</p>
-        <div class="three-col">
+        <p class="cdesc">UC: เข้าสู่ระบบ</p>
+        <div class="chain"><span class="chain-node cn-bound">LoginPage.clickGoogleLogin()</span><span class="chain-arr">→</span><span class="chain-node cn-ctrl">googleLogin()</span><span class="chain-arr">→</span><span class="chain-node cn-ent">Account.findByGoogleToken() · Account.save() · Role.findById()</span></div>
+        <div class="two-col">
           <div>
-            <div class="col-t">Functions</div>
+            <div class="col-t">Controller Functions</div>
             <div class="mlist">
-              <div class="mrow"><div class="mn" style="color:#1d4ed8">googleLogin(token)</div><div class="md">ตรวจ / สร้าง Account (role_id=1 default) → JWT พร้อม role</div></div>
-              <div class="mrow"><div class="mn" style="color:#1d4ed8">logout()</div><div class="md">Invalidate JWT</div></div>
+              <div class="mrow"><div class="mn">googleLogin(token)</div><div class="md">รับ Google token → เรียก Account.findByGoogleToken() → ถ้าไม่มีเรียก Account.save() → Role.findById() → ออก JWT</div></div>
             </div>
           </div>
           <div>
             <div class="col-t">Endpoints</div>
             <div class="eplist">
               <div class="ep"><span class="hb POST">POST</span><span class="ep-p">/auth/google</span><span class="ep-a a-al">ทุกคน</span></div>
-              <div class="ep"><span class="hb POST">POST</span><span class="ep-p">/auth/logout</span><span class="ep-a a-us">user</span></div>
-            </div>
-          </div>
-          <div>
-            <div class="col-t">Boundary / Entity</div>
-            <div class="rlist">
-              <div class="rrow"><div class="rtop"><span class="rtag">boundary</span><span class="rname">LoginPage</span></div><div class="rdesc">googleLogin()</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Account</span></div><div class="rdesc">login() · role_id default 1</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Role</span></div><div class="rdesc">JOIN ดึง role name ใส่ JWT</div></div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- AccountController -->
     <div class="card c-auth">
       <div class="ch"><div class="ctag">controller · account</div><div class="ctitle">AccountController</div></div>
       <div class="cb">
-        <p class="cdesc">จัดการโปรไฟล์ ตอนนี้ไม่มี bank fields ใน account แล้ว</p>
-        <div class="three-col">
+        <p class="cdesc">UC: ดูโปรไฟล์, ดูร้านในครอบครอง, ติดต่อ myOrder</p>
+        <div class="chain"><span class="chain-node cn-bound">ProfilePage.load()</span><span class="chain-arr">→</span><span class="chain-node cn-ctrl">getProfile()</span><span class="chain-arr">→</span><span class="chain-node cn-ent">Account.getProfile()</span></div>
+        <div class="two-col">
           <div>
-            <div class="col-t">Functions</div>
+            <div class="col-t">Controller Functions</div>
             <div class="mlist">
-              <div class="mrow"><div class="mn" style="color:#1d4ed8">getProfile()</div><div class="md">ดึง account + role + bookbank (JOIN)</div></div>
-              <div class="mrow"><div class="mn" style="color:#1d4ed8">updateProfile(data)</div><div class="md">แก้ไข phone, display_name, is_company</div></div>
+              <div class="mrow"><div class="mn">getProfile(accountId)</div><div class="md">UC: ดูโปรไฟล์ — เรียก Account.getProfile() คืนข้อมูลผู้ใช้</div></div>
+              <div class="mrow"><div class="mn">checkOwnedShop(accountId)</div><div class="md">UC: ดูร้านในครอบครอง, ติดต่อ myOrder — เรียก Account.hasOwnedShop() ตรวจว่ามีร้านไหม</div></div>
             </div>
           </div>
           <div>
             <div class="col-t">Endpoints</div>
             <div class="eplist">
               <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/account/profile</span><span class="ep-a a-us">user</span></div>
-              <div class="ep"><span class="hb PATCH">PATCH</span><span class="ep-p">/account/profile</span><span class="ep-a a-us">user</span></div>
-            </div>
-          </div>
-          <div>
-            <div class="col-t">Boundary / Entity</div>
-            <div class="rlist">
-              <div class="rrow"><div class="rtop"><span class="rtag">boundary</span><span class="rname">ProfilePage</span></div><div class="rdesc">GET + PATCH profile</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Account</span></div><div class="rdesc">updateProfile()</div></div>
+              <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/account/my-shop-check</span><span class="ep-a a-us">user</span></div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="card c-auth">
-      <div class="ch"><div class="ctag">controller · bookbank <span class="chg new">ใหม่</span></div><div class="ctitle">BookbankController</div></div>
-      <div class="cb">
-        <p class="cdesc">จัดการข้อมูลบัญชีธนาคารของผู้ใช้ แยกออกจาก AccountController</p>
-        <div class="three-col">
-          <div>
-            <div class="col-t">Functions</div>
-            <div class="mlist">
-              <div class="mrow"><div class="mn" style="color:#0e7490">getMyBookbank()</div><div class="md">ดึง bookbank ที่ account นี้เชื่อมอยู่</div></div>
-              <div class="mrow"><div class="mn" style="color:#0e7490">createBookbank(data)</div><div class="md">สร้าง bookbank ใหม่ + เชื่อม bookbank_id กับ account</div></div>
-              <div class="mrow"><div class="mn" style="color:#0e7490">updateBookbank(id,data)</div><div class="md">แก้ไขข้อมูลบัญชีธนาคาร</div></div>
-            </div>
-          </div>
-          <div>
-            <div class="col-t">Endpoints</div>
-            <div class="eplist">
-              <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/account/bookbank</span><span class="ep-a a-us">user</span></div>
-              <div class="ep"><span class="hb POST">POST</span><span class="ep-p">/account/bookbank</span><span class="ep-a a-us">user</span></div>
-              <div class="ep"><span class="hb PATCH">PATCH</span><span class="ep-p">/account/bookbank/:id</span><span class="ep-a a-us">user</span></div>
-            </div>
-          </div>
-          <div>
-            <div class="col-t">Boundary / Entity</div>
-            <div class="rlist">
-              <div class="rrow"><div class="rtop"><span class="rtag">boundary</span><span class="rname">ProfilePage</span></div><div class="rdesc">getMyBookbank, createBookbank, updateBookbank</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">boundary</span><span class="rname">ClaimDetailPage</span></div><div class="rdesc">getMyBookbank() ดูบัญชีสำหรับโอน</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Bookbank</span></div><div class="rdesc">create, update, getByAccount</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Account</span></div><div class="rdesc">linkBookbank() อัปเดต bookbank_id</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
   </div>
 
   <div class="grp">Shop Management</div>
   <div class="grid grid-wide">
+
+    <!-- ShopAdminController -->
     <div class="card c-shop">
-      <div class="ch"><div class="ctag">controller · shop · admin</div><div class="ctitle">ShopController</div></div>
+      <div class="ch"><div class="ctag">controller · shop · admin</div><div class="ctitle">ShopAdminController</div></div>
       <div class="cb">
-        <p class="cdesc">CRUD ร้านค้าสำหรับ admin (ตรวจสิทธิ์ด้วย role_id=2 แทน admins table)</p>
-        <div class="three-col">
+        <p class="cdesc">UC: เพิ่มร้านค้า, แก้ไขร้านค้า, ลบร้านค้า, จัดการร้านค้า, เพิ่ม blacklist</p>
+        <div class="chain"><span class="chain-node cn-bound">AdminShopManagePage.clickEdit()</span><span class="chain-arr">→</span><span class="chain-node cn-ctrl">updateShop()</span><span class="chain-arr">→</span><span class="chain-node cn-ent">Shop.findByRefId() · Shop.update()</span></div>
+        <div class="two-col">
           <div>
-            <div class="col-t">Functions</div>
+            <div class="col-t">Controller Functions</div>
             <div class="mlist">
-              <div class="mrow"><div class="mn" style="color:#065f46">listShops(query)</div><div class="md">ค้นหาและ list ร้านค้า + pagination</div></div>
-              <div class="mrow"><div class="mn" style="color:#065f46">getShopById(ref_id)</div><div class="md">ดึงรายละเอียดร้านเต็ม</div></div>
-              <div class="mrow"><div class="mn" style="color:#065f46">createShop(data)</div><div class="md">เพิ่มร้านค้าใหม่</div></div>
-              <div class="mrow"><div class="mn" style="color:#065f46">updateShop(ref_id,data)</div><div class="md">แก้ไขข้อมูลร้าน</div></div>
-              <div class="mrow"><div class="mn" style="color:#065f46">deleteShop(ref_id)</div><div class="md">Soft delete is_active=0</div></div>
-              <div class="mrow"><div class="mn" style="color:#065f46">blacklistShop(ref_id,data)</div><div class="md">สร้าง Blacklist record + is_blacklist=1</div></div>
+              <div class="mrow"><div class="mn">createShop(data)</div><div class="md">UC: เพิ่มร้านค้า — validate → เรียก Shop.save()</div></div>
+              <div class="mrow"><div class="mn">getShopManage(refId)</div><div class="md">UC: จัดการร้านค้า — เรียก Shop.findByRefId() คืนรายละเอียด</div></div>
+              <div class="mrow"><div class="mn">updateShop(refId, data)</div><div class="md">UC: แก้ไขร้านค้า — validate format → เรียก Shop.update()</div></div>
+              <div class="mrow"><div class="mn">deleteShop(refId)</div><div class="md">UC: ลบร้านค้า — เรียก Shop.softDelete()</div></div>
+              <div class="mrow"><div class="mn">blacklistShop(refId, data)</div><div class="md">UC: เพิ่ม blacklist — เรียก Shop.setBlacklist() + Blacklist.save()</div></div>
             </div>
           </div>
           <div>
             <div class="col-t">Endpoints</div>
             <div class="eplist">
-              <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/admin/shops</span><span class="ep-a a-ad">admin</span></div>
-              <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/admin/shops/:ref_id</span><span class="ep-a a-ad">admin</span></div>
               <div class="ep"><span class="hb POST">POST</span><span class="ep-p">/admin/shops</span><span class="ep-a a-ad">admin</span></div>
+              <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/admin/shops/:ref_id</span><span class="ep-a a-ad">admin</span></div>
               <div class="ep"><span class="hb PATCH">PATCH</span><span class="ep-p">/admin/shops/:ref_id</span><span class="ep-a a-ad">admin</span></div>
               <div class="ep"><span class="hb DELETE">DELETE</span><span class="ep-p">/admin/shops/:ref_id</span><span class="ep-a a-ad">admin</span></div>
               <div class="ep"><span class="hb PATCH">PATCH</span><span class="ep-p">/admin/shops/:ref_id/blacklist</span><span class="ep-a a-ad">admin</span></div>
             </div>
           </div>
-          <div>
-            <div class="col-t">Boundary / Entity</div>
-            <div class="rlist">
-              <div class="rrow"><div class="rtop"><span class="rtag">boundary</span><span class="rname">AdminShopListPage</span></div><div class="rdesc">listShops()</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">boundary</span><span class="rname">AdminShopManagePage</span></div><div class="rdesc">update, delete, blacklist</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Shop</span></div><div class="rdesc">create, update, delete, setBlacklist</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Blacklist</span></div><div class="rdesc">create(shopId, admin_account_id)</div></div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
+
+    <!-- ShopPublicController -->
     <div class="card c-shop">
-      <div class="ch"><div class="ctag">controller · shop · public</div><div class="ctitle">ShopOwnerController</div></div>
+      <div class="ch"><div class="ctag">controller · shop · public</div><div class="ctitle">ShopPublicController</div></div>
       <div class="cb">
-        <p class="cdesc">ดูร้านค้าสำหรับ public และเจ้าของร้าน</p>
-        <div class="three-col">
+        <p class="cdesc">UC: ค้นหาร้านค้า, ดูรายละเอียดร้านค้า, ดูร้านในครอบครอง, ดูรายการ blacklist</p>
+        <div class="chain"><span class="chain-node cn-bound">ShopListPage.submitSearch()</span><span class="chain-arr">→</span><span class="chain-node cn-ctrl">searchShops()</span><span class="chain-arr">→</span><span class="chain-node cn-ent">Shop.findByKeyword()</span></div>
+        <div class="two-col">
           <div>
-            <div class="col-t">Functions</div>
+            <div class="col-t">Controller Functions</div>
             <div class="mlist">
-              <div class="mrow"><div class="mn" style="color:#065f46">getMyShop()</div><div class="md">ดึงร้านที่ owner = current account</div></div>
-              <div class="mrow"><div class="mn" style="color:#065f46">listShopsPublic(query)</div><div class="md">ร้านค้า is_active=1</div></div>
-              <div class="mrow"><div class="mn" style="color:#065f46">getShopDetail(ref_id)</div><div class="md">รายละเอียดร้านค้าสาธารณะ</div></div>
+              <div class="mrow"><div class="mn">searchShops(keyword, page)</div><div class="md">UC: ค้นหาร้านค้า — เรียก Shop.findByKeyword() คืนผลลัพธ์ + จำนวนหน้า</div></div>
+              <div class="mrow"><div class="mn">getShopDetail(refId)</div><div class="md">UC: ดูรายละเอียดร้านค้า — เรียก Shop.findByRefId()</div></div>
+              <div class="mrow"><div class="mn">getMyShop(accountId)</div><div class="md">UC: ดูร้านในครอบครอง — เรียก Shop.findByOwner() + UpgradeRequest.findByShop()</div></div>
+              <div class="mrow"><div class="mn">getBlacklistShops(page)</div><div class="md">UC: ดูรายการ blacklist — เรียก Blacklist.findAll()</div></div>
             </div>
           </div>
           <div>
             <div class="col-t">Endpoints</div>
             <div class="eplist">
-              <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/my-shop</span><span class="ep-a a-sh">shop</span></div>
               <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/shops</span><span class="ep-a a-al">ทุกคน</span></div>
               <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/shops/:ref_id</span><span class="ep-a a-al">ทุกคน</span></div>
-            </div>
-          </div>
-          <div>
-            <div class="col-t">Boundary / Entity</div>
-            <div class="rlist">
-              <div class="rrow"><div class="rtop"><span class="rtag">boundary</span><span class="rname">ShopListPage / ShopDetailPage</span></div><div class="rdesc">listShopsPublic, getShopDetail</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">boundary</span><span class="rname">MyShopPage</span></div><div class="rdesc">getMyShop()</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Shop</span></div><div class="rdesc">search, getDetail, getUpgradeRequests</div></div>
+              <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/my-shop</span><span class="ep-a a-sh">shop</span></div>
+              <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/admin/blacklists</span><span class="ep-a a-ad">admin</span></div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 
   <div class="grp">Upgrade Flow</div>
   <div class="grid grid-wide">
+
+    <!-- UpgradeRequestController -->
     <div class="card c-upgrade">
       <div class="ch"><div class="ctag">controller · upgrade · request</div><div class="ctitle">UpgradeRequestController</div></div>
       <div class="cb">
-        <p class="cdesc">ร้านยื่นคำขอ admin ดูรายการ</p>
-        <div class="three-col">
+        <p class="cdesc">UC: ขอเลื่อนขั้นไปขั้น2 (ร้านค้ายื่น), จัดการคำร้องขอเลื่อนขั้นไปขั้น2 (แอดมินดู)</p>
+        <div class="chain"><span class="chain-node cn-bound">UpgradeRequestForm.submitForm()</span><span class="chain-arr">→</span><span class="chain-node cn-ctrl">submitUpgradeRequest()</span><span class="chain-arr">→</span><span class="chain-node cn-ent">UpgradeRequest.countFailedThisMonth() · UpgradeRequest.save() · Attachment.save()</span></div>
+        <div class="two-col">
           <div>
-            <div class="col-t">Functions</div>
+            <div class="col-t">Controller Functions</div>
             <div class="mlist">
-              <div class="mrow"><div class="mn" style="color:#b45309">submitUpgrade(shopId,docs)</div><div class="md">ตรวจ failed_upgrade_count + บันทึก attachments</div></div>
-              <div class="mrow"><div class="mn" style="color:#b45309">listUpgradeRequests(q)</div><div class="md">Admin ดูรายการ กรอง status/shop</div></div>
-              <div class="mrow"><div class="mn" style="color:#b45309">getUpgradeRequestById(id)</div><div class="md">รายละเอียดรวม attachments + admin_remark</div></div>
+              <div class="mrow"><div class="mn">submitUpgradeRequest(shopRefId, data)</div><div class="md">UC: ขอเลื่อนขั้นไปขั้น2 — เรียก UpgradeRequest.countFailedThisMonth() ตรวจสอบ → UpgradeRequest.save() → Attachment.save() แต่ละไฟล์</div></div>
+              <div class="mrow"><div class="mn">listUpgradeRequests(page)</div><div class="md">UC: จัดการคำร้องขอเลื่อนขั้นไปขั้น2 — เรียก UpgradeRequest.findAllPending()</div></div>
+              <div class="mrow"><div class="mn">getUpgradeRequestDetail(id)</div><div class="md">UC: จัดการคำร้องขอเลื่อนขั้นไปขั้น2 — เรียก UpgradeRequest.findById() + Attachment.findByRequestId()</div></div>
             </div>
           </div>
           <div>
@@ -806,29 +640,24 @@ nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,.95);backdrop-
               <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/admin/upgrade-requests/:id</span><span class="ep-a a-ad">admin</span></div>
             </div>
           </div>
-          <div>
-            <div class="col-t">Boundary / Entity</div>
-            <div class="rlist">
-              <div class="rrow"><div class="rtop"><span class="rtag">boundary</span><span class="rname">UpgradeRequestForm</span></div><div class="rdesc">submitUpgrade()</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">boundary</span><span class="rname">UpgradeRequest Detail/List</span></div><div class="rdesc">list, getById</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">UpgradeRequest</span></div><div class="rdesc">submit, getAttachments</div></div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
+
+    <!-- UpgradeApprovalController -->
     <div class="card c-upgrade">
-      <div class="ch"><div class="ctag">controller · upgrade · approval <span class="chg chg">เปลี่ยน</span></div><div class="ctitle">UpgradeApprovalController</div></div>
+      <div class="ch"><div class="ctag">controller · upgrade · approval</div><div class="ctitle">UpgradeApprovalController</div></div>
       <div class="cb">
-        <p class="cdesc">ส่ง admin_account_id แทน admin_id เดิม</p>
-        <div class="three-col">
+        <p class="cdesc">UC: จัดการคำร้องขอเลื่อนขั้นไปขั้น2 (อนุมัติ/ไม่อนุมัติ), จัดการเลื่อนขั้น3</p>
+        <div class="chain"><span class="chain-node cn-bound">UpgradeRequestDetailPage.clickApprove()</span><span class="chain-arr">→</span><span class="chain-node cn-ctrl">approveUpgrade()</span><span class="chain-arr">→</span><span class="chain-node cn-ent">UpgradeRequest.approve() · Shop.upgradeTier() · UpgradeApprovalLog.save()</span></div>
+        <div class="two-col">
           <div>
-            <div class="col-t">Functions</div>
+            <div class="col-t">Controller Functions</div>
             <div class="mlist">
-              <div class="mrow"><div class="mn" style="color:#b45309">approveUpgrade(id)</div><div class="md">อนุมัติ → Shop.upgradeToTier() + Log(admin_account_id)</div></div>
-              <div class="mrow"><div class="mn" style="color:#b45309">rejectUpgrade(id,reason)</div><div class="md">ปฏิเสธ → admin_remark + failed_upgrade_count + Log</div></div>
-              <div class="mrow"><div class="mn" style="color:#b45309">approveTier3(ref_id)</div><div class="md">เลื่อนขั้น 2→3 บันทึก Log(admin_account_id)</div></div>
-              <div class="mrow"><div class="mn" style="color:#b45309">getApprovalLogs(query)</div><div class="md">ดึง logs กรองตาม admin/shop/request</div></div>
+              <div class="mrow"><div class="mn">approveUpgrade(id, adminAccountId)</div><div class="md">UC: จัดการคำร้องขอเลื่อนขั้นไปขั้น2 — UpgradeRequest.approve() → Shop.upgradeTier(2) → UpgradeApprovalLog.save()</div></div>
+              <div class="mrow"><div class="mn">rejectUpgrade(id, adminAccountId, reason)</div><div class="md">UC: จัดการคำร้องขอเลื่อนขั้นไปขั้น2 — UpgradeRequest.reject() → Shop.incrementFailedUpgrade() → UpgradeApprovalLog.save()</div></div>
+              <div class="mrow"><div class="mn">listTier2Shops(page)</div><div class="md">UC: จัดการเลื่อนขั้น3 — เรียก Shop.findAllTier2()</div></div>
+              <div class="mrow"><div class="mn">approveTier3(shopRefId, adminAccountId)</div><div class="md">UC: จัดการเลื่อนขั้น3 — Shop.upgradeTier(3) → UpgradeApprovalLog.save()</div></div>
             </div>
           </div>
           <div>
@@ -836,38 +665,33 @@ nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,.95);backdrop-
             <div class="eplist">
               <div class="ep"><span class="hb POST">POST</span><span class="ep-p">/admin/upgrade-requests/:id/approve</span><span class="ep-a a-ad">admin</span></div>
               <div class="ep"><span class="hb POST">POST</span><span class="ep-p">/admin/upgrade-requests/:id/reject</span><span class="ep-a a-ad">admin</span></div>
+              <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/admin/tier3-candidates</span><span class="ep-a a-ad">admin</span></div>
               <div class="ep"><span class="hb POST">POST</span><span class="ep-p">/admin/shops/:ref_id/approve-tier3</span><span class="ep-a a-ad">admin</span></div>
-              <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/admin/upgrade-logs</span><span class="ep-a a-ad">admin</span></div>
-            </div>
-          </div>
-          <div>
-            <div class="col-t">Boundary / Entity</div>
-            <div class="rlist">
-              <div class="rrow"><div class="rtop"><span class="rtag">boundary</span><span class="rname">UpgradeRequestDetailPage</span></div><div class="rdesc">approve/reject</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">boundary</span><span class="rname">Tier3UpgradePage</span></div><div class="rdesc">approveTier3()</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">UpgradeApprovalLog</span></div><div class="rdesc">create(admin_account_id)</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Shop</span></div><div class="rdesc">upgradeToTier()</div></div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 
-  <div class="grp">Claim, Report &amp; FraudType</div>
+  <div class="grp">Claim, Report &amp; Attachment</div>
   <div class="grid grid-wide">
+
+    <!-- ClaimRequestController -->
     <div class="card c-claim">
       <div class="ch"><div class="ctag">controller · claim</div><div class="ctitle">ClaimRequestController</div></div>
       <div class="cb">
-        <p class="cdesc">ยื่นเคลม Admin ดูและปิดคำร้อง (ตรวจ Bookbank ของ claimer เพื่อโอนเงิน)</p>
-        <div class="three-col">
+        <p class="cdesc">UC: ยื่นเรื่องขอเคลม, จัดการคำร้องขอเคลม</p>
+        <div class="chain"><span class="chain-node cn-bound">ClaimDetailPage.clickClose()</span><span class="chain-arr">→</span><span class="chain-node cn-ctrl">closeClaim()</span><span class="chain-arr">→</span><span class="chain-node cn-ent">ClaimRequest.close()</span></div>
+        <div class="two-col">
           <div>
-            <div class="col-t">Functions</div>
+            <div class="col-t">Controller Functions</div>
             <div class="mlist">
-              <div class="mrow"><div class="mn" style="color:#991b1b">submitClaim(shopId,data)</div><div class="md">contact_info → status=pending</div></div>
-              <div class="mrow"><div class="mn" style="color:#991b1b">listClaims(query)</div><div class="md">Admin ดูรายการ กรอง status</div></div>
-              <div class="mrow"><div class="mn" style="color:#991b1b">getClaimById(id)</div><div class="md">รายละเอียด + attachments + bookbank claimer</div></div>
-              <div class="mrow"><div class="mn" style="color:#991b1b">closeClaim(id)</div><div class="md">ปิดคำขอ → status=closed</div></div>
+              <div class="mrow"><div class="mn">submitClaim(shopRefId, data)</div><div class="md">UC: ยื่นเรื่องขอเคลม — validate → ClaimRequest.save() → Attachment.save()</div></div>
+              <div class="mrow"><div class="mn">listClaims(page)</div><div class="md">UC: จัดการคำร้องขอเคลม — เรียก ClaimRequest.findAll()</div></div>
+              <div class="mrow"><div class="mn">getClaimDetail(id)</div><div class="md">UC: จัดการคำร้องขอเคลม — ClaimRequest.findById() + Attachment.findByRequestId() + Bookbank.findByAccountId(claimer)</div></div>
+              <div class="mrow"><div class="mn">closeClaim(id)</div><div class="md">UC: จัดการคำร้องขอเคลม — เรียก ClaimRequest.close()</div></div>
             </div>
           </div>
           <div>
@@ -879,30 +703,25 @@ nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,.95);backdrop-
               <div class="ep"><span class="hb POST">POST</span><span class="ep-p">/admin/claims/:id/close</span><span class="ep-a a-ad">admin</span></div>
             </div>
           </div>
-          <div>
-            <div class="col-t">Boundary / Entity</div>
-            <div class="rlist">
-              <div class="rrow"><div class="rtop"><span class="rtag">boundary</span><span class="rname">ClaimRequestForm</span></div><div class="rdesc">submitClaim()</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">boundary</span><span class="rname">ClaimDetailPage</span></div><div class="rdesc">getClaimById + closeClaim + Bookbank</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">ClaimRequest</span></div><div class="rdesc">submit, close, getAttachments</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Bookbank</span></div><div class="rdesc">getByAccount(claimer) เพื่อโอนเงิน</div></div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
+
+    <!-- ReportRequestController -->
     <div class="card c-claim">
       <div class="ch"><div class="ctag">controller · report</div><div class="ctitle">ReportRequestController</div></div>
       <div class="cb">
-        <p class="cdesc">รายงานร้านค้า Admin ตรวจสอบ</p>
-        <div class="three-col">
+        <p class="cdesc">UC: รายงานร้านค้า, จัดการคำร้องรายงาน</p>
+        <div class="chain"><span class="chain-node cn-bound">ReportDetailPage.clickProcess()</span><span class="chain-arr">→</span><span class="chain-node cn-ctrl">processReport()</span><span class="chain-arr">→</span><span class="chain-node cn-ent">ReportRequest.markDone()</span></div>
+        <div class="two-col">
           <div>
-            <div class="col-t">Functions</div>
+            <div class="col-t">Controller Functions</div>
             <div class="mlist">
-              <div class="mrow"><div class="mn" style="color:#991b1b">submitReport(shopId,data)</div><div class="md">fraud_type_id + reason → pending</div></div>
-              <div class="mrow"><div class="mn" style="color:#991b1b">listReports(query)</div><div class="md">Admin ดูรายการ + fraud_type.name</div></div>
-              <div class="mrow"><div class="mn" style="color:#991b1b">getReportById(id)</div><div class="md">รายละเอียด + reason + fraud_type</div></div>
-              <div class="mrow"><div class="mn" style="color:#991b1b">processReport(id)</div><div class="md">status=done → ต่อด้วย Blacklist(admin_account_id)</div></div>
+              <div class="mrow"><div class="mn">submitReport(shopRefId, data)</div><div class="md">UC: รายงานร้านค้า — validate → ReportRequest.save() → Attachment.save()</div></div>
+              <div class="mrow"><div class="mn">listReports(page)</div><div class="md">UC: จัดการคำร้องรายงาน — เรียก ReportRequest.findAll()</div></div>
+              <div class="mrow"><div class="mn">getReportDetail(id)</div><div class="md">UC: จัดการคำร้องรายงาน — ReportRequest.findById() + Attachment.findByRequestId()</div></div>
+              <div class="mrow"><div class="mn">processReport(id)</div><div class="md">UC: จัดการคำร้องรายงาน — เรียก ReportRequest.markDone()</div></div>
+              <div class="mrow"><div class="mn">getFraudTypes()</div><div class="md">UC: รายงานร้านค้า — เรียก FraudType.findAllActive() สำหรับ dropdown</div></div>
             </div>
           </div>
           <div>
@@ -912,241 +731,162 @@ nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,.95);backdrop-
               <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/admin/reports</span><span class="ep-a a-ad">admin</span></div>
               <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/admin/reports/:id</span><span class="ep-a a-ad">admin</span></div>
               <div class="ep"><span class="hb POST">POST</span><span class="ep-p">/admin/reports/:id/process</span><span class="ep-a a-ad">admin</span></div>
-            </div>
-          </div>
-          <div>
-            <div class="col-t">Boundary / Entity</div>
-            <div class="rlist">
-              <div class="rrow"><div class="rtop"><span class="rtag">boundary</span><span class="rname">ReportRequestForm</span></div><div class="rdesc">submitReport() + FraudType dropdown</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">boundary</span><span class="rname">ReportDetailPage</span></div><div class="rdesc">getReportById, processReport</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">ReportRequest</span></div><div class="rdesc">submit, process, getFraudType</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Blacklist</span></div><div class="rdesc">create(admin_account_id)</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card c-fraud">
-      <div class="ch"><div class="ctag">controller · lookup</div><div class="ctitle">FraudTypeController</div></div>
-      <div class="cb">
-        <p class="cdesc">จัดการ fraud_types ไม่มีการเปลี่ยน</p>
-        <div class="three-col">
-          <div>
-            <div class="col-t">Functions</div>
-            <div class="mlist">
-              <div class="mrow"><div class="mn" style="color:#9d174d">getAllFraudTypes()</div><div class="md">ดึง is_active=1 สำหรับ dropdown</div></div>
-              <div class="mrow"><div class="mn" style="color:#9d174d">createFraudType(data)</div><div class="md">Admin เพิ่มประเภทโกงใหม่</div></div>
-              <div class="mrow"><div class="mn" style="color:#9d174d">deactivateFraudType(id)</div><div class="md">is_active=0 (ON DELETE RESTRICT)</div></div>
-            </div>
-          </div>
-          <div>
-            <div class="col-t">Endpoints</div>
-            <div class="eplist">
               <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/fraud-types</span><span class="ep-a a-al">ทุกคน</span></div>
-              <div class="ep"><span class="hb POST">POST</span><span class="ep-p">/admin/fraud-types</span><span class="ep-a a-ad">admin</span></div>
-              <div class="ep"><span class="hb PATCH">PATCH</span><span class="ep-p">/admin/fraud-types/:id/deactivate</span><span class="ep-a a-ad">admin</span></div>
-            </div>
-          </div>
-          <div>
-            <div class="col-t">Boundary / Entity</div>
-            <div class="rlist">
-              <div class="rrow"><div class="rtop"><span class="rtag">boundary</span><span class="rname">ReportRequestForm</span></div><div class="rdesc">getAllFraudTypes()</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">boundary</span><span class="rname">FraudTypeManagePage</span></div><div class="rdesc">CRUD fraud types</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">FraudType</span></div><div class="rdesc">getAll, create, deactivate</div></div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="grp">Attachment &amp; Blacklist</div>
-  <div class="grid grid-wide">
+    <!-- AttachmentController -->
     <div class="card c-attach">
       <div class="ch"><div class="ctag">controller · attachment</div><div class="ctitle">AttachmentController</div></div>
       <div class="cb">
-        <p class="cdesc">จัดการไฟล์ทุกประเภท log ดาวน์โหลดด้วย admin_account_id</p>
-        <div class="three-col">
+        <p class="cdesc">UC: ยื่นเอกสาร (include ใน ขอเลื่อนขั้น, รายงาน, ขอเคลม), จัดการคำร้องต่างๆ (แอดมินดูเอกสาร)</p>
+        <div class="chain"><span class="chain-node cn-bound">AttachmentUploader.uploadFile()</span><span class="chain-arr">→</span><span class="chain-node cn-ctrl">uploadAttachment()</span><span class="chain-arr">→</span><span class="chain-node cn-ent">Attachment.save()</span></div>
+        <div class="two-col">
           <div>
-            <div class="col-t">Functions</div>
+            <div class="col-t">Controller Functions</div>
             <div class="mlist">
-              <div class="mrow"><div class="mn" style="color:#075985">uploadFile(file,reqId,type)</div><div class="md">บันทึก file_url + FK ที่ถูกต้อง</div></div>
-              <div class="mrow"><div class="mn" style="color:#075985">downloadFile(id)</div><div class="md">คืน URL + logDownload(admin_account_id)</div></div>
+              <div class="mrow"><div class="mn">uploadAttachment(file, requestId, requestType)</div><div class="md">UC: ยื่นเอกสาร — รับไฟล์ → เรียก Attachment.save() เซ็ต FK ที่ถูกต้อง</div></div>
+              <div class="mrow"><div class="mn">getAttachmentsByRequest(requestId, requestType)</div><div class="md">UC: จัดการคำร้องต่างๆ — เรียก Attachment.findByRequestId() ส่งกลับรายการเอกสาร</div></div>
             </div>
           </div>
           <div>
             <div class="col-t">Endpoints</div>
             <div class="eplist">
               <div class="ep"><span class="hb POST">POST</span><span class="ep-p">/attachments/upload</span><span class="ep-a a-us">user/shop</span></div>
-              <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/attachments/:id/download</span><span class="ep-a a-ad">admin</span></div>
-            </div>
-          </div>
-          <div>
-            <div class="col-t">Boundary / Entity</div>
-            <div class="rlist">
-              <div class="rrow"><div class="rtop"><span class="rtag">boundary</span><span class="rname">AttachmentUploader</span></div><div class="rdesc">uploadFile()</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">boundary</span><span class="rname">AttachmentViewer</span></div><div class="rdesc">downloadFile()</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Attachment</span></div><div class="rdesc">upload, download, logDownload</div></div>
+              <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/attachments/:requestType/:requestId</span><span class="ep-a a-ad">admin</span></div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="card c-attach">
-      <div class="ch"><div class="ctag">controller · blacklist <span class="chg chg">เปลี่ยน</span></div><div class="ctitle">BlacklistController</div></div>
-      <div class="cb">
-        <p class="cdesc">ส่ง admin_account_id แทน admin_id เดิม</p>
-        <div class="three-col">
-          <div>
-            <div class="col-t">Functions</div>
-            <div class="mlist">
-              <div class="mrow"><div class="mn" style="color:#075985">createBlacklist(shopId,data)</div><div class="md">record + Shop.is_blacklist=1 บันทึก admin_account_id</div></div>
-              <div class="mrow"><div class="mn" style="color:#075985">listBlacklists()</div><div class="md">JOIN ข้อมูลร้านและ admin account</div></div>
-              <div class="mrow"><div class="mn" style="color:#075985">getBlacklistByShop(ref_id)</div><div class="md">ดึงประวัติ blacklist ของร้าน</div></div>
-            </div>
-          </div>
-          <div>
-            <div class="col-t">Endpoints</div>
-            <div class="eplist">
-              <div class="ep"><span class="hb POST">POST</span><span class="ep-p">/admin/blacklists</span><span class="ep-a a-ad">admin</span></div>
-              <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/admin/blacklists</span><span class="ep-a a-ad">admin</span></div>
-              <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/admin/blacklists/shop/:ref_id</span><span class="ep-a a-ad">admin</span></div>
-            </div>
-          </div>
-          <div>
-            <div class="col-t">Boundary / Entity</div>
-            <div class="rlist">
-              <div class="rrow"><div class="rtop"><span class="rtag">boundary</span><span class="rname">AdminShopManagePage</span></div><div class="rdesc">createBlacklist()</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">boundary</span><span class="rname">BlacklistListPage</span></div><div class="rdesc">listBlacklists()</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Blacklist</span></div><div class="rdesc">create(admin_account_id), getHistory</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
   </div>
 </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     BOUNDARY
-══════════════════════════════════════ -->
+<!-- ══════════════════════════════════════  BOUNDARY  ══════════════════════════════════════ -->
 <div class="page" id="page-bound">
 <div class="wrap">
   <div class="hero">
     <div class="hbadge hb-b">Boundary Layer</div>
     <h1>Boundaries</h1>
-    <p>เพิ่ม BookbankSection ใน ProfilePage รองรับ Bookbank entity ที่แยกออกมาใหม่</p>
+    <p>Boundary มีฟังก์ชันของตัวเอง (UI interaction) แล้วเรียก Controller fn ต่อ ไม่เรียก Entity โดยตรง</p>
   </div>
+
+  <div class="note">
+    <span class="note-icon">⚑</span>
+    <span><strong>Call Chain:</strong> Actor กระทำบน Boundary fn → Boundary เรียก Controller fn → Controller เรียก Entity fn</span>
+  </div>
+
   <div class="statbar">
-    <div class="st"><span class="sn" style="color:#c2410c">21</span><span class="sl">Boundaries</span></div><div class="sdiv"></div>
-    <div class="st"><span class="sn" style="color:#2563eb">9</span><span class="sl">User/Shop</span></div><div class="sdiv"></div>
-    <div class="st"><span class="sn" style="color:#7c3aed">11</span><span class="sl">Admin</span></div><div class="sdiv"></div>
+    <div class="st"><span class="sn" style="color:#c2410c">18</span><span class="sl">Boundaries</span></div><div class="sdiv"></div>
+    <div class="st"><span class="sn" style="color:#2563eb">7</span><span class="sl">User/Shop</span></div><div class="sdiv"></div>
+    <div class="st"><span class="sn" style="color:#7c3aed">9</span><span class="sl">Admin</span></div><div class="sdiv"></div>
     <div class="st"><span class="sn" style="color:#059669">2</span><span class="sl">Shared</span></div>
   </div>
 
   <div class="grp">User &amp; Shop</div>
   <div class="grid">
 
+    <!-- LoginPage -->
     <div class="card b-user">
       <div class="ch"><div class="ctag">boundary · auth</div><div class="ctitle">LoginPage</div></div>
       <div class="cb">
-        <p class="cdesc">ปุ่ม Google OAuth เดียว JWT จะมี role_id ติดมาด้วยสำหรับ route guard</p>
-        <div class="col-t">Controller / Entity</div>
-        <div class="rlist">
-          <div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">AuthController.googleLogin()</span></div><div class="rdesc">POST /auth/google</div></div>
-          <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Account + Role</span></div><div class="rdesc">login() + JOIN role_id → name</div></div>
+        <p class="cdesc">UC: เข้าสู่ระบบ — หน้าเข้าสู่ระบบ actor คือ ผู้เยี่ยมชม</p>
+        <div class="chain"><span class="chain-node cn-actor">ผู้เยี่ยมชม</span><span class="chain-arr">→</span><span class="chain-node cn-bound">clickGoogleLogin()</span><span class="chain-arr">→</span><span class="chain-node cn-ctrl">AuthController.googleLogin()</span></div>
+        <div class="col-t">Boundary Functions</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">clickGoogleLogin()</div><div class="md">ผู้ใช้กดปุ่ม Google → เรียก AuthController.googleLogin(token)</div></div>
         </div>
       </div>
     </div>
 
+    <!-- ProfilePage -->
     <div class="card b-user">
-      <div class="ch"><div class="ctag">boundary · account <span class="chg chg">เปลี่ยน</span></div><div class="ctitle">ProfilePage</div></div>
+      <div class="ch"><div class="ctag">boundary · account</div><div class="ctitle">ProfilePage</div></div>
       <div class="cb">
-        <p class="cdesc">แบ่งเป็น 2 ส่วน: ข้อมูลส่วนตัว (phone, display_name) และส่วนบัญชีธนาคาร (Bookbank entity แยก)</p>
-        <div class="col-t">Controller / Entity</div>
-        <div class="rlist">
-          <div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">AccountController.getProfile()</span></div><div class="rdesc">GET /account/profile</div></div>
-          <div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">AccountController.updateProfile()</span></div><div class="rdesc">PATCH /account/profile</div></div>
-          <div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">BookbankController.getMyBookbank()</span></div><div class="rdesc">GET /account/bookbank</div></div>
-          <div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">BookbankController.createBookbank()</span></div><div class="rdesc">POST /account/bookbank</div></div>
-          <div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">BookbankController.updateBookbank()</span></div><div class="rdesc">PATCH /account/bookbank/:id</div></div>
-          <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Account + Bookbank</span></div><div class="rdesc">updateProfile, linkBookbank</div></div>
+        <p class="cdesc">UC: ดูโปรไฟล์ — actor คือ User</p>
+        <div class="chain"><span class="chain-node cn-actor">User</span><span class="chain-arr">→</span><span class="chain-node cn-bound">loadProfile()</span><span class="chain-arr">→</span><span class="chain-node cn-ctrl">AccountController.getProfile()</span></div>
+        <div class="col-t">Boundary Functions</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">loadProfile()</div><div class="md">แสดงหน้า → เรียก AccountController.getProfile() แสดงข้อมูลโปรไฟล์</div></div>
+          <div class="mrow"><div class="mn">clickMyShop()</div><div class="md">กดปุ่มดูร้านค้าของฉัน → เรียก AccountController.checkOwnedShop() นำทางต่อ</div></div>
         </div>
       </div>
     </div>
 
+    <!-- ShopListPage -->
     <div class="card b-shop">
       <div class="ch"><div class="ctag">boundary · shop · public</div><div class="ctitle">ShopListPage</div></div>
       <div class="cb">
-        <p class="cdesc">รายการร้านค้าสาธารณะ ค้นหา pagination ไม่มีการเปลี่ยน</p>
-        <div class="col-t">Controller / Entity</div>
-        <div class="rlist">
-          <div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">ShopOwnerController.listShopsPublic()</span></div><div class="rdesc">GET /shops</div></div>
-          <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Shop</span></div><div class="rdesc">search() is_active=1</div></div>
+        <p class="cdesc">UC: ค้นหาร้านค้า — actor คือ ทุกคน</p>
+        <div class="chain"><span class="chain-node cn-actor">Actor</span><span class="chain-arr">→</span><span class="chain-node cn-bound">submitSearch()</span><span class="chain-arr">→</span><span class="chain-node cn-ctrl">ShopPublicController.searchShops()</span></div>
+        <div class="col-t">Boundary Functions</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">submitSearch(keyword)</div><div class="md">กดปุ่ม Search → เรียก ShopPublicController.searchShops(keyword, page)</div></div>
+          <div class="mrow"><div class="mn">changePage(page)</div><div class="md">กดเลขหน้า → เรียก ShopPublicController.searchShops() ด้วย page ใหม่</div></div>
         </div>
       </div>
     </div>
 
+    <!-- ShopDetailPage -->
     <div class="card b-shop">
       <div class="ch"><div class="ctag">boundary · shop · public</div><div class="ctitle">ShopDetailPage</div></div>
       <div class="cb">
-        <p class="cdesc">รายละเอียดร้านค้า shop_status ปุ่ม "รายงาน" และ "ขอเคลม"</p>
-        <div class="col-t">Controller / Entity</div>
-        <div class="rlist">
-          <div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">ShopOwnerController.getShopDetail()</span></div><div class="rdesc">GET /shops/:ref_id</div></div>
-          <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Shop</span></div><div class="rdesc">getDetail()</div></div>
+        <p class="cdesc">UC: ดูรายละเอียดร้านค้า, รายงานร้านค้า, ยื่นเรื่องขอเคลม</p>
+        <div class="chain"><span class="chain-node cn-actor">Actor</span><span class="chain-arr">→</span><span class="chain-node cn-bound">loadDetail()</span><span class="chain-arr">→</span><span class="chain-node cn-ctrl">ShopPublicController.getShopDetail()</span></div>
+        <div class="col-t">Boundary Functions</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">loadDetail(refId)</div><div class="md">โหลดหน้า → เรียก ShopPublicController.getShopDetail(refId)</div></div>
+          <div class="mrow"><div class="mn">clickReport()</div><div class="md">กดปุ่มรายงาน → นำทางไป ReportRequestForm</div></div>
+          <div class="mrow"><div class="mn">clickClaim()</div><div class="md">กดปุ่มขอเคลม → นำทางไป ClaimRequestForm</div></div>
         </div>
       </div>
     </div>
 
+    <!-- MyShopPage -->
     <div class="card b-shop">
       <div class="ch"><div class="ctag">boundary · shop owner</div><div class="ctitle">MyShopPage</div></div>
       <div class="cb">
-        <p class="cdesc">ขั้น ประวัติคำขอ admin_remark ปุ่มเลื่อนขั้น</p>
-        <div class="col-t">Controller / Entity</div>
-        <div class="rlist">
-          <div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">ShopOwnerController.getMyShop()</span></div><div class="rdesc">GET /my-shop</div></div>
-          <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Shop</span></div><div class="rdesc">getDetail, getUpgradeRequests</div></div>
-          <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">UpgradeApprovalLog</span></div><div class="rdesc">getByShop() ประวัติ + เหตุผล</div></div>
+        <p class="cdesc">UC: ดูร้านในครอบครอง, ขอเลื่อนขั้นไปขั้น2 (เริ่มต้น)</p>
+        <div class="chain"><span class="chain-node cn-actor">ร้านค้า</span><span class="chain-arr">→</span><span class="chain-node cn-bound">loadMyShop()</span><span class="chain-arr">→</span><span class="chain-node cn-ctrl">ShopPublicController.getMyShop()</span></div>
+        <div class="col-t">Boundary Functions</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">loadMyShop()</div><div class="md">โหลดหน้า → เรียก ShopPublicController.getMyShop() แสดงข้อมูล + ประวัติคำขอ</div></div>
+          <div class="mrow"><div class="mn">clickUpgrade()</div><div class="md">กดปุ่มเลื่อนขั้น → เรียก UpgradeRequestController.submitUpgradeRequest() ผ่านหน้า form</div></div>
         </div>
       </div>
     </div>
 
+    <!-- UpgradeRequestForm -->
     <div class="card b-shop">
       <div class="ch"><div class="ctag">boundary · upgrade</div><div class="ctitle">UpgradeRequestForm</div></div>
       <div class="cb">
-        <p class="cdesc">เอกสารต่างกันตาม is_company ใน Account</p>
-        <div class="col-t">Controller / Entity</div>
-        <div class="rlist">
-          <div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">UpgradeRequestController.submitUpgrade()</span></div><div class="rdesc">POST /upgrade-requests</div></div>
-          <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">UpgradeRequest</span></div><div class="rdesc">submit() + failed_upgrade_count</div></div>
-          <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Account</span></div><div class="rdesc">is_company → เลือกประเภทเอกสาร</div></div>
+        <p class="cdesc">UC: ขอเลื่อนขั้นไปขั้น2 — actor คือ ร้านค้า (include ยื่นเอกสาร)</p>
+        <div class="chain"><span class="chain-node cn-actor">ร้านค้า</span><span class="chain-arr">→</span><span class="chain-node cn-bound">submitForm()</span><span class="chain-arr">→</span><span class="chain-node cn-ctrl">UpgradeRequestController.submitUpgradeRequest()</span></div>
+        <div class="col-t">Boundary Functions</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">loadForm(shopRefId)</div><div class="md">โหลดฟอร์ม → แสดงประเภทเอกสารตาม is_company ของ account</div></div>
+          <div class="mrow"><div class="mn">uploadDocument(file, fieldName)</div><div class="md">อัปโหลดไฟล์แต่ละช่อง → เรียก AttachmentController.uploadAttachment()</div></div>
+          <div class="mrow"><div class="mn">submitForm(data)</div><div class="md">กดยืนยัน → validate เอกสารครบ → เรียก UpgradeRequestController.submitUpgradeRequest()</div></div>
+          <div class="mrow"><div class="mn">cancelForm()</div><div class="md">กดยกเลิก → กลับไป MyShopPage (A1)</div></div>
         </div>
       </div>
     </div>
 
+    <!-- ContactMyOrderPage -->
     <div class="card b-user">
-      <div class="ch"><div class="ctag">boundary · claim</div><div class="ctitle">ClaimRequestForm</div></div>
+      <div class="ch"><div class="ctag">boundary · contact</div><div class="ctitle">ContactMyOrderPage</div></div>
       <div class="cb">
-        <p class="cdesc">กรอก contact_info อัปโหลดหลักฐาน</p>
-        <div class="col-t">Controller / Entity</div>
-        <div class="rlist">
-          <div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">ClaimRequestController.submitClaim()</span></div><div class="rdesc">POST /claims</div></div>
-          <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">ClaimRequest</span></div><div class="rdesc">submit()</div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card b-user">
-      <div class="ch"><div class="ctag">boundary · report</div><div class="ctitle">ReportRequestForm</div></div>
-      <div class="cb">
-        <p class="cdesc">dropdown FraudType กรอก reason แนบหลักฐาน</p>
-        <div class="col-t">Controller / Entity</div>
-        <div class="rlist">
-          <div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">FraudTypeController.getAllFraudTypes()</span></div><div class="rdesc">GET /fraud-types (dropdown)</div></div>
-          <div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">ReportRequestController.submitReport()</span></div><div class="rdesc">POST /reports</div></div>
-          <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">ReportRequest + FraudType</span></div><div class="rdesc">submit() + fraud_type_id</div></div>
+        <p class="cdesc">UC: ติดต่อ myOrder ลงทะเบียนร้านค้า — actor คือ ผู้ใช้ที่ยังไม่มีร้าน</p>
+        <div class="chain"><span class="chain-node cn-actor">ผู้ใช้</span><span class="chain-arr">→</span><span class="chain-node cn-bound">clickContactMyOrder()</span><span class="chain-arr">→</span><span class="chain-node cn-ctrl">AccountController.checkOwnedShop()</span></div>
+        <div class="col-t">Boundary Functions</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">loadPage(accountId)</div><div class="md">โหลดหน้า → เรียก AccountController.checkOwnedShop() → ถ้าไม่มีร้านแสดงหน้านี้</div></div>
+          <div class="mrow"><div class="mn">clickContactMyOrder()</div><div class="md">กดปุ่มติดต่อ myOrder → นำทางไปส่วนติดต่อ</div></div>
         </div>
       </div>
     </div>
@@ -1155,50 +895,215 @@ nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,.95);backdrop-
 
   <div class="grp">Admin</div>
   <div class="grid">
-    <div class="card b-admin"><div class="ch"><div class="ctag">boundary · admin · shop</div><div class="ctitle">AdminShopListPage</div></div><div class="cb"><p class="cdesc">รายการร้านค้าทั้งหมด ค้นหา pagination (guard: role_id=2)</p><div class="col-t">Controller / Entity</div><div class="rlist"><div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">ShopController.listShops()</span></div><div class="rdesc">GET /admin/shops</div></div><div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Shop</span></div><div class="rdesc">search() รวม inactive</div></div></div></div></div>
-    <div class="card b-admin"><div class="ch"><div class="ctag">boundary · admin · shop</div><div class="ctitle">AdminShopManagePage</div></div><div class="cb"><p class="cdesc">จัดการร้านหนึ่งร้าน ปุ่มแก้ไข ลบ Blacklist</p><div class="col-t">Controller / Entity</div><div class="rlist"><div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">ShopController.update/delete/blacklist</span></div><div class="rdesc">PATCH / DELETE / PATCH blacklist</div></div><div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Blacklist</span></div><div class="rdesc">create(admin_account_id)</div></div></div></div></div>
-    <div class="card b-admin"><div class="ch"><div class="ctag">boundary · admin · blacklist</div><div class="ctitle">BlacklistListPage</div></div><div class="cb"><p class="cdesc">รายการ blacklist แสดง admin account ที่ดำเนินการ</p><div class="col-t">Controller / Entity</div><div class="rlist"><div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">BlacklistController.listBlacklists()</span></div><div class="rdesc">GET /admin/blacklists</div></div><div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Blacklist</span></div><div class="rdesc">JOIN shop + account (admin)</div></div></div></div></div>
-    <div class="card b-admin"><div class="ch"><div class="ctag">boundary · admin · fraud</div><div class="ctitle">FraudTypeManagePage</div></div><div class="cb"><p class="cdesc">จัดการประเภทการโกง</p><div class="col-t">Controller / Entity</div><div class="rlist"><div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">FraudTypeController.getAll/create/deactivate</span></div><div class="rdesc">GET · POST · PATCH</div></div><div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">FraudType</span></div><div class="rdesc">getAll, create, deactivate</div></div></div></div></div>
-    <div class="card b-admin"><div class="ch"><div class="ctag">boundary · admin · upgrade</div><div class="ctitle">UpgradeRequestListPage</div></div><div class="cb"><p class="cdesc">รายการคำขอเลื่อนขั้น</p><div class="col-t">Controller / Entity</div><div class="rlist"><div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">UpgradeRequestController.listUpgradeRequests()</span></div><div class="rdesc">GET /admin/upgrade-requests</div></div><div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">UpgradeRequest</span></div><div class="rdesc">รายการ status, shop</div></div></div></div></div>
-    <div class="card b-admin"><div class="ch"><div class="ctag">boundary · admin · upgrade</div><div class="ctitle">UpgradeRequestDetailPage</div></div><div class="cb"><p class="cdesc">รายละเอียด AttachmentViewer ปุ่มอนุมัติ/ไม่อนุมัติ + admin_remark</p><div class="col-t">Controller / Entity</div><div class="rlist"><div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">UpgradeApprovalController.approve/reject</span></div><div class="rdesc">POST approve / reject</div></div><div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">UpgradeApprovalLog</span></div><div class="rdesc">create(admin_account_id)</div></div></div></div></div>
-    <div class="card b-admin"><div class="ch"><div class="ctag">boundary · admin · upgrade</div><div class="ctitle">Tier3UpgradePage</div></div><div class="cb"><p class="cdesc">ร้านขั้น 2 กดยืนยัน → approveTier3()</p><div class="col-t">Controller / Entity</div><div class="rlist"><div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">UpgradeApprovalController.approveTier3()</span></div><div class="rdesc">POST approve-tier3</div></div><div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Shop + UpgradeApprovalLog</span></div><div class="rdesc">upgradeToTier + create(admin_account_id)</div></div></div></div></div>
-    <div class="card b-admin"><div class="ch"><div class="ctag">boundary · admin · claim</div><div class="ctitle">ClaimListPage</div></div><div class="cb"><p class="cdesc">รายการ claim_requests</p><div class="col-t">Controller / Entity</div><div class="rlist"><div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">ClaimRequestController.listClaims()</span></div><div class="rdesc">GET /admin/claims</div></div><div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">ClaimRequest</span></div><div class="rdesc">รายการ + contact_info</div></div></div></div></div>
+
+    <!-- AdminShopListPage -->
     <div class="card b-admin">
-      <div class="ch"><div class="ctag">boundary · admin · claim <span class="chg chg">เปลี่ยน</span></div><div class="ctitle">ClaimDetailPage</div></div>
-      <div class="cb"><p class="cdesc">เพิ่มส่วนแสดง Bookbank ของผู้เคลม เพื่อให้แอดมินโอนเงินได้</p>
-        <div class="col-t">Controller / Entity</div>
-        <div class="rlist">
-          <div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">ClaimRequestController.getClaimById()</span></div><div class="rdesc">GET /admin/claims/:id</div></div>
-          <div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">BookbankController.getMyBookbank()</span></div><div class="rdesc">ดึง bookbank ของ claimer</div></div>
-          <div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">ClaimRequestController.closeClaim()</span></div><div class="rdesc">POST close</div></div>
-          <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Bookbank</span></div><div class="rdesc">แสดงเลขบัญชีสำหรับโอนชดเชย</div></div>
+      <div class="ch"><div class="ctag">boundary · admin · shop</div><div class="ctitle">AdminShopListPage</div></div>
+      <div class="cb">
+        <p class="cdesc">UC: ค้นหาร้านค้า (admin), จัดการร้านค้า (entry point)</p>
+        <div class="chain"><span class="chain-node cn-actor">แอดมิน</span><span class="chain-arr">→</span><span class="chain-node cn-bound">submitSearch()</span><span class="chain-arr">→</span><span class="chain-node cn-ctrl">ShopPublicController.searchShops()</span></div>
+        <div class="col-t">Boundary Functions</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">loadList()</div><div class="md">โหลดหน้า → เรียก ShopPublicController.searchShops() แสดงรายการ</div></div>
+          <div class="mrow"><div class="mn">submitSearch(keyword)</div><div class="md">กดค้นหา → เรียก ShopPublicController.searchShops(keyword, page)</div></div>
+          <div class="mrow"><div class="mn">clickManage(refId)</div><div class="md">กดปุ่มจัดการ → เรียก ShopAdminController.getShopManage() นำทางไป AdminShopManagePage</div></div>
         </div>
       </div>
     </div>
-    <div class="card b-admin"><div class="ch"><div class="ctag">boundary · admin · report</div><div class="ctitle">ReportListPage</div></div><div class="cb"><p class="cdesc">รายการรายงาน แสดง FraudType.name</p><div class="col-t">Controller / Entity</div><div class="rlist"><div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">ReportRequestController.listReports()</span></div><div class="rdesc">GET /admin/reports</div></div><div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">ReportRequest + FraudType</span></div><div class="rdesc">รายการ + getFraudType()</div></div></div></div></div>
-    <div class="card b-admin"><div class="ch"><div class="ctag">boundary · admin · report</div><div class="ctitle">ReportDetailPage</div></div><div class="cb"><p class="cdesc">รายละเอียดรายงาน fraud_type reason ปุ่มดำเนินการ → Blacklist</p><div class="col-t">Controller / Entity</div><div class="rlist"><div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">ReportRequestController.getReportById/processReport</span></div><div class="rdesc">GET + POST process</div></div><div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Blacklist</span></div><div class="rdesc">create(admin_account_id)</div></div></div></div></div>
+
+    <!-- AdminShopManagePage -->
+    <div class="card b-admin">
+      <div class="ch"><div class="ctag">boundary · admin · shop</div><div class="ctitle">AdminShopManagePage</div></div>
+      <div class="cb">
+        <p class="cdesc">UC: จัดการร้านค้า, แก้ไขร้านค้า, ลบร้านค้า, เพิ่ม blacklist</p>
+        <div class="chain"><span class="chain-node cn-actor">แอดมิน</span><span class="chain-arr">→</span><span class="chain-node cn-bound">clickEdit()</span><span class="chain-arr">→</span><span class="chain-node cn-ctrl">ShopAdminController.updateShop()</span></div>
+        <div class="col-t">Boundary Functions</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">loadManagePage(refId)</div><div class="md">โหลดหน้า → เรียก ShopAdminController.getShopManage()</div></div>
+          <div class="mrow"><div class="mn">clickEdit()</div><div class="md">กดแก้ไข → แสดง form พร้อมข้อมูลเดิม</div></div>
+          <div class="mrow"><div class="mn">submitEdit(data)</div><div class="md">กดบันทึก → เรียก ShopAdminController.updateShop()</div></div>
+          <div class="mrow"><div class="mn">clickDelete()</div><div class="md">กดลบ → confirm → เรียก ShopAdminController.deleteShop()</div></div>
+          <div class="mrow"><div class="mn">clickBlacklist()</div><div class="md">กด blacklist → เรียก ShopAdminController.blacklistShop()</div></div>
+          <div class="mrow"><div class="mn">cancelEdit()</div><div class="md">กดยกเลิก → กลับสู่หน้าเดิม (A1 ของ แก้ไขร้านค้า)</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AddShopPage -->
+    <div class="card b-admin">
+      <div class="ch"><div class="ctag">boundary · admin · shop</div><div class="ctitle">AddShopPage</div></div>
+      <div class="cb">
+        <p class="cdesc">UC: เพิ่มร้านค้า — actor คือ แอดมิน</p>
+        <div class="chain"><span class="chain-node cn-actor">แอดมิน</span><span class="chain-arr">→</span><span class="chain-node cn-bound">submitAddShop()</span><span class="chain-arr">→</span><span class="chain-node cn-ctrl">ShopAdminController.createShop()</span></div>
+        <div class="col-t">Boundary Functions</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">clickAddShop()</div><div class="md">กดปุ่มเพิ่มร้านค้า → แสดง form เปล่า</div></div>
+          <div class="mrow"><div class="mn">submitAddShop(data)</div><div class="md">กดยืนยัน → เรียก ShopAdminController.createShop()</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BlacklistListPage -->
+    <div class="card b-admin">
+      <div class="ch"><div class="ctag">boundary · admin · blacklist</div><div class="ctitle">BlacklistListPage</div></div>
+      <div class="cb">
+        <p class="cdesc">UC: ดูรายการ blacklist — actor คือ แอดมิน</p>
+        <div class="chain"><span class="chain-node cn-actor">แอดมิน</span><span class="chain-arr">→</span><span class="chain-node cn-bound">loadList()</span><span class="chain-arr">→</span><span class="chain-node cn-ctrl">ShopPublicController.getBlacklistShops()</span></div>
+        <div class="col-t">Boundary Functions</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">loadList()</div><div class="md">คลิกเมนู → เรียก ShopPublicController.getBlacklistShops() แสดงรายการ</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- UpgradeRequestListPage -->
+    <div class="card b-admin">
+      <div class="ch"><div class="ctag">boundary · admin · upgrade</div><div class="ctitle">UpgradeRequestListPage</div></div>
+      <div class="cb">
+        <p class="cdesc">UC: จัดการคำร้องขอเลื่อนขั้นไปขั้น2</p>
+        <div class="chain"><span class="chain-node cn-actor">แอดมิน</span><span class="chain-arr">→</span><span class="chain-node cn-bound">loadList()</span><span class="chain-arr">→</span><span class="chain-node cn-ctrl">UpgradeRequestController.listUpgradeRequests()</span></div>
+        <div class="col-t">Boundary Functions</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">loadList()</div><div class="md">คลิกเมนู → เรียก UpgradeRequestController.listUpgradeRequests() แสดงรายการ</div></div>
+          <div class="mrow"><div class="mn">clickManage(id)</div><div class="md">กดจัดการ → เรียก UpgradeRequestController.getUpgradeRequestDetail() นำทางไป detail page</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- UpgradeRequestDetailPage -->
+    <div class="card b-admin">
+      <div class="ch"><div class="ctag">boundary · admin · upgrade</div><div class="ctitle">UpgradeRequestDetailPage</div></div>
+      <div class="cb">
+        <p class="cdesc">UC: จัดการคำร้องขอเลื่อนขั้นไปขั้น2 — อนุมัติ/ไม่อนุมัติ</p>
+        <div class="chain"><span class="chain-node cn-actor">แอดมิน</span><span class="chain-arr">→</span><span class="chain-node cn-bound">clickApprove()</span><span class="chain-arr">→</span><span class="chain-node cn-ctrl">UpgradeApprovalController.approveUpgrade()</span></div>
+        <div class="col-t">Boundary Functions</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">loadDetail(id)</div><div class="md">โหลดหน้า → เรียก UpgradeRequestController.getUpgradeRequestDetail() + AttachmentController.getAttachmentsByRequest()</div></div>
+          <div class="mrow"><div class="mn">clickApprove()</div><div class="md">กดอนุมัติ → เรียก UpgradeApprovalController.approveUpgrade()</div></div>
+          <div class="mrow"><div class="mn">clickReject(reason)</div><div class="md">กดไม่อนุมัติ → เรียก UpgradeApprovalController.rejectUpgrade()</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tier3UpgradePage -->
+    <div class="card b-admin">
+      <div class="ch"><div class="ctag">boundary · admin · upgrade</div><div class="ctitle">Tier3UpgradePage</div></div>
+      <div class="cb">
+        <p class="cdesc">UC: จัดการเลื่อนขั้น3 — actor คือ แอดมิน</p>
+        <div class="chain"><span class="chain-node cn-actor">แอดมิน</span><span class="chain-arr">→</span><span class="chain-node cn-bound">clickApproveTier3()</span><span class="chain-arr">→</span><span class="chain-node cn-ctrl">UpgradeApprovalController.approveTier3()</span></div>
+        <div class="col-t">Boundary Functions</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">loadList()</div><div class="md">โหลดหน้า → เรียก UpgradeApprovalController.listTier2Shops() แสดงรายการร้านขั้น2</div></div>
+          <div class="mrow"><div class="mn">clickManage(refId)</div><div class="md">กดจัดการ → แสดง popup รายละเอียดร้าน + ปุ่มยืนยัน</div></div>
+          <div class="mrow"><div class="mn">clickApproveTier3(refId)</div><div class="md">กด "ทดลองสั่งของแล้ว" → เรียก UpgradeApprovalController.approveTier3()</div></div>
+          <div class="mrow"><div class="mn">cancelManage()</div><div class="md">กดยกเลิก → ปิด popup กลับรายการ</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ClaimListPage -->
+    <div class="card b-admin">
+      <div class="ch"><div class="ctag">boundary · admin · claim</div><div class="ctitle">ClaimListPage</div></div>
+      <div class="cb">
+        <p class="cdesc">UC: จัดการคำร้องขอเคลม</p>
+        <div class="chain"><span class="chain-node cn-actor">แอดมิน</span><span class="chain-arr">→</span><span class="chain-node cn-bound">loadList()</span><span class="chain-arr">→</span><span class="chain-node cn-ctrl">ClaimRequestController.listClaims()</span></div>
+        <div class="col-t">Boundary Functions</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">loadList()</div><div class="md">คลิกเมนู → เรียก ClaimRequestController.listClaims()</div></div>
+          <div class="mrow"><div class="mn">clickManage(id)</div><div class="md">กดจัดการ → เรียก ClaimRequestController.getClaimDetail() นำทางไป detail</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ClaimDetailPage -->
+    <div class="card b-admin">
+      <div class="ch"><div class="ctag">boundary · admin · claim</div><div class="ctitle">ClaimDetailPage</div></div>
+      <div class="cb">
+        <p class="cdesc">UC: จัดการคำร้องขอเคลม — ดูเอกสาร ดู Bookbank ติดต่อผู้ใช้ ปิดคำร้อง</p>
+        <div class="chain"><span class="chain-node cn-actor">แอดมิน</span><span class="chain-arr">→</span><span class="chain-node cn-bound">clickClose()</span><span class="chain-arr">→</span><span class="chain-node cn-ctrl">ClaimRequestController.closeClaim()</span></div>
+        <div class="col-t">Boundary Functions</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">loadDetail(id)</div><div class="md">โหลดหน้า → เรียก ClaimRequestController.getClaimDetail() แสดงรายละเอียด + เอกสาร + Bookbank</div></div>
+          <div class="mrow"><div class="mn">clickClose()</div><div class="md">กด "ดำเนินการแล้ว" → เรียก ClaimRequestController.closeClaim()</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ReportListPage -->
+    <div class="card b-admin">
+      <div class="ch"><div class="ctag">boundary · admin · report</div><div class="ctitle">ReportListPage</div></div>
+      <div class="cb">
+        <p class="cdesc">UC: จัดการคำร้องรายงาน</p>
+        <div class="chain"><span class="chain-node cn-actor">แอดมิน</span><span class="chain-arr">→</span><span class="chain-node cn-bound">loadList()</span><span class="chain-arr">→</span><span class="chain-node cn-ctrl">ReportRequestController.listReports()</span></div>
+        <div class="col-t">Boundary Functions</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">loadList()</div><div class="md">คลิกเมนู → เรียก ReportRequestController.listReports()</div></div>
+          <div class="mrow"><div class="mn">clickManage(id)</div><div class="md">กดจัดการ → เรียก ReportRequestController.getReportDetail() นำทางไป detail</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ReportDetailPage -->
+    <div class="card b-admin">
+      <div class="ch"><div class="ctag">boundary · admin · report</div><div class="ctitle">ReportDetailPage</div></div>
+      <div class="cb">
+        <p class="cdesc">UC: จัดการคำร้องรายงาน — ดูเอกสาร ดำเนินการ</p>
+        <div class="chain"><span class="chain-node cn-actor">แอดมิน</span><span class="chain-arr">→</span><span class="chain-node cn-bound">clickProcess()</span><span class="chain-arr">→</span><span class="chain-node cn-ctrl">ReportRequestController.processReport()</span></div>
+        <div class="col-t">Boundary Functions</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">loadDetail(id)</div><div class="md">โหลดหน้า → เรียก ReportRequestController.getReportDetail() + AttachmentController.getAttachmentsByRequest()</div></div>
+          <div class="mrow"><div class="mn">clickProcess()</div><div class="md">กด "ดำเนินการแล้ว" → เรียก ReportRequestController.processReport()</div></div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
-  <div class="grp">Shared components</div>
+  <div class="grp">Shared Components</div>
   <div class="grid">
-    <div class="card b-shared"><div class="ch"><div class="ctag">boundary · shared</div><div class="ctitle">AttachmentUploader</div></div><div class="cb"><p class="cdesc">อัปโหลดไฟล์ใช้ร่วมกันใน form ทุกประเภท</p><div class="col-t">Controller / Entity</div><div class="rlist"><div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">AttachmentController.uploadFile()</span></div><div class="rdesc">POST /attachments/upload</div></div><div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Attachment</span></div><div class="rdesc">upload() FK ที่ถูกต้อง</div></div></div></div></div>
-    <div class="card b-shared"><div class="ch"><div class="ctag">boundary · shared</div><div class="ctitle">AttachmentViewer</div></div><div class="cb"><p class="cdesc">ดาวน์โหลดเอกสารฝั่ง admin log ด้วย admin_account_id</p><div class="col-t">Controller / Entity</div><div class="rlist"><div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">AttachmentController.downloadFile()</span></div><div class="rdesc">GET /attachments/:id/download</div></div><div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Attachment</span></div><div class="rdesc">download() + logDownload(admin_account_id)</div></div></div></div></div>
+
+    <!-- AttachmentUploader -->
+    <div class="card b-shared">
+      <div class="ch"><div class="ctag">boundary · shared</div><div class="ctitle">AttachmentUploader</div></div>
+      <div class="cb">
+        <p class="cdesc">UC: ยื่นเอกสาร — ใช้ร่วมใน UpgradeRequestForm, ClaimRequestForm, ReportRequestForm</p>
+        <div class="chain"><span class="chain-node cn-actor">Actor</span><span class="chain-arr">→</span><span class="chain-node cn-bound">selectFile()</span><span class="chain-arr">→</span><span class="chain-node cn-ctrl">AttachmentController.uploadAttachment()</span></div>
+        <div class="col-t">Boundary Functions</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">selectFile(fieldName)</div><div class="md">คลิกปุ่มอัปโหลดในช่องนั้น → เปิด file picker</div></div>
+          <div class="mrow"><div class="mn">uploadFile(file, requestId, requestType)</div><div class="md">เลือกไฟล์แล้ว → เรียก AttachmentController.uploadAttachment() แสดงชื่อไฟล์</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AttachmentViewer -->
+    <div class="card b-shared">
+      <div class="ch"><div class="ctag">boundary · shared</div><div class="ctitle">AttachmentViewer</div></div>
+      <div class="cb">
+        <p class="cdesc">UC: จัดการคำร้องต่างๆ (แอดมินดูเอกสาร) — ใช้ใน admin detail pages</p>
+        <div class="chain"><span class="chain-node cn-actor">แอดมิน</span><span class="chain-arr">→</span><span class="chain-node cn-bound">clickViewDoc()</span><span class="chain-arr">→</span><span class="chain-node cn-ctrl">AttachmentController.getAttachmentsByRequest()</span></div>
+        <div class="col-t">Boundary Functions</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn">loadAttachments(requestId, requestType)</div><div class="md">โหลดรายการเอกสาร → เรียก AttachmentController.getAttachmentsByRequest()</div></div>
+          <div class="mrow"><div class="mn">clickViewDoc(attachmentId)</div><div class="md">คลิกดูเอกสารหัวข้อนั้น → เปิด/download ไฟล์ตาม file_url</div></div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     CLASS DIAGRAM
-══════════════════════════════════════ -->
+<!-- ══════════════════════════════════════  CLASS DIAGRAM  ══════════════════════════════════════ -->
 <div class="page" id="page-diag">
 <div class="wrap">
   <div class="hero">
     <div class="hbadge hb-d">Class Diagram</div>
     <h1>Class Diagram</h1>
-    <p>อัปเดตตาม schema ใหม่ — เพิ่ม Role, Bookbank / ลบ Admin / แก้ Blacklist + UpgradeApprovalLog ให้ใช้ admin_account_id</p>
+    <p>แสดงความสัมพันธ์ระหว่าง Entity ทั้งหมด ฟังก์ชันในแต่ละ class ตรงกับ Use Cases</p>
   </div>
   <div class="dw">
-<svg width="100%" viewBox="0 0 1620 1200" xmlns="http://www.w3.org/2000/svg" style="min-width:1000px;display:block">
+<svg width="100%" viewBox="0 0 1620 1180" xmlns="http://www.w3.org/2000/svg" style="min-width:1000px;display:block">
 <defs>
   <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
     <path d="M1 1.5L8.5 5L1 8.5" fill="none" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1211,290 +1116,257 @@ nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,.95);backdrop-
   </marker>
 </defs>
 
-<!-- ── Role (top-left) ── -->
-<rect x="32" y="16" width="210" height="126" rx="8" fill="#fff" stroke="#e2e8f0"/>
+<!-- Role -->
+<rect x="32" y="16" width="210" height="110" rx="8" fill="#fff" stroke="#e2e8f0"/>
 <rect x="32" y="16" width="210" height="30" rx="8" fill="#ede9fe"/>
 <rect x="32" y="38" width="210" height="8" fill="#ede9fe"/>
 <text x="137" y="34" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="12" fill="#5b21b6">Role</text>
 <text x="44" y="50" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">table: roles</text>
 <line x1="32" y1="55" x2="242" y2="55" stroke="#e2e8f0"/>
-<text x="44" y="68" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+INT id PK AUTO_INC=5</text>
-<text x="44" y="80" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR(50) name NN</text>
-<text x="44" y="92" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+TEXT description</text>
-<line x1="32" y1="98" x2="242" y2="98" stroke="#f1f5f9"/>
-<text x="44" y="110" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+getAll() · getById()</text>
-<text x="44" y="136" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">ON DELETE RESTRICT</text>
+<text x="44" y="68" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+INT id PK</text>
+<text x="44" y="81" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR(50) name NN</text>
+<line x1="32" y1="88" x2="242" y2="88" stroke="#f1f5f9"/>
+<text x="44" y="100" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+findById(id)</text>
+<text x="44" y="120" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">ON DELETE RESTRICT</text>
 
-<!-- ── Bookbank (top-center-left) ── -->
-<rect x="268" y="16" width="256" height="150" rx="8" fill="#fff" stroke="#e2e8f0"/>
-<rect x="268" y="16" width="256" height="30" rx="8" fill="#cffafe"/>
-<rect x="268" y="38" width="256" height="8" fill="#cffafe"/>
-<text x="396" y="34" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="12" fill="#0e7490">Bookbank</text>
+<!-- Bookbank -->
+<rect x="268" y="16" width="248" height="142" rx="8" fill="#fff" stroke="#e2e8f0"/>
+<rect x="268" y="16" width="248" height="30" rx="8" fill="#cffafe"/>
+<rect x="268" y="38" width="248" height="8" fill="#cffafe"/>
+<text x="392" y="34" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="12" fill="#0e7490">Bookbank</text>
 <text x="280" y="50" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">table: bookbanks</text>
-<line x1="268" y1="55" x2="524" y2="55" stroke="#e2e8f0"/>
-<text x="280" y="68" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+INT id PK AUTO_INC</text>
-<text x="280" y="80" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR(50) bank_name NN</text>
-<text x="280" y="92" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR(10) bank_branch_code</text>
-<text x="280" y="104" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR bank_account_holder_name NN</text>
-<text x="280" y="116" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR(20) bank_account_number NN</text>
-<text x="280" y="128" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+TEXT bank_image_url</text>
-<line x1="268" y1="134" x2="524" y2="134" stroke="#f1f5f9"/>
-<text x="280" y="146" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#0e7490">+create() · update() · delete() · getByAccount()</text>
+<line x1="268" y1="55" x2="516" y2="55" stroke="#e2e8f0"/>
+<text x="280" y="68" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+INT id PK</text>
+<text x="280" y="81" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR(50) bank_name NN</text>
+<text x="280" y="94" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR bank_account_holder_name NN</text>
+<text x="280" y="107" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR(20) bank_account_number NN</text>
+<line x1="268" y1="114" x2="516" y2="114" stroke="#f1f5f9"/>
+<text x="280" y="127" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#0e7490">+findByAccountId(accountId)</text>
+<text x="280" y="152" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">Account.bookbank_id SET NULL</text>
 
-<!-- ── Account (top-center) ── -->
-<rect x="550" y="16" width="308" height="280" rx="8" fill="#fff" stroke="#e2e8f0"/>
-<rect x="550" y="16" width="308" height="30" rx="8" fill="#dbeafe"/>
-<rect x="550" y="38" width="308" height="8" fill="#dbeafe"/>
-<text x="704" y="34" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="12" fill="#1e40af">Account</text>
-<text x="562" y="50" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">table: accounts (รวม user+admin ด้วย role_id)</text>
-<line x1="550" y1="55" x2="858" y2="55" stroke="#e2e8f0"/>
-<text x="562" y="68" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR(24) id PK</text>
-<text x="562" y="81" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+INT role_id FK → roles NN</text>
-<text x="562" y="94" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+INT bookbank_id FK → bookbanks (SET NULL)</text>
-<text x="562" y="107" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR email UNIQUE NN</text>
-<text x="562" y="120" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR google_id UNIQUE</text>
-<text x="562" y="133" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+TINYINT is_email_verified</text>
-<text x="562" y="146" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR display_name</text>
-<text x="562" y="159" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+TEXT avatar_url</text>
-<text x="562" y="172" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR(20) phone_number</text>
-<text x="562" y="185" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+TINYINT is_company, is_active</text>
-<text x="562" y="198" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+DATETIME last_login</text>
-<line x1="550" y1="205" x2="858" y2="205" stroke="#f1f5f9"/>
-<text x="562" y="218" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#2563eb">+login() · logout() · isAdmin()</text>
-<text x="562" y="231" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#2563eb">+updateProfile() · linkBookbank()</text>
-<text x="562" y="244" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#2563eb">+getOwnedShop() : Shop</text>
-<text x="562" y="257" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#2563eb">+getUpgrade/Claim/ReportRequests()</text>
-<text x="562" y="270" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#2563eb">+getActivityLogs()</text>
+<!-- Account -->
+<rect x="542" y="16" width="300" height="248" rx="8" fill="#fff" stroke="#e2e8f0"/>
+<rect x="542" y="16" width="300" height="30" rx="8" fill="#dbeafe"/>
+<rect x="542" y="38" width="300" height="8" fill="#dbeafe"/>
+<text x="692" y="34" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="12" fill="#1e40af">Account</text>
+<text x="554" y="50" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">table: accounts (รวม user+admin)</text>
+<line x1="542" y1="55" x2="842" y2="55" stroke="#e2e8f0"/>
+<text x="554" y="68" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR(24) id PK</text>
+<text x="554" y="81" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+INT role_id FK → roles NN</text>
+<text x="554" y="94" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+INT bookbank_id FK → bookbanks (SET NULL)</text>
+<text x="554" y="107" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR email UNIQUE NN</text>
+<text x="554" y="120" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR display_name</text>
+<text x="554" y="133" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+TINYINT is_company, is_active</text>
+<text x="554" y="146" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+DATETIME last_login</text>
+<line x1="542" y1="153" x2="842" y2="153" stroke="#f1f5f9"/>
+<text x="554" y="166" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#2563eb">+save(googleToken)</text>
+<text x="554" y="179" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#2563eb">+findByGoogleToken(token)</text>
+<text x="554" y="192" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#2563eb">+getProfile()</text>
+<text x="554" y="205" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#2563eb">+hasOwnedShop()</text>
+<text x="554" y="218" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#2563eb">+isAdmin()</text>
 
-<!-- ── FraudType ── -->
-<rect x="1060" y="16" width="230" height="142" rx="8" fill="#fff" stroke="#e2e8f0"/>
-<rect x="1060" y="16" width="230" height="30" rx="8" fill="#fce7f3"/>
-<rect x="1060" y="38" width="230" height="8" fill="#fce7f3"/>
-<text x="1175" y="34" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="12" fill="#9d174d">FraudType</text>
-<text x="1072" y="50" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">table: fraud_types</text>
-<line x1="1060" y1="55" x2="1290" y2="55" stroke="#e2e8f0"/>
-<text x="1072" y="68" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+INT id PK AUTO_INC</text>
-<text x="1072" y="81" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR(100) name NN</text>
-<text x="1072" y="94" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+TEXT description</text>
-<text x="1072" y="107" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+TINYINT is_active default 1</text>
-<line x1="1060" y1="114" x2="1290" y2="114" stroke="#f1f5f9"/>
-<text x="1072" y="127" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#db2777">+getAll() · create() · deactivate()</text>
-<text x="1072" y="152" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">ON DELETE RESTRICT</text>
+<!-- FraudType -->
+<rect x="1050" y="16" width="228" height="122" rx="8" fill="#fff" stroke="#e2e8f0"/>
+<rect x="1050" y="16" width="228" height="30" rx="8" fill="#fce7f3"/>
+<rect x="1050" y="38" width="228" height="8" fill="#fce7f3"/>
+<text x="1164" y="34" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="12" fill="#9d174d">FraudType</text>
+<text x="1062" y="50" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">table: fraud_types</text>
+<line x1="1050" y1="55" x2="1278" y2="55" stroke="#e2e8f0"/>
+<text x="1062" y="68" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+INT id PK</text>
+<text x="1062" y="81" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR(100) name NN</text>
+<text x="1062" y="94" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+TINYINT is_active default 1</text>
+<line x1="1050" y1="101" x2="1278" y2="101" stroke="#f1f5f9"/>
+<text x="1062" y="114" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#db2777">+findAllActive()</text>
 
-<!-- ── Shop ── -->
-<rect x="500" y="370" width="305" height="308" rx="8" fill="#fff" stroke="#e2e8f0"/>
-<rect x="500" y="370" width="305" height="30" rx="8" fill="#d1fae5"/>
-<rect x="500" y="392" width="305" height="8" fill="#d1fae5"/>
-<text x="652" y="388" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="12" fill="#065f46">Shop</text>
-<text x="512" y="404" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">table: shops</text>
-<line x1="500" y1="409" x2="805" y2="409" stroke="#e2e8f0"/>
-<text x="512" y="422" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR(50) ref_id PK</text>
-<text x="512" y="435" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR(255) name NN</text>
-<text x="512" y="448" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR(50) channel</text>
-<text x="512" y="461" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+VARCHAR(24) owner_account_id FK</text>
-<text x="512" y="474" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+TEXT url</text>
-<text x="512" y="487" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR(20) shop_status 'NORMAL'</text>
-<text x="512" y="500" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+TINYINT is_active default 1</text>
-<text x="512" y="513" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+INT failed_upgrade_count default 0</text>
-<text x="512" y="526" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+TINYINT is_blacklist</text>
-<text x="512" y="539" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+DATETIME created_at / updated_at</text>
-<line x1="500" y1="546" x2="805" y2="546" stroke="#f1f5f9"/>
-<text x="512" y="559" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#059669">+create() · update() · delete() · search()</text>
-<text x="512" y="572" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#059669">+getDetail() · setBlacklist(adminAccountId)</text>
-<text x="512" y="585" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#059669">+upgradeToTier(level)</text>
-<text x="512" y="598" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#059669">+getBlacklistHistory() · getUpgradeRequests()</text>
-<text x="512" y="668" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">ON DELETE CASCADE ← accounts</text>
+<!-- Shop -->
+<rect x="490" y="360" width="310" height="280" rx="8" fill="#fff" stroke="#e2e8f0"/>
+<rect x="490" y="360" width="310" height="30" rx="8" fill="#d1fae5"/>
+<rect x="490" y="382" width="310" height="8" fill="#d1fae5"/>
+<text x="645" y="378" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="12" fill="#065f46">Shop</text>
+<text x="502" y="394" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">table: shops</text>
+<line x1="490" y1="399" x2="800" y2="399" stroke="#e2e8f0"/>
+<text x="502" y="412" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR(50) ref_id PK</text>
+<text x="502" y="425" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR(255) name NN</text>
+<text x="502" y="438" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR(50) channel</text>
+<text x="502" y="451" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+VARCHAR(24) owner_account_id FK</text>
+<text x="502" y="464" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR(20) shop_status 'NORMAL'</text>
+<text x="502" y="477" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+TINYINT is_active, is_blacklist</text>
+<text x="502" y="490" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+INT failed_upgrade_count default 0</text>
+<line x1="490" y1="498" x2="800" y2="498" stroke="#f1f5f9"/>
+<text x="502" y="511" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#059669">+save(data) · update(data) · softDelete()</text>
+<text x="502" y="524" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#059669">+findByKeyword(keyword,page)</text>
+<text x="502" y="537" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#059669">+findByRefId(refId) · findByOwner(accountId)</text>
+<text x="502" y="550" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#059669">+setBlacklist() · upgradeTier(level)</text>
+<text x="502" y="563" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#059669">+findAllTier2(page) · incrementFailedUpgrade()</text>
+<text x="502" y="576" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#059669">+findBlacklistStatus(refId)</text>
 
-<!-- ── UpgradeRequest ── -->
-<rect x="910" y="370" width="285" height="232" rx="8" fill="#fff" stroke="#e2e8f0"/>
-<rect x="910" y="370" width="285" height="30" rx="8" fill="#fef3c7"/>
-<rect x="910" y="392" width="285" height="8" fill="#fef3c7"/>
-<text x="1052" y="388" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="12" fill="#92400e">UpgradeRequest</text>
-<text x="922" y="404" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">table: upgrade_requests</text>
-<line x1="910" y1="409" x2="1195" y2="409" stroke="#e2e8f0"/>
-<text x="922" y="422" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+INT id PK AUTO_INC</text>
-<text x="922" y="435" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+VARCHAR(24) account_id FK → accounts</text>
-<text x="922" y="448" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+VARCHAR(50) shop_ref_id FK → shops</text>
-<text x="922" y="461" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR(20) status 'pending'</text>
-<text x="922" y="474" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+TEXT admin_remark</text>
-<text x="922" y="487" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+DATETIME created_at / updated_at</text>
-<line x1="910" y1="494" x2="1195" y2="494" stroke="#f1f5f9"/>
-<text x="922" y="507" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#d97706">+submit() · approve(adminAccountId)</text>
-<text x="922" y="520" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#d97706">+reject(adminAccountId,reason)</text>
-<text x="922" y="533" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#d97706">+getAttachments() · getApprovalLogs()</text>
-<text x="922" y="595" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">ON DELETE CASCADE ← accounts, shops</text>
+<!-- UpgradeRequest -->
+<rect x="870" y="360" width="288" height="230" rx="8" fill="#fff" stroke="#e2e8f0"/>
+<rect x="870" y="360" width="288" height="30" rx="8" fill="#fef3c7"/>
+<rect x="870" y="382" width="288" height="8" fill="#fef3c7"/>
+<text x="1014" y="378" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="12" fill="#92400e">UpgradeRequest</text>
+<text x="882" y="394" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">table: upgrade_requests</text>
+<line x1="870" y1="399" x2="1158" y2="399" stroke="#e2e8f0"/>
+<text x="882" y="412" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+INT id PK</text>
+<text x="882" y="425" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+VARCHAR(24) account_id FK</text>
+<text x="882" y="438" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+VARCHAR(50) shop_ref_id FK</text>
+<text x="882" y="451" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR(20) status 'pending'</text>
+<text x="882" y="464" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+TEXT admin_remark</text>
+<line x1="870" y1="472" x2="1158" y2="472" stroke="#f1f5f9"/>
+<text x="882" y="485" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#d97706">+save(accountId, shopRefId)</text>
+<text x="882" y="498" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#d97706">+findAllPending(page) · findById(id)</text>
+<text x="882" y="511" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#d97706">+approve() · reject(reason)</text>
+<text x="882" y="524" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#d97706">+countFailedThisMonth(shopRefId)</text>
+<text x="882" y="537" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#d97706">+findByShop(shopRefId)</text>
 
-<!-- ── Blacklist ── -->
-<rect x="60" y="550" width="302" height="164" rx="8" fill="#fff" stroke="#e2e8f0"/>
-<rect x="60" y="550" width="302" height="30" rx="8" fill="#fee2e2"/>
-<rect x="60" y="572" width="302" height="8" fill="#fee2e2"/>
-<text x="211" y="568" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="12" fill="#991b1b">Blacklist</text>
-<text x="72" y="584" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">table: blacklists (admin_account_id)</text>
-<line x1="60" y1="589" x2="362" y2="589" stroke="#e2e8f0"/>
-<text x="72" y="602" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+INT id PK AUTO_INC</text>
-<text x="72" y="615" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+VARCHAR(50) shop_ref_id FK NN</text>
-<text x="72" y="628" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+VARCHAR(24) admin_account_id FK NN</text>
-<text x="72" y="641" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+INT report_request_id FK (SET NULL)</text>
-<text x="72" y="654" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+TEXT reason NN</text>
-<text x="72" y="667" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+DATETIME created_at</text>
-<line x1="60" y1="674" x2="362" y2="674" stroke="#f1f5f9"/>
-<text x="72" y="687" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#9f1239">+create(shopId,adminAccountId,reason)</text>
-<text x="72" y="700" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#9f1239">+getHistory(shopId)</text>
+<!-- Blacklist -->
+<rect x="50" y="540" width="298" height="162" rx="8" fill="#fff" stroke="#e2e8f0"/>
+<rect x="50" y="540" width="298" height="30" rx="8" fill="#fee2e2"/>
+<rect x="50" y="562" width="298" height="8" fill="#fee2e2"/>
+<text x="199" y="558" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="12" fill="#991b1b">Blacklist</text>
+<text x="62" y="574" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">table: blacklists</text>
+<line x1="50" y1="579" x2="348" y2="579" stroke="#e2e8f0"/>
+<text x="62" y="592" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+INT id PK</text>
+<text x="62" y="605" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+VARCHAR(50) shop_ref_id FK NN</text>
+<text x="62" y="618" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+VARCHAR(24) admin_account_id FK NN</text>
+<text x="62" y="631" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+INT report_request_id FK (SET NULL)</text>
+<text x="62" y="644" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+TEXT reason NN</text>
+<line x1="50" y1="651" x2="348" y2="651" stroke="#f1f5f9"/>
+<text x="62" y="664" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#9f1239">+save(shopRefId, adminAccountId, reason)</text>
+<text x="62" y="677" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#9f1239">+findAll(page)</text>
+<text x="62" y="695" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">ON DELETE RESTRICT (admin_account_id)</text>
 
-<!-- ── ReportRequest ── -->
-<rect x="60" y="800" width="308" height="250" rx="8" fill="#fff" stroke="#e2e8f0"/>
-<rect x="60" y="800" width="308" height="30" rx="8" fill="#fee2e2"/>
-<rect x="60" y="822" width="308" height="8" fill="#fee2e2"/>
-<text x="214" y="818" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="12" fill="#991b1b">ReportRequest</text>
-<text x="72" y="834" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">table: report_requests</text>
-<line x1="60" y1="839" x2="368" y2="839" stroke="#e2e8f0"/>
-<text x="72" y="852" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+INT id PK AUTO_INC</text>
-<text x="72" y="865" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+VARCHAR(24) reporter_account_id FK</text>
-<text x="72" y="878" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+VARCHAR(50) reported_shop_ref_id FK</text>
-<text x="72" y="891" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#db2777">+INT fraud_type_id FK NOT NULL</text>
-<text x="72" y="904" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+TEXT reason NOT NULL</text>
-<text x="72" y="917" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR(20) status 'pending'</text>
-<text x="72" y="930" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+DATETIME created_at / updated_at</text>
-<line x1="60" y1="937" x2="368" y2="937" stroke="#f1f5f9"/>
-<text x="72" y="950" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#dc2626">+submit(shopId,data)</text>
-<text x="72" y="963" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#dc2626">+process(adminAccountId)</text>
-<text x="72" y="976" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#dc2626">+getAttachments() · getFraudType()</text>
-<text x="72" y="1040" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">ON DELETE CASCADE ← accounts, shops</text>
+<!-- ReportRequest -->
+<rect x="50" y="780" width="305" height="218" rx="8" fill="#fff" stroke="#e2e8f0"/>
+<rect x="50" y="780" width="305" height="30" rx="8" fill="#fee2e2"/>
+<rect x="50" y="802" width="305" height="8" fill="#fee2e2"/>
+<text x="202" y="798" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="12" fill="#991b1b">ReportRequest</text>
+<text x="62" y="814" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">table: report_requests</text>
+<line x1="50" y1="819" x2="355" y2="819" stroke="#e2e8f0"/>
+<text x="62" y="832" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+INT id PK</text>
+<text x="62" y="845" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+VARCHAR(24) reporter_account_id FK</text>
+<text x="62" y="858" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+VARCHAR(50) reported_shop_ref_id FK</text>
+<text x="62" y="871" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#db2777">+INT fraud_type_id FK NOT NULL</text>
+<text x="62" y="884" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+TEXT reason NN</text>
+<text x="62" y="897" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR(20) status 'pending'</text>
+<line x1="50" y1="905" x2="355" y2="905" stroke="#f1f5f9"/>
+<text x="62" y="918" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#dc2626">+save(reporterAccountId, shopRefId, data)</text>
+<text x="62" y="931" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#dc2626">+findAll(page) · findById(id) · markDone()</text>
 
-<!-- ── ClaimRequest ── -->
-<rect x="500" y="800" width="285" height="215" rx="8" fill="#fff" stroke="#e2e8f0"/>
-<rect x="500" y="800" width="285" height="30" rx="8" fill="#fef9c3"/>
-<rect x="500" y="822" width="285" height="8" fill="#fef9c3"/>
-<text x="642" y="818" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="12" fill="#713f12">ClaimRequest</text>
-<text x="512" y="834" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">table: claim_requests</text>
-<line x1="500" y1="839" x2="785" y2="839" stroke="#e2e8f0"/>
-<text x="512" y="852" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+INT id PK AUTO_INC</text>
-<text x="512" y="865" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+VARCHAR(24) claimer_account_id FK</text>
-<text x="512" y="878" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+VARCHAR(50) shop_ref_id FK</text>
-<text x="512" y="891" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR(255) contact_info</text>
-<text x="512" y="904" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR(20) status 'pending'</text>
-<text x="512" y="917" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+DATETIME created_at / updated_at</text>
-<line x1="500" y1="924" x2="785" y2="924" stroke="#f1f5f9"/>
-<text x="512" y="937" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#a16207">+submit(shopId,data)</text>
-<text x="512" y="950" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#a16207">+close(adminAccountId) · getAttachments()</text>
+<!-- ClaimRequest -->
+<rect x="490" y="780" width="284" height="200" rx="8" fill="#fff" stroke="#e2e8f0"/>
+<rect x="490" y="780" width="284" height="30" rx="8" fill="#fef9c3"/>
+<rect x="490" y="802" width="284" height="8" fill="#fef9c3"/>
+<text x="632" y="798" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="12" fill="#713f12">ClaimRequest</text>
+<text x="502" y="814" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">table: claim_requests</text>
+<line x1="490" y1="819" x2="774" y2="819" stroke="#e2e8f0"/>
+<text x="502" y="832" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+INT id PK</text>
+<text x="502" y="845" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+VARCHAR(24) claimer_account_id FK</text>
+<text x="502" y="858" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+VARCHAR(50) shop_ref_id FK</text>
+<text x="502" y="871" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+TEXT contact_info</text>
+<text x="502" y="884" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR(20) status 'pending'</text>
+<line x1="490" y1="892" x2="774" y2="892" stroke="#f1f5f9"/>
+<text x="502" y="905" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#a16207">+save(claimerAccountId, shopRefId, data)</text>
+<text x="502" y="918" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#a16207">+findAll(page) · findById(id) · close()</text>
 
-<!-- ── Attachment ── -->
-<rect x="820" y="800" width="285" height="200" rx="8" fill="#fff" stroke="#e2e8f0"/>
-<rect x="820" y="800" width="285" height="30" rx="8" fill="#e0f2fe"/>
-<rect x="820" y="822" width="285" height="8" fill="#e0f2fe"/>
-<text x="962" y="818" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="12" fill="#0c4a6e">Attachment</text>
-<text x="832" y="834" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">table: attachments</text>
-<line x1="820" y1="839" x2="1105" y2="839" stroke="#e2e8f0"/>
-<text x="832" y="852" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+INT id PK AUTO_INC</text>
-<text x="832" y="865" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+INT upgrade_request_id FK nullable</text>
-<text x="832" y="878" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+INT report_request_id FK nullable</text>
-<text x="832" y="891" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+INT claim_request_id FK nullable</text>
-<text x="832" y="904" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+TEXT file_url NOT NULL</text>
-<text x="832" y="917" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+DATETIME created_at</text>
-<line x1="820" y1="924" x2="1105" y2="924" stroke="#f1f5f9"/>
-<text x="832" y="937" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#0284c7">+upload() · download(adminAccountId)</text>
-<text x="832" y="950" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#0284c7">+logDownload(adminAccountId) · delete()</text>
+<!-- Attachment -->
+<rect x="820" y="780" width="280" height="188" rx="8" fill="#fff" stroke="#e2e8f0"/>
+<rect x="820" y="780" width="280" height="30" rx="8" fill="#e0f2fe"/>
+<rect x="820" y="802" width="280" height="8" fill="#e0f2fe"/>
+<text x="960" y="798" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="12" fill="#0c4a6e">Attachment</text>
+<text x="832" y="814" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">table: attachments</text>
+<line x1="820" y1="819" x2="1100" y2="819" stroke="#e2e8f0"/>
+<text x="832" y="832" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+INT id PK</text>
+<text x="832" y="845" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+INT upgrade_request_id FK nullable</text>
+<text x="832" y="858" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+INT report_request_id FK nullable</text>
+<text x="832" y="871" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+INT claim_request_id FK nullable</text>
+<text x="832" y="884" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+TEXT file_url NN</text>
+<line x1="820" y1="892" x2="1100" y2="892" stroke="#f1f5f9"/>
+<text x="832" y="905" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#0284c7">+save(fileUrl, requestId, requestType)</text>
+<text x="832" y="918" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#0284c7">+findByRequestId(requestId, requestType)</text>
 
-<!-- ── UpgradeApprovalLog ── -->
-<rect x="1140" y="800" width="320" height="232" rx="8" fill="#fff" stroke="#e2e8f0"/>
-<rect x="1140" y="800" width="320" height="30" rx="8" fill="#ede9fe"/>
-<rect x="1140" y="822" width="320" height="8" fill="#ede9fe"/>
-<text x="1300" y="818" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="12" fill="#5b21b6">UpgradeApprovalLog</text>
-<text x="1152" y="834" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">table: upgrade_approval_logs (admin_account_id)</text>
-<line x1="1140" y1="839" x2="1460" y2="839" stroke="#e2e8f0"/>
-<text x="1152" y="852" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+INT id PK AUTO_INC</text>
-<text x="1152" y="865" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+INT upgrade_request_id FK nullable</text>
-<text x="1152" y="878" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+VARCHAR(50) shop_ref_id FK NN</text>
-<text x="1152" y="891" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+VARCHAR(24) admin_account_id FK NN</text>
-<text x="1152" y="904" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR(20) action NN</text>
-<text x="1152" y="917" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+TEXT reason</text>
-<text x="1152" y="930" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+DATETIME processed_at</text>
-<line x1="1140" y1="937" x2="1460" y2="937" stroke="#f1f5f9"/>
-<text x="1152" y="950" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+create(reqId,adminAccountId,action)</text>
-<text x="1152" y="963" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+getByAdmin(adminAccountId)</text>
-<text x="1152" y="976" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+getByShop() · getByRequest()</text>
+<!-- UpgradeApprovalLog -->
+<rect x="1140" y="780" width="320" height="200" rx="8" fill="#fff" stroke="#e2e8f0"/>
+<rect x="1140" y="780" width="320" height="30" rx="8" fill="#ede9fe"/>
+<rect x="1140" y="802" width="320" height="8" fill="#ede9fe"/>
+<text x="1300" y="798" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="12" fill="#5b21b6">UpgradeApprovalLog</text>
+<text x="1152" y="814" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">table: upgrade_approval_logs</text>
+<line x1="1140" y1="819" x2="1460" y2="819" stroke="#e2e8f0"/>
+<text x="1152" y="832" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+INT id PK</text>
+<text x="1152" y="845" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+INT upgrade_request_id FK nullable</text>
+<text x="1152" y="858" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+VARCHAR(50) shop_ref_id FK NN</text>
+<text x="1152" y="871" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+VARCHAR(24) admin_account_id FK NN</text>
+<text x="1152" y="884" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+VARCHAR(20) action NN</text>
+<text x="1152" y="897" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#64748b">+TEXT reason</text>
+<line x1="1140" y1="905" x2="1460" y2="905" stroke="#f1f5f9"/>
+<text x="1152" y="918" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">+save(upgradeRequestId, shopRefId,</text>
+<text x="1152" y="931" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#7c3aed">       adminAccountId, action, reason)</text>
 
 <!-- ═══ RELATIONSHIPS ═══ -->
-<!-- Role → Account (1→*) -->
-<line x1="242" y1="79" x2="550" y2="100" stroke="#7c3aed" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#ar)"/>
-<text x="370" y="82" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#7c3aed">role 1→*</text>
-
-<!-- Bookbank → Account (1→0..*) SET NULL -->
-<line x1="524" y1="90" x2="550" y2="90" stroke="#0e7490" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#ar)"/>
-<text x="530" y="84" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#0e7490">bookbank</text>
-
-<!-- Account → Shop owns 1→* -->
-<line x1="704" y1="296" x2="652" y2="370" stroke="#94a3b8" stroke-width="1" marker-end="url(#ar)"/>
-<text x="710" y="336" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">owns 1→*</text>
-
-<!-- Account → UpgradeRequest dashed -->
-<path d="M858 160 Q900 160 910 430" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#ar)"/>
-<text x="888" y="290" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">requests *</text>
-
-<!-- Account → ClaimRequest dashed -->
-<path d="M704 296 Q704 650 642 800" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#ar)"/>
-<text x="712" y="580" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">claims *</text>
-
-<!-- Account → ReportRequest dashed -->
-<path d="M550 170 Q300 200 214 800" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#ar)"/>
-<text x="316" y="490" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">reports *</text>
-
-<!-- Account → Blacklist (admin_account_id) dashed -->
-<path d="M550 230 Q350 340 362 588" fill="none" stroke="#9f1239" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#ar)"/>
-<text x="390" y="410" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#9f1239">admin *</text>
-
-<!-- Account → UpgradeApprovalLog (admin_account_id) dashed -->
-<path d="M858 240 Q1300 340 1300 800" fill="none" stroke="#7c3aed" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#ar)"/>
-<text x="1090" y="480" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#7c3aed">admin *</text>
-
-<!-- Shop → UpgradeRequest has -->
-<line x1="805" y1="500" x2="910" y2="500" stroke="#64748b" stroke-width="1" marker-end="url(#ar)"/>
-<text x="830" y="493" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">has *</text>
-
-<!-- Shop → ClaimRequest receives -->
-<line x1="652" y1="678" x2="642" y2="800" stroke="#64748b" stroke-width="1" marker-end="url(#ar)"/>
-<text x="660" y="742" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">receives *</text>
-
-<!-- Shop → ReportRequest subject of -->
-<path d="M500 530 Q300 620 368 800" fill="none" stroke="#64748b" stroke-width="1" marker-end="url(#ar)"/>
-<text x="358" y="700" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">subject *</text>
-
-<!-- Shop → Blacklist listed in -->
-<path d="M500 510 Q380 520 362 588" fill="none" stroke="#64748b" stroke-width="1" marker-end="url(#ar)"/>
-<text x="386" y="546" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">listed in *</text>
-
-<!-- FraudType → ReportRequest used in (pink) -->
-<path d="M1175 158 Q1175 600 368 828" fill="none" stroke="#db2777" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#arpk)"/>
-<text x="900" y="496" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#db2777">used in *</text>
-
-<!-- UpgradeRequest → UpgradeApprovalLog logged in -->
-<path d="M1052 602 Q1200 700 1300 800" fill="none" stroke="#d97706" stroke-width="1" marker-end="url(#aror)"/>
-<text x="1128" y="712" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#d97706">logged in</text>
-
+<!-- Role → Account -->
+<line x1="242" y1="75" x2="542" y2="90" stroke="#7c3aed" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#ar)"/>
+<text x="360" y="72" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#7c3aed">role 1→*</text>
+<!-- Bookbank → Account -->
+<line x1="516" y1="88" x2="542" y2="88" stroke="#0e7490" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#ar)"/>
+<text x="520" y="83" font-family="IBM Plex Mono,monospace" font-size="8" fill="#0e7490">0..1</text>
+<!-- Account → Shop -->
+<line x1="692" y1="264" x2="645" y2="360" stroke="#94a3b8" stroke-width="1" marker-end="url(#ar)"/>
+<text x="698" y="316" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">owns 1→*</text>
+<!-- Account → UpgradeRequest -->
+<path d="M842 150 Q900 150 1014 360" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#ar)"/>
+<text x="890" y="255" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">requests *</text>
+<!-- Account → ClaimRequest -->
+<path d="M692 264 Q692 600 632 780" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#ar)"/>
+<text x="700" y="550" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">claims *</text>
+<!-- Account → ReportRequest -->
+<path d="M542 170 Q280 200 202 780" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#ar)"/>
+<text x="290" y="480" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">reports *</text>
+<!-- Account → Blacklist (admin) -->
+<path d="M542 220 Q340 320 348 578" fill="none" stroke="#9f1239" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#ar)"/>
+<text x="370" y="400" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#9f1239">admin→BL *</text>
+<!-- Account → UpgradeApprovalLog (admin) -->
+<path d="M842 230 Q1300 320 1300 780" fill="none" stroke="#7c3aed" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#ar)"/>
+<text x="1090" y="470" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#7c3aed">admin→Log *</text>
+<!-- Shop → UpgradeRequest -->
+<line x1="800" y1="490" x2="870" y2="490" stroke="#64748b" stroke-width="1" marker-end="url(#ar)"/>
+<text x="810" y="483" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">has *</text>
+<!-- Shop → ClaimRequest -->
+<line x1="645" y1="640" x2="632" y2="780" stroke="#64748b" stroke-width="1" marker-end="url(#ar)"/>
+<text x="652" y="712" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">receives *</text>
+<!-- Shop → ReportRequest -->
+<path d="M490 510 Q290 580 355 780" fill="none" stroke="#64748b" stroke-width="1" marker-end="url(#ar)"/>
+<text x="340" y="680" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">reported *</text>
+<!-- Shop → Blacklist -->
+<path d="M490 490 Q380 510 348 578" fill="none" stroke="#64748b" stroke-width="1" marker-end="url(#ar)"/>
+<text x="385" y="528" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#94a3b8">listed *</text>
+<!-- FraudType → ReportRequest -->
+<path d="M1164 138 Q1164 600 355 858" fill="none" stroke="#db2777" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#arpk)"/>
+<text x="890" y="490" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#db2777">type *</text>
+<!-- UpgradeRequest → UpgradeApprovalLog -->
+<path d="M1014 590 Q1200 680 1300 780" fill="none" stroke="#d97706" stroke-width="1" marker-end="url(#aror)"/>
+<text x="1130" y="700" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#d97706">logged *</text>
 <!-- UpgradeRequest → Attachment -->
-<path d="M1052 602 Q1030 720 962 800" fill="none" stroke="#d97706" stroke-width="1" marker-end="url(#aror)"/>
-
+<path d="M1014 590 Q1000 700 960 780" fill="none" stroke="#d97706" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#aror)"/>
 <!-- ClaimRequest → Attachment -->
-<line x1="785" y1="880" x2="820" y2="880" stroke="#64748b" stroke-width="1" marker-end="url(#ar)"/>
-
+<line x1="774" y1="860" x2="820" y2="860" stroke="#64748b" stroke-width="1" marker-end="url(#ar)"/>
 <!-- ReportRequest → Attachment -->
-<line x1="368" y1="912" x2="820" y2="912" stroke="#64748b" stroke-width="1" marker-end="url(#ar)"/>
-
+<line x1="355" y1="895" x2="820" y2="895" stroke="#64748b" stroke-width="1" marker-end="url(#ar)"/>
 <!-- ReportRequest → Blacklist triggers 0..1 -->
-<path d="M214 800 Q214 740 211 714" fill="none" stroke="#dc2626" stroke-width="1" marker-end="url(#ar)"/>
-<text x="220" y="760" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#dc2626">triggers 0..1</text>
+<path d="M202 780 Q202 720 199 702" fill="none" stroke="#dc2626" stroke-width="1" marker-end="url(#ar)"/>
+<text x="208" y="742" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#dc2626">triggers 0..1</text>
 </svg>
   </div>
   <div class="leg">
-    <div class="li"><div class="ld" style="background:#ede9fe;border:1px solid #ddd6fe"></div>Role (ใหม่)</div>
-    <div class="li"><div class="ld" style="background:#cffafe;border:1px solid #a5f3fc"></div>Bookbank (ใหม่)</div>
-    <div class="li"><div class="ld" style="background:#dbeafe;border:1px solid #bfdbfe"></div>Account (รวม admin)</div>
+    <div class="li"><div class="ld" style="background:#ede9fe;border:1px solid #ddd6fe"></div>Role</div>
+    <div class="li"><div class="ld" style="background:#cffafe;border:1px solid #a5f3fc"></div>Bookbank</div>
+    <div class="li"><div class="ld" style="background:#dbeafe;border:1px solid #bfdbfe"></div>Account</div>
     <div class="li"><div class="ld" style="background:#d1fae5;border:1px solid #a7f3d0"></div>Shop</div>
     <div class="li"><div class="ld" style="background:#fef3c7;border:1px solid #fde68a"></div>UpgradeRequest</div>
     <div class="li"><div class="ld" style="background:#fef9c3;border:1px solid #fef08a"></div>ClaimRequest</div>
-    <div class="li"><div class="ld" style="background:#fee2e2;border:1px solid #fecaca"></div>Report / Blacklist</div>
+    <div class="li"><div class="ld" style="background:#fee2e2;border:1px solid #fecaca"></div>Report/Blacklist</div>
     <div class="li"><div class="ld" style="background:#fce7f3;border:1px solid #fbcfe8"></div>FraudType</div>
     <div class="li"><div class="ld" style="background:#e0f2fe;border:1px solid #bae6fd"></div>Attachment</div>
+    <div class="li"><div class="ld" style="background:#ede9fe;border:1px solid #ddd6fe"></div>UpgradeApprovalLog</div>
     <div class="li"><svg width="22" height="10"><line x1="0" y1="5" x2="18" y2="5" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 2"/></svg>dependency</div>
     <div class="li"><svg width="22" height="10"><line x1="0" y1="5" x2="18" y2="5" stroke="#64748b" stroke-width="1"/></svg>association</div>
   </div>
