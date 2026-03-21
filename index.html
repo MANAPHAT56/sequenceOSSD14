@@ -25,6 +25,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,.95);backdrop-
 .nav-tabs{display:flex;gap:2px;flex-wrap:wrap}
 .ntab{font-size:13px;font-weight:500;padding:5px 13px;border-radius:7px;border:none;background:none;cursor:pointer;color:var(--muted);transition:all .14s;white-space:nowrap}
 .ntab:hover{background:var(--bg3);color:var(--text)}
+.ntab.ah{background:#f0fdf4;color:#166534}
 .ntab.ae{background:#eff6ff;color:#1d4ed8}
 .ntab.ac{background:#ecfdf5;color:#065f46}
 .ntab.ab{background:#fff7ed;color:#c2410c}
@@ -162,6 +163,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,.95);backdrop-
 <nav>
   <div class="brand">my<em>Order</em> docs</div>
   <div class="nav-tabs">
+    <button class="ntab ah" onclick="go('home',this,'ah')">Home</button>
     <button class="ntab ae" onclick="go('entity',this,'ae')">Entity</button>
     <button class="ntab"    onclick="go('ctrl',this,'ac')">Controllers</button>
     <button class="ntab"    onclick="go('bound',this,'ab')">Boundary</button>
@@ -170,9 +172,163 @@ nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,.95);backdrop-
 </nav>
 
 <!-- ══════════════════════════════════════
+     HOME
+══════════════════════════════════════ -->
+<div class="page on" id="page-home">
+<div class="wrap">
+  <div class="hero">
+    <div class="hbadge" style="background:#f0fdf4;color:#166534;border-color:#bbf7d0">myOrder System</div>
+    <h1>myOrder Docs</h1>
+    <p>เอกสารอ้างอิงโครงสร้างระบบ myOrder ครอบคลุม Entity, Controller, Boundary และ Class Diagram</p>
+  </div>
+
+  <!-- Mock HomePage UI -->
+  <div class="col-t" style="margin-bottom:12px">ตัวอย่างหน้า HomePage ของระบบ</div>
+
+  <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--sh)">
+
+    <!-- Simulated Navbar -->
+    <div style="display:flex;align-items:center;gap:10px;padding:10px 20px;background:var(--bg2);border-bottom:1px solid var(--border)">
+      <div style="font-family:var(--head);font-size:15px;font-weight:700;color:var(--text);flex:1">my<span style="color:#2563eb">Order</span></div>
+      <!-- Search bar -->
+      <div style="flex:2;max-width:400px;position:relative">
+        <div style="display:flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:6px 12px">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--muted);flex-shrink:0"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <span style="font-size:13px;color:var(--muted)">ค้นหาร้านค้า...</span>
+        </div>
+      </div>
+      <!-- Nav right -->
+      <div style="display:flex;align-items:center;gap:4px">
+        <!-- Dark mode toggle -->
+        <button onclick="toggleDark()" id="dm-btn" style="display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--bg3);cursor:pointer;color:var(--text2)">
+          <svg id="dm-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <!-- My Shop button -->
+        <button style="display:flex;align-items:center;gap:5px;padding:6px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg3);cursor:pointer;font-size:12.5px;font-family:var(--font);color:var(--text2)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+          ร้านค้าของฉัน
+        </button>
+        <!-- Profile avatar -->
+        <div style="width:32px;height:32px;border-radius:50%;background:#dbeafe;border:2px solid #bfdbfe;display:flex;align-items:center;justify-content:center;cursor:pointer">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Search Section -->
+    <div style="padding:40px 20px 32px;text-align:center;background:linear-gradient(135deg,#eff6ff 0%,#f0fdf4 100%)">
+      <h2 style="font-family:var(--head);font-size:22px;font-weight:700;margin-bottom:8px;color:var(--text)">ตรวจสอบร้านค้าก่อนสั่งซื้อ</h2>
+      <p style="font-size:13.5px;color:var(--text2);margin-bottom:20px">ค้นหาร้านค้าที่ผ่านการ Verify เพื่อความปลอดภัยในการซื้อขาย</p>
+      <div style="display:flex;max-width:520px;margin:0 auto;gap:8px">
+        <div style="flex:1;display:flex;align-items:center;gap:8px;background:var(--bg2);border:1px solid var(--border);border-radius:9px;padding:10px 14px;box-shadow:var(--sh)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--muted)"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <span style="font-size:13.5px;color:var(--muted)">ชื่อร้าน, ช่องทาง, URL...</span>
+        </div>
+        <button style="padding:10px 20px;background:#2563eb;color:#fff;border:none;border-radius:9px;font-size:13.5px;font-family:var(--font);font-weight:500;cursor:pointer;white-space:nowrap">ค้นหา</button>
+      </div>
+    </div>
+
+    <!-- Shop Cards Grid -->
+    <div style="padding:20px;background:var(--bg)">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+        <span style="font-size:13.5px;font-weight:500;color:var(--text)">ร้านค้าแนะนำ</span>
+        <span style="font-size:12px;color:#2563eb;cursor:pointer">ดูทั้งหมด →</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+
+        <!-- Shop Card 1 - Tier 3 -->
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px;box-shadow:var(--sh)">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:8px">
+            <div style="width:36px;height:36px;border-radius:8px;background:#d1fae5;display:flex;align-items:center;justify-content:center">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <span style="font-size:9.5px;font-family:var(--mono);padding:2px 7px;border-radius:4px;background:#d1fae5;color:#065f46;border:1px solid #a7f3d0">TRUSTED ⭐</span>
+          </div>
+          <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px">ร้าน Tech World</div>
+          <div style="font-size:11.5px;color:var(--muted)">Shopee · @techworld</div>
+        </div>
+
+        <!-- Shop Card 2 - Tier 2 -->
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px;box-shadow:var(--sh)">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:8px">
+            <div style="width:36px;height:36px;border-radius:8px;background:#eff6ff;display:flex;align-items:center;justify-content:center">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
+            </div>
+            <span style="font-size:9.5px;font-family:var(--mono);padding:2px 7px;border-radius:4px;background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe">VERIFIED</span>
+          </div>
+          <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px">Fashion Studio</div>
+          <div style="font-size:11.5px;color:var(--muted)">Instagram · @fashionstudio</div>
+        </div>
+
+        <!-- Shop Card 3 - Normal -->
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px;box-shadow:var(--sh)">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:8px">
+            <div style="width:36px;height:36px;border-radius:8px;background:var(--bg3);display:flex;align-items:center;justify-content:center">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+            </div>
+            <span style="font-size:9.5px;font-family:var(--mono);padding:2px 7px;border-radius:4px;background:var(--bg3);color:var(--muted);border:1px solid var(--border)">NORMAL</span>
+          </div>
+          <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px">Green Garden</div>
+          <div style="font-size:11.5px;color:var(--muted)">Facebook · @greengarden</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Boundary Breakdown -->
+  <div class="grp" style="margin-top:32px">องค์ประกอบ HomePage</div>
+  <div class="grid">
+
+    <div class="card b-user">
+      <div class="ch"><div class="ctag">boundary · navbar</div><div class="ctitle">Navbar</div></div>
+      <div class="cb">
+        <p class="cdesc">แถบนำทางด้านบน แสดงในทุกหน้า ประกอบด้วยองค์ประกอบย่อยหลายตัว</p>
+        <div class="col-t">Elements</div>
+        <div class="mlist">
+          <div class="mrow"><div class="mn" style="color:#2563eb">Logo / Brand</div><div class="md">กดแล้วกลับหน้า Home</div></div>
+          <div class="mrow"><div class="mn" style="color:#2563eb">SearchBar</div><div class="md">ช่องค้นหาร้านค้า กด Enter → ShopListPage พร้อม keyword</div></div>
+          <div class="mrow"><div class="mn" style="color:#2563eb">DarkModeToggle</div><div class="md">สลับ light/dark mode บันทึกค่าไว้ใน localStorage</div></div>
+          <div class="mrow"><div class="mn" style="color:#2563eb">MyShopButton</div><div class="md">กดแล้วไป MyShopPage (แสดงเฉพาะเมื่อ login แล้ว)</div></div>
+          <div class="mrow"><div class="mn" style="color:#2563eb">ProfileAvatar</div><div class="md">กดแล้วไป ProfilePage หรือ dropdown logout (ต้อง login)</div></div>
+          <div class="mrow"><div class="mn" style="color:#2563eb">LoginButton</div><div class="md">แสดงแทน ProfileAvatar เมื่อยังไม่ login</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card b-user">
+      <div class="ch"><div class="ctag">boundary · home · search</div><div class="ctitle">HeroSearch</div></div>
+      <div class="cb">
+        <p class="cdesc">ส่วน hero ตรงกลางหน้า Home มีช่องค้นหาขนาดใหญ่และปุ่ม "ค้นหา"</p>
+        <div class="col-t">Controller / Entity</div>
+        <div class="rlist">
+          <div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">ShopOwnerController.listShopsPublic()</span></div><div class="rdesc">GET /shops?q=keyword เมื่อกดค้นหา</div></div>
+          <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Shop</span></div><div class="rdesc">search(keyword) กรอง is_active=1</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card b-user">
+      <div class="ch"><div class="ctag">boundary · home · cards</div><div class="ctitle">ShopCardGrid</div></div>
+      <div class="cb">
+        <p class="cdesc">รายการร้านค้าแนะนำแสดงใน grid แต่ละ card แสดงชื่อร้าน ช่องทาง และ badge ระดับ (NORMAL / VERIFIED / TRUSTED)</div>
+        <div class="col-t">Controller / Entity</div>
+        <div class="rlist">
+          <div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">ShopOwnerController.listShopsPublic()</span></div><div class="rdesc">GET /shops โหลดร้านค้าเมื่อเปิดหน้า</div></div>
+          <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Shop</span></div><div class="rdesc">shop_status → badge NORMAL/VERIFIED/TRUSTED</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════
      ENTITY
 ══════════════════════════════════════ -->
-<div class="page on" id="page-entity">
+<div class="page" id="page-entity">
 <div class="wrap">
   <div class="hero">
     <div class="hbadge hb-e">Entity Layer</div>
@@ -449,8 +605,8 @@ nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,.95);backdrop-
             <div class="col-t">Functions</div>
             <div class="mlist">
               <div class="mrow"><div class="mn">save(fileUrl, requestId, type)</div><div class="md">วนลูปบันทึก URL ที่ได้จาก Cloud พร้อมเซ็ต FK ที่ถูกต้องตาม requestType</div></div>
-              <div class="mrow"><div class="mn">download(adminAccountId)</div><div class="md">คืน URL + logDownload()</div></div>
-              <div class="mrow"><div class="mn">logDownload(adminAccountId)</div><div class="md">Audit trail ดาวน์โหลด</div></div>
+              <div class="mrow"><div class="mn">viewFile(adminAccountId)</div><div class="md">คืน URL สำหรับแสดงไฟล์ในหน้าเว็บ (preview เท่านั้น ไม่มี download)</div></div>
+              <div class="mrow"><div class="mn">logView(adminAccountId)</div><div class="md">Audit trail ว่าแอดมินคนไหนดูไฟล์นี้เมื่อไหร่</div></div>
               <div class="mrow"><div class="mn">delete()</div><div class="md">ON DELETE CASCADE</div></div>
             </div>
           </div>
@@ -458,7 +614,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,.95);backdrop-
             <div class="col-t">Boundary ที่โต้ตอบ</div>
             <div class="rlist">
               <div class="rrow"><div class="rtop"><span class="rtag">shared</span><span class="rname">UploadComponent</span></div><div class="rdesc">ส่งไฟล์ → DocumentController → CloudUploadController → save()</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">shared</span><span class="rname">AttachmentViewer</span></div><div class="rdesc">download() + logDownload()</div></div>
+              <div class="rrow"><div class="rtop"><span class="rtag">shared</span><span class="rname">AttachmentViewer</span></div><div class="rdesc">viewFile() + logView() — ดูได้อย่างเดียว ไม่ download</div></div>
             </div>
           </div>
         </div>
@@ -973,25 +1129,26 @@ nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,.95);backdrop-
     <div class="card c-attach">
       <div class="ch"><div class="ctag">controller · attachment</div><div class="ctitle">AttachmentController</div></div>
       <div class="cb">
-        <p class="cdesc">ดาวน์โหลดเอกสารฝั่ง admin log ด้วย admin_account_id</p>
+        <p class="cdesc">ให้แอดมินดูเอกสารในหน้าเว็บ (preview เท่านั้น ไม่มี download) บันทึก log ทุกครั้งที่แอดมินดูไฟล์</p>
         <div class="three-col">
           <div>
             <div class="col-t">Functions</div>
             <div class="mlist">
-              <div class="mrow"><div class="mn" style="color:#075985">downloadFile(id)</div><div class="md">คืน URL + logDownload(admin_account_id)</div></div>
+              <div class="mrow"><div class="mn" style="color:#075985">viewFile(id)</div><div class="md">คืน URL สำหรับ preview ในหน้าเว็บ + เรียก logView(admin_account_id) อัตโนมัติ</div></div>
+              <div class="mrow"><div class="mn" style="color:#075985">logView(adminAccountId)</div><div class="md">บันทึก audit trail ว่าแอดมินคนไหนดูไฟล์นี้เมื่อไหร่</div></div>
             </div>
           </div>
           <div>
             <div class="col-t">Endpoints</div>
             <div class="eplist">
-              <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/attachments/:id/download</span><span class="ep-a a-ad">admin</span></div>
+              <div class="ep"><span class="hb GET">GET</span><span class="ep-p">/attachments/:id/view</span><span class="ep-a a-ad">admin</span></div>
             </div>
           </div>
           <div>
             <div class="col-t">Boundary / Entity</div>
             <div class="rlist">
-              <div class="rrow"><div class="rtop"><span class="rtag">boundary</span><span class="rname">AttachmentViewer</span></div><div class="rdesc">downloadFile()</div></div>
-              <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Attachment</span></div><div class="rdesc">download, logDownload</div></div>
+              <div class="rrow"><div class="rtop"><span class="rtag">boundary</span><span class="rname">AttachmentViewer</span></div><div class="rdesc">viewFile() — preview ไม่ download</div></div>
+              <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Attachment</span></div><div class="rdesc">viewFile, logView</div></div>
             </div>
           </div>
         </div>
@@ -1194,11 +1351,11 @@ nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,.95);backdrop-
     <div class="card b-shared">
       <div class="ch"><div class="ctag">boundary · shared</div><div class="ctitle">AttachmentViewer</div></div>
       <div class="cb">
-        <p class="cdesc">ดาวน์โหลดเอกสารฝั่ง admin log ด้วย admin_account_id</p>
+        <p class="cdesc">ดูเอกสารฝั่ง admin แบบ preview ในหน้าเว็บเท่านั้น (ไม่มีปุ่ม download) บันทึก log ว่า admin ดูไฟล์ไหนเมื่อไหร่</p>
         <div class="col-t">Controller / Entity</div>
         <div class="rlist">
-          <div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">AttachmentController.downloadFile()</span></div><div class="rdesc">GET /attachments/:id/download</div></div>
-          <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Attachment</span></div><div class="rdesc">download() + logDownload(admin_account_id)</div></div>
+          <div class="rrow"><div class="rtop"><span class="rtag">fn</span><span class="rname">AttachmentController.viewFile()</span></div><div class="rdesc">GET /attachments/:id/view — preview URL เท่านั้น</div></div>
+          <div class="rrow"><div class="rtop"><span class="rtag">entity</span><span class="rname">Attachment</span></div><div class="rdesc">viewFile() + logView(admin_account_id)</div></div>
         </div>
       </div>
     </div>
@@ -1439,7 +1596,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,.95);backdrop-
 <text x="840" y="923" font-family="IBM Plex Mono,monospace" font-size="9" fill="#64748b">+DATETIME created_at</text>
 <line x1="828" y1="930" x2="1110" y2="930" stroke="#f1f5f9"/>
 <text x="840" y="942" font-family="IBM Plex Mono,monospace" font-size="9" fill="#0284c7">+save(fileUrl, requestId, type)</text>
-<text x="840" y="953" font-family="IBM Plex Mono,monospace" font-size="9" fill="#0284c7">+download(adminAccountId) · logDownload()</text>
+<text x="840" y="953" font-family="IBM Plex Mono,monospace" font-size="9" fill="#0284c7">+viewFile(adminAccountId) · logView()</text>
 <text x="840" y="964" font-family="IBM Plex Mono,monospace" font-size="9" fill="#0284c7">+delete()</text>
 
 <!-- ── UpgradeApprovalLog ── -->
@@ -1556,13 +1713,44 @@ nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,.95);backdrop-
   </div>
 </div>
 </div>
+
 <script>
+let dark = false;
 function go(id,btn,cls){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
   document.querySelectorAll('.ntab').forEach(t=>{t.className='ntab'});
   document.getElementById('page-'+id).classList.add('on');
   btn.classList.add(cls);
 }
+function toggleDark(){
+  dark=!dark;
+  const r=document.documentElement;
+  if(dark){
+    r.style.setProperty('--bg','#1a1918');
+    r.style.setProperty('--bg2','#222120');
+    r.style.setProperty('--bg3','#2a2926');
+    r.style.setProperty('--border','#38352f');
+    r.style.setProperty('--border2','#4a4740');
+    r.style.setProperty('--text','#e8e4dc');
+    r.style.setProperty('--text2','#a8a49c');
+    r.style.setProperty('--muted','#6a6760');
+    document.getElementById('dm-icon').innerHTML='<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+  } else {
+    r.style.setProperty('--bg','#f7f5f0');
+    r.style.setProperty('--bg2','#fff');
+    r.style.setProperty('--bg3','#eeece7');
+    r.style.setProperty('--border','#e2dfd8');
+    r.style.setProperty('--border2','#ccc9c0');
+    r.style.setProperty('--text','#181714');
+    r.style.setProperty('--text2','#46443e');
+    r.style.setProperty('--muted','#8c8a84');
+    document.getElementById('dm-icon').innerHTML='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+  }
+}
+// set home as active tab on load
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelector('[onclick*="home"]').classList.add('ah');
+});
 </script>
 </body>
 </html>
